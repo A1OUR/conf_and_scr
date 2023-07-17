@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>
+
+	<specific_character id="war_ucheniy_osoznanie" team_default = "1">
+		<name>war_ucheniy_osoznanie_name</name>
+		<icon>ui_npc_u_ucheniy_2</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>war_ucheniy_osoznanie_bio</bio>
+		
+		<class>war_ucheniy_osoznanie</class>
+		<community>monolith</community>
+		
+		<rank>890</rank>
+		<reputation>0</reputation>
+		
+		<snd_config>characters_voice\human_02\killer\</snd_config>
+		<crouch_type>1</crouch_type>
+
+		<visual>actors\ucheniy\ucheniy_4</visual>
+		<supplies>
+			[spawn] \n
+			war_final_door_key2 \n
+#include "gameplay\character_items.xml"	\n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"		
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+
+	<specific_character id="war_ucheniy_osoznanie2" team_default = "1">
+		<name>war_ucheniy_osoznanie_name</name>
+		<icon>ui_npc_u_ucheniy_2</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>war_ucheniy_osoznanie_bio</bio>
+		
+		<class>war_ucheniy_osoznanie2</class>
+		<community>monolith</community>
+		
+		<rank>898</rank>
+		<reputation>0</reputation>
+		
+		<snd_config>characters_voice\human_02\killer\</snd_config>
+		<crouch_type>1</crouch_type>
+
+		<visual>actors\ucheniy\ucheniy_4_white</visual>
+		<supplies>
+			[spawn] \n
+			wpn_fn2000 \n
+			ammo_5.56x45_ap = 1 \n
+			war_final_door_key3 \n
+#include "gameplay\character_items.xml"	\n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"		
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+</xml>

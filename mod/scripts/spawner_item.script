@@ -1,0 +1,575 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(50,50,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_atom_mod.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- кнопки
+	self:Register(xml:Init3tButton("btn_wpn_beretta", self),"btn_wpn_beretta") 
+	
+              self:Register(xml:Init3tButton("btn_wpn_colt1911", self),"btn_wpn_colt1911") 
+	self:Register(xml:Init3tButton("btn_svd_ammo", self),"btn_svd_ammo")
+	self:Register(xml:Init3tButton("btn_wpn_desert_eagle", self),"btn_wpn_desert_eagle")
+	self:Register(xml:Init3tButton("btn_wpn_fort", self),"btn_wpn_fort")
+              self:Register(xml:Init3tButton("btn_groza_ammo", self),"btn_groza_ammo")
+              self:Register(xml:Init3tButton("btn_wpn_pm", self),"btn_wpn_pm")
+	self:Register(xml:Init3tButton("btn_wpn_usp", self),"btn_wpn_usp")
+	self:Register(xml:Init3tButton("btn_wpn_walther", self),"btn_wpn_walther")
+	
+	self:Register(xml:Init3tButton("btn_ammo_1270", self),"btn_ammo_1270")
+	self:Register(xml:Init3tButton("btn_abakan_ammo", self),"btn_abakan_ammo")
+	self:Register(xml:Init3tButton("btn_ak74u_ammo", self),"btn_ak74u_ammo")
+	self:Register(xml:Init3tButton("btn_sig_ammo", self),"btn_sig_ammo")
+              self:Register(xml:Init3tButton("btn_bandage", self),"btn_bandage")
+              self:Register(xml:Init3tButton("btn_medkit_scientic", self),"btn_medkit_scientic")
+              self:Register(xml:Init3tButton("btn_medkit_army", self),"btn_medkit_army")
+              self:Register(xml:Init3tButton("btn_medkit", self),"btn_medkit")
+              self:Register(xml:Init3tButton("btn_antirad", self),"btn_antirad")
+              self:Register(xml:Init3tButton("btn_af_medusa", self),"btn_af_medusa")
+	self:Register(xml:Init3tButton("btn_af_cristall_flower", self),"btn_af_cristall_flower")
+              self:Register(xml:Init3tButton("btn_wpn_abakan", self),"btn_wpn_abakan")
+              self:Register(xml:Init3tButton("btn_wpn_ak74", self),"btn_wpn_ak74")
+              self:Register(xml:Init3tButton("btn_wpn_fn2000", self),"btn_wpn_fn2000")
+              self:Register(xml:Init3tButton("btn_wpn_groza", self),"btn_wpn_groza")
+              self:Register(xml:Init3tButton("btn_wpn_sig220", self),"btn_wpn_sig220")
+              self:Register(xml:Init3tButton("btn_wpn_svd", self),"btn_wpn_svd")
+              self:Register(xml:Init3tButton("btn_wpn_toz34", self),"btn_wpn_toz34")
+              self:Register(xml:Init3tButton("btn_svoboda_light_outfit", self),"btn_svoboda_light_outfit")
+              self:Register(xml:Init3tButton("btn_dolg_outfit", self),"btn_dolg_outfit")
+              self:Register(xml:Init3tButton("btn_scientific_outfit", self),"btn_scientific_outfit")
+              self:Register(xml:Init3tButton("btn_svoboda_heavy_outfit", self),"btn_svoboda_heavy_outfit")
+              self:Register(xml:Init3tButton("btn_af_night_star", self),"btn_af_night_star")
+              self:Register(xml:Init3tButton("btn_af_gold_fish", self),"btn_af_gold_fish")
+              self:Register(xml:Init3tButton("btn_af_cristall", self),"btn_af_cristall")
+              self:Register(xml:Init3tButton("btn_af_blood", self),"btn_af_blood")
+              self:Register(xml:Init3tButton("btn_af_mincer_meat", self),"btn_af_mincer_meat")
+              self:Register(xml:Init3tButton("btn_af_electra_flash", self),"btn_af_electra_flash")
+              self:Register(xml:Init3tButton("btn_af_dummy_battery", self),"btn_af_dummy_battery")
+           
+              self:Register(xml:Init3tButton("btn_wpn_val", self),"btn_wpn_val")
+              self:Register(xml:Init3tButton("btn_ammo_9x39_pab9", self),"btn_ammo_9x39_pab9")
+	self:Register(xml:Init3tButton("btn_wpn_addon_scope", self),"btn_wpn_addon_scope") 
+	self:Register(xml:Init3tButton("btn_wpn_addon_scope_susat", self),"btn_wpn_addon_scope_susat") 
+	self:Register(xml:Init3tButton("btn_wpn_addon_silencer", self),"btn_wpn_addon_silencer") 
+	self:Register(xml:Init3tButton("btn_wpn_addon_grenade_launcher", self),"btn_wpn_addon_grenade_launcher") 
+	self:Register(xml:Init3tButton("btn_wpn_addon_grenade_launcher_m203", self),"btn_wpn_addon_grenade_launcher_m203") 
+	self:Register(xml:Init3tButton("btn_military_outfit", self),"btn_military_outfit") 
+	
+	self:Register(xml:Init3tButton("btn_exo_outfit", self),"btn_exo_outfit") 
+	
+	self:Register(xml:Init3tButton("btn_next_menu", self),"btn_next_menu") 
+	self:Register(xml:Init3tButton("btn_rpg7", self),"btn_rpg7") 
+	self:Register(xml:Init3tButton("btn_ammo_og7b", self),"btn_ammo_og7b") 
+	self:Register(xml:Init3tButton("btn_grenade_f1", self),"btn_grenade_f1") 
+	self:Register(xml:Init3tButton("btn_grenade_rgd5", self),"btn_grenade_rgd5") 
+	self:Register(xml:Init3tButton("btn_ammo_vog25", self),"btn_ammo_vog25") 
+	self:Register(xml:Init3tButton("btn_ammo_vog25p", self),"btn_ammo_vog25p") 
+	self:Register(xml:Init3tButton("btn_ammo_m209", self),"btn_ammo_m209") 
+	self:Register(xml:Init3tButton("btn_wpn_rg6", self),"btn_wpn_rg6") 
+	self:Register(xml:Init3tButton("btn_ammo_9x18_pmm", self),"btn_ammo_9x18_pmm") 
+	self:Register(xml:Init3tButton("btn_ammo_9x19_pbp", self),"btn_ammo_9x19_pbp") 
+	self:Register(xml:Init3tButton("btn_ammo_1143x23_hydro", self),"btn_ammo_1143x23_hydro") 
+	self:Register(xml:Init3tButton("btn_wpn_rg6", self),"btn_wpn_rg6") 
+	self:Register(xml:Init3tButton("btn_wpn_mp5", self),"btn_wpn_mp5") 
+
+
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+
+end
+
+function spawner:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_wpn_beretta", ui_events.BUTTON_CLICKED, self.spawn_wpn_beretta, self)
+	self:AddCallback("btn_pkm_ammo", ui_events.BUTTON_CLICKED, self.spawn_pkm_ammo, self)
+	self:AddCallback("btn_wpn_colt1911", ui_events.BUTTON_CLICKED, self.spawn_wpn_colt1911, self)
+	self:AddCallback("btn_svd_ammo", ui_events.BUTTON_CLICKED, self.spawn_svd_ammo, self)
+	self:AddCallback("btn_wpn_desert_eagle", ui_events.BUTTON_CLICKED, self.spawn_wpn_desert_eagle, self)
+	self:AddCallback("btn_wpn_fort", ui_events.BUTTON_CLICKED, self.spawn_wpn_fort, self)
+              self:AddCallback("btn_groza_ammo", ui_events.BUTTON_CLICKED, self.spawn_groza_ammo, self)
+	self:AddCallback("btn_wpn_pm", ui_events.BUTTON_CLICKED, self.spawn_wpn_pm, self)
+	self:AddCallback("btn_wpn_walther", ui_events.BUTTON_CLICKED, self.spawn_wpn_walther, self)
+	self:AddCallback("btn_wpn_usp", ui_events.BUTTON_CLICKED, self.spawn_wpn_usp, self)
+	self:AddCallback("btn_wpn_pkm", ui_events.BUTTON_CLICKED, self.spawn_wpn_pkm, self)
+	self:AddCallback("btn_ammo_1270", ui_events.BUTTON_CLICKED, self.spawn_ammo_1270, self)
+	self:AddCallback("btn_abakan_ammo", ui_events.BUTTON_CLICKED, self.spawn_abakan_ammo, self)
+	self:AddCallback("btn_ak74u_ammo", ui_events.BUTTON_CLICKED, self.spawn_ak74u_ammo, self)
+	self:AddCallback("btn_bandage", ui_events.BUTTON_CLICKED, self.spawn_bandage, self)
+	self:AddCallback("btn_medkit_scientic", ui_events.BUTTON_CLICKED, self.spawn_medkit_scientic, self)
+	self:AddCallback("btn_medkit_army", ui_events.BUTTON_CLICKED, self.spawn_medkit_army, self)
+	self:AddCallback("btn_medkit", ui_events.BUTTON_CLICKED, self.spawn_medkit, self)
+	self:AddCallback("btn_antirad", ui_events.BUTTON_CLICKED, self.spawn_antirad, self)
+	self:AddCallback("btn_wpn_abakan", ui_events.BUTTON_CLICKED, self.spawn_wpn_abakan, self)
+	self:AddCallback("btn_wpn_ak74", ui_events.BUTTON_CLICKED, self.spawn_wpn_ak74, self)
+	self:AddCallback("btn_wpn_fn2000", ui_events.BUTTON_CLICKED, self.spawn_wpn_fn2000, self)
+	self:AddCallback("btn_wpn_groza", ui_events.BUTTON_CLICKED, self.spawn_wpn_groza, self)
+	self:AddCallback("btn_wpn_sig220", ui_events.BUTTON_CLICKED, self.spawn_wpn_sig220, self)
+	self:AddCallback("btn_sig_ammo", ui_events.BUTTON_CLICKED, self.spawn_sig_ammo, self)
+	self:AddCallback("btn_wpn_svd", ui_events.BUTTON_CLICKED, self.spawn_wpn_svd, self)
+	self:AddCallback("btn_wpn_toz34", ui_events.BUTTON_CLICKED, self.spawn_wpn_toz34, self)
+	self:AddCallback("btn_svoboda_light_outfit", ui_events.BUTTON_CLICKED, self.spawn_svoboda_light_outfit, self)
+	self:AddCallback("btn_dolg_outfit", ui_events.BUTTON_CLICKED, self.spawn_dolg_outfit, self)
+	self:AddCallback("btn_scientific_outfit", ui_events.BUTTON_CLICKED, self.spawn_scientific_outfit, self)
+	self:AddCallback("btn_svoboda_heavy_outfit", ui_events.BUTTON_CLICKED, self.spawn_svoboda_heavy_outfit, self)
+	self:AddCallback("btn_specops_outfit", ui_events.BUTTON_CLICKED, self.spawn_specops_outfit, self)
+              self:AddCallback("btn_af_cristall_flower", ui_events.BUTTON_CLICKED, self.spawn_af_cristall_flower, self)
+              self:AddCallback("btn_af_medusa", ui_events.BUTTON_CLICKED, self.spawn_af_medusa, self)
+              self:AddCallback("btn_af_compass", ui_events.BUTTON_CLICKED, self.spawn_af_compass, self)
+              self:AddCallback("btn_af_dummy_battery", ui_events.BUTTON_CLICKED, self.spawn_af_dummy_battery, self)
+              self:AddCallback("btn_af_electra_flash", ui_events.BUTTON_CLICKED, self.spawn_af_electra_flash, self)
+              self:AddCallback("btn_af_mincer_meat", ui_events.BUTTON_CLICKED, self.spawn_af_mincer_meat, self)
+              self:AddCallback("btn_af_blood", ui_events.BUTTON_CLICKED, self.spawn_af_blood, self)
+              self:AddCallback("btn_af_cristall", ui_events.BUTTON_CLICKED, self.spawn_af_cristall, self)
+              self:AddCallback("btn_af_gold_fish", ui_events.BUTTON_CLICKED, self.spawn_af_gold_fish, self)
+              self:AddCallback("btn_af_night_star", ui_events.BUTTON_CLICKED, self.spawn_af_night_star, self)
+              self:AddCallback("btn_wpn_val", ui_events.BUTTON_CLICKED, self.spawn_wpn_val, self)
+              self:AddCallback("btn_ammo_9x39_pab9", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x39_pab9, self)
+	self:AddCallback("btn_wpn_addon_scope", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_scope, self)
+	self:AddCallback("btn_wpn_addon_scope_susat", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_scope_susat, self)
+	self:AddCallback("btn_wpn_addon_silencer", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_silencer, self)
+	self:AddCallback("btn_wpn_addon_grenade_launcher", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_grenade_launcher, self)
+	self:AddCallback("btn_wpn_addon_grenade_launcher_m203", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_grenade_launcher_m203, self)
+	self:AddCallback("btn_svoboda_exo_outfit", ui_events.BUTTON_CLICKED, self.spawn_svoboda_exo_outfit, self)
+	self:AddCallback("btn_exo_outfit", ui_events.BUTTON_CLICKED, self.spawn_exo_outfit, self)
+	self:AddCallback("btn_dolg_heavy_outfit", ui_events.BUTTON_CLICKED, self.spawn_dolg_heavy_outfit, self)
+	self:AddCallback("btn_military_outfit", ui_events.BUTTON_CLICKED, self.spawn_military_outfit, self)
+	self:AddCallback("btn_next_menu", ui_events.BUTTON_CLICKED, self.OnButton_next_menu, self)
+	self:AddCallback("btn_rpg7", ui_events.BUTTON_CLICKED, self.spawn_rpg7, self)
+	self:AddCallback("btn_ammo_og7b", ui_events.BUTTON_CLICKED, self.spawn_ammo_og7b, self)
+	self:AddCallback("btn_grenade_f1", ui_events.BUTTON_CLICKED, self.spawn_grenade_f1, self)
+	self:AddCallback("btn_grenade_rgd5", ui_events.BUTTON_CLICKED, self.spawn_grenade_rgd5, self)
+	self:AddCallback("btn_ammo_vog25", ui_events.BUTTON_CLICKED, self.spawn_ammo_vog25, self)
+	self:AddCallback("btn_ammo_vog25p", ui_events.BUTTON_CLICKED, self.spawn_ammo_vog25p, self)
+	self:AddCallback("btn_ammo_m209", ui_events.BUTTON_CLICKED, self.spawn_ammo_m209, self)
+              self:AddCallback("btn_ammo_9x18_pmm", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x18_pmm, self)
+              self:AddCallback("btn_ammo_9x19_pbp", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x19_pbp, self)
+              self:AddCallback("btn_ammo_1143x23_hydro", ui_events.BUTTON_CLICKED, self.spawn_ammo_1143x23_hydro, self)
+              self:AddCallback("btn_wpn_rg6", ui_events.BUTTON_CLICKED, self.spawn_wpn_rg6, self)
+              self:AddCallback("btn_wpn_mp5", ui_events.BUTTON_CLICKED, self.spawn_wpn_mp5, self)
+
+
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+			 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	local	pos = db.actor:position()
+		local	dir = db.actor:direction()
+		pos = pos:add(dir:mul(dist))
+		alife():create(spawn_item, pos, 1, db.actor:game_vertex_id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+
+function spawner:spawn_wpn_beretta()
+	
+	self:spawn_item("wpn_beretta", 3)
+end
+
+function spawner:spawn_pkm_ammo()
+	
+
+	self:spawn_item("ammo_pkm_100", 3)
+end
+
+function spawner:spawn_wpn_colt1911()
+
+	
+	self:spawn_item("wpn_colt1911", 10)
+end
+
+function spawner:spawn_svd_ammo()
+	
+	
+	self:spawn_item("ammo_7.62x54_7h14", 3)
+end
+
+function spawner:spawn_wpn_desert_eagle()
+	
+
+	self:spawn_item("wpn_desert_eagle", 10)
+end
+
+function spawner:spawn_wpn_fort()
+
+	self:spawn_item("wpn_fort", 7)
+end
+
+function spawner:spawn_groza_ammo()
+
+	self:spawn_item("ammo_9x39_sp5", 3)
+end
+
+function spawner:spawn_wpn_pm()
+
+	self:spawn_item_inv("wpn_pm", 7)
+end
+
+function spawner:spawn_wpn_usp()
+	
+	self:spawn_item("wpn_usp", 7)
+end
+
+function spawner:spawn_wpn_walther()
+	
+	self:spawn_item("wpn_walther", 7)
+end
+
+function spawner:spawn_wpn_pkm()
+	
+	self:spawn_item("wpn_pkm", 7)
+end
+
+function spawner:spawn_ammo_1270()
+	
+	self:spawn_item("ammo_12x70_buck", 3)
+end
+
+
+function spawner:spawn_abakan_ammo()
+	
+	self:spawn_item("ammo_5.45x39_fmj", 3)
+end
+
+function spawner:spawn_sig_ammo()
+	
+	self:spawn_item("ammo_5.56x45_ap", 3)
+end
+
+
+
+
+
+function spawner:spawn_ak74u_ammo()
+	
+	self:spawn_item("ammo_5.45x39_ap", 3)
+end
+
+function spawner:spawn_antirad()
+
+	self:spawn_item("antirad", 3)
+end
+
+function spawner:spawn_medkit()
+	
+	self:spawn_item("medkit", 3)
+end
+
+function spawner:spawn_medkit_army()
+	
+	self:spawn_item("medkit_army", 3)
+end
+
+function spawner:spawn_medkit_scientic()
+	
+	self:spawn_item("medkit_scientic", 3)
+end
+
+function spawner:spawn_bandage()
+	
+	self:spawn_item("bandage", 3)
+end
+
+function spawner:spawn_wpn_abakan()
+	
+	self:spawn_item("wpn_abakan", 3)
+end
+
+function spawner:spawn_wpn_ak74()
+	
+	self:spawn_item("wpn_ak74", 3)
+end
+
+function spawner:spawn_wpn_fn2000()
+
+	self:spawn_item("wpn_fn2000", 3)
+end
+
+function spawner:spawn_wpn_groza()
+
+	self:spawn_item("wpn_groza", 3)
+end
+
+function spawner:spawn_wpn_sig220()
+	
+	self:spawn_item("wpn_sig550", 3)
+end
+
+function spawner:spawn_wpn_svd()
+	
+	self:spawn_item("wpn_svu", 3)
+end
+
+function spawner:spawn_wpn_toz34()
+	
+	self:spawn_item("wpn_toz34", 3)
+end
+
+function spawner:spawn_svoboda_light_outfit()
+	
+	self:spawn_item("svoboda_light_outfit", 3)
+end
+
+function spawner:spawn_dolg_outfit()
+	
+	self:spawn_item("dolg_outfit", 3)
+end
+
+function spawner:spawn_scientific_outfit()
+	
+	self:spawn_item("scientific_outfit", 3)
+end
+
+function spawner:spawn_svoboda_heavy_outfit()
+	
+	self:spawn_item("svoboda_heavy_outfit", 3)
+end
+
+function spawner:spawn_specops_outfit()
+	
+	self:spawn_item("specops_outfit", 3)
+end
+
+
+function spawner:spawn_af_cristall_flower()
+
+	self:spawn_item("af_cristall_flower", 3)
+end
+
+
+function spawner:spawn_af_medusa()
+	
+	self:spawn_item("af_medusa", 3)
+end
+
+function spawner:spawn_af_night_star()
+	
+	self:spawn_item("af_night_star", 3)
+end
+
+function spawner:spawn_af_gold_fish()
+	
+	self:spawn_item("af_gold_fish", 3)
+end
+
+function spawner:spawn_af_cristall()
+	
+	self:spawn_item("af_cristall", 3)
+end
+
+function spawner:spawn_af_blood()
+	
+	self:spawn_item("af_blood", 3)
+end
+
+function spawner:spawn_af_mincer_meat()
+	
+	self:spawn_item("af_mincer_meat", 3)
+end
+
+function spawner:spawn_af_electra_flash()
+	
+	self:spawn_item("af_electra_flash", 3)
+end
+
+function spawner:spawn_af_dummy_battery()
+	
+	self:spawn_item("af_dummy_battery", 3)
+end
+
+function spawner:spawn_af_compass()
+	
+	self:spawn_item("af_compass", 3)
+end
+
+function spawner:spawn_wpn_val()
+	
+	self:spawn_item("wpn_val", 3)
+end
+
+function spawner:spawn_ammo_9x39_pab9()
+	
+	self:spawn_item("ammo_9x39_ap", 3)
+end
+
+function spawner:spawn_wpn_addon_scope()
+         
+             self:spawn_item("wpn_addon_scope", 3)
+end
+
+function spawner:spawn_wpn_addon_scope_susat()
+          
+             self:spawn_item("wpn_addon_scope_susat", 3)
+end
+
+function spawner:spawn_wpn_addon_silencer()
+           
+             self:spawn_item("wpn_addon_silencer", 3)
+end
+
+function spawner:spawn_wpn_addon_grenade_launcher()
+            
+             self:spawn_item("wpn_addon_grenade_launcher", 3)
+end
+
+function spawner:spawn_wpn_addon_grenade_launcher_m203()
+         
+             self:spawn_item("wpn_addon_grenade_launcher_m203", 3)
+end
+
+function spawner:spawn_military_outfit()
+     
+             self:spawn_item("military_outfit", 3)
+end
+
+function spawner:spawn_dolg_heavy_outfit()
+          
+             self:spawn_item("dolg_heavy_outfit", 3)
+end
+
+function spawner:spawn_exo_outfit()
+           
+             self:spawn_item("exo_outfit", 3)
+end
+
+function spawner:spawn_svoboda_exo_outfit()
+          
+             self:spawn_item("svoboda_exo_outfit", 3)
+end
+
+function spawner:spawn_rpg7()
+          
+             self:spawn_item("wpn_rpg7")    
+end
+
+function spawner:spawn_ammo_og7b()
+            
+             self:spawn_item("ammo_og-7b", 3)
+end
+
+function spawner:spawn_grenade_f1()
+            
+             self:spawn_item("grenade_f1", 3)
+end
+
+function spawner:spawn_grenade_rgd5()
+            
+             self:spawn_item("grenade_rgd5", 3)
+end
+
+function spawner:spawn_ammo_vog25()
+            
+             self:spawn_item("ammo_vog-25", 3)
+end
+
+function spawner:spawn_ammo_vog25p()
+            
+             self:spawn_item("ammo_vog-25p", 3)
+end
+
+function spawner:spawn_ammo_m209()
+            
+             self:spawn_item("ammo_m209", 3)
+end
+
+function spawner:spawn_wpn_rg6()
+            
+             self:spawn_item("wpn_rg-6", 3)
+end
+
+function spawner:spawn_ammo_9x18_pmm()
+            
+             self:spawn_item("ammo_9x18_pmm", 3)
+end
+
+function spawner:spawn_ammo_9x19_pbp()
+            
+             self:spawn_item("ammo_9x19_pbp", 3)
+end
+
+function spawner:spawn_ammo_1143x23_hydro()
+            
+             self:spawn_item("ammo_11.43x23_hydro", 3)
+end
+
+function spawner:spawn_wpn_mp5()
+            
+             self:spawn_item("wpn_mp5", 3)
+end
+---------------------------------------------------------------------------------------------------------
+function spawner:OnButton_next_menu()
+-- если еще ни разу не вызывали, то обозначим наш новый скрипт
+                           if self.ui_spawner_menu_dlg == nil then
+		self.ui_spawner_menu_dlg = ui_spawner_menu.spawner()
+		self.ui_spawner_menu_dlg.owner = self
+
+
+	end
+-- останавливаем родительский элемент, запускаем свой, но родителя показываем.
+	self:GetHolder():start_stop_menu(self.ui_spawner_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------

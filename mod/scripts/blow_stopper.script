@@ -1,0 +1,7 @@
+function esc_stop()
+	if db.actor:has_info("твой_инфо") then 
+		return false
+	else
+		return true
+	end
+end

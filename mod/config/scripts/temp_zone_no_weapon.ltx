@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {=actor_in_zone(l05_bar_no_weapon)} sr_no_weapon %=shoval_stvol%
+
+
+
+[sr_no_weapon]
+on_signal = out_of_zone | sr_idle %=dostal_stvol%
+
+

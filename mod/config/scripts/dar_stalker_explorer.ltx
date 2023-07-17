@@ -1,0 +1,27 @@
+[logic]
+active = walker1
+on_hit = hit
+
+;-- Стоим, ждём актёра
+[walker1]
+path_walk = dar_explorer_walk
+path_look = dar_explorer_look
+on_info = {+dar_explorer_dlg_completed} walker2
+on_hit = hit
+show_spot = false
+danger = danger_condition1
+
+;-- Сценка закончена
+[walker2]
+path_walk = dar_explorer_walk2
+path_look = dar_explorer_look2
+on_signal = arrived | nil
+meet = no_meet
+danger = danger_condition1
+
+
+[danger_condition1]
+ignore_distance = 5
+
+[hit]
+on_info = nil

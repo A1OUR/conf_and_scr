@@ -1,0 +1,77 @@
+;Охранник на входе на Базу Монолита (Р.М.А.):
+;--Логика простая, но с изюминкой: охранник стоит (нормальное состояние), если видит актёра в костюме бандита, то спрашивает пароль, если же актёр не в бандитской одежде, то срывается в бой (переходит в состояние "обнаружения"). Если охранник увидел актёра не в костюме бандита и продолжает его видеть в течение определённого количества времени (пока выставил 1 мин.) и больше, то запоминает актёра и у актёра пропадает шанс пробраться на Базу мирно, но если актёр скроется из виду охранника до истечения указанного времени, то охранник перейдёт в состояние "памяти" и будет помнить про актёра определённое количество времени (пока 5 мин.) и если в указанное время актёр не окажется на виду охранника, то охранник забывает про всё и возвращается в исходное состояние (нормальное), но если актёр появится на виду до истечения указанного времени, то охранник перейдёт в состояние "обнаружения".
+;--Если в нормальном состоянии актёр подойдёт без одежды бандита ближе чем на 7 метров, то охранник запомнит актёра и у актёра пропадает шанс пробраться на Базу мирно. В остальных состояниях аналогично, но без проверки на одежду, так как актёр уже был замечен не в форме.
+;--Если актёр назвал пароль или был разоблачён, то охранник переходит в "молчаливое состояние".
+[logic@val_x18_exit_base_zoneguard]
+active = walker@val_x18_exit_base_zoneguard
+combat_ignore = combat_ignore@val_monolith_base
+on_hit = hit@monolith_zoneguard
+on_death = death@monolith_zoneguard
+
+;Нормальное состояние
+[walker@val_x18_exit_base_zoneguard]
+path_walk  = guard_walk
+path_look  = guard_look
+meet = meet@zoneguard_monolith_base
+combat_ignore_cond = {-val_monolith_actor_detected -val_monolith_actor_learned =actor_wears_bandit_outfit =fighting_actor}
+danger = danger_condition@val_x18_exit_base_zoneguard
+on_info = {+val_monolith_password_ok} walker@val_x18_exit_base_zoneguard_silent
+on_info2 = {+val_monolith_actor_learned} walker@val_x18_exit_base_zoneguard_silent
+on_actor_dist_le = 7 | {!actor_wears_bandit_outfit} walker@val_x18_exit_base_zoneguard_silent %+val_monolith_actor_learned%
+on_actor_dist_ge = 7 | {!actor_wears_bandit_outfit} walker@val_x18_exit_base_zoneguard_detected %+val_monolith_actor_detected%
+
+;Молчаливое состояние
+[walker@val_x18_exit_base_zoneguard_silent]
+path_walk  = guard_walk
+path_look  = guard_look
+meet = no_meet
+combat_ignore_cond = {-val_monolith_actor_detected -val_monolith_actor_learned =actor_wears_bandit_outfit =fighting_actor}
+danger = danger_condition@val_x18_exit_base_zoneguard
+
+;Состояние обнаружения
+[walker@val_x18_exit_base_zoneguard_detected]
+path_walk  = guard_walk
+path_look  = guard_look
+meet = no_meet
+combat_ignore_cond = {-val_monolith_actor_detected -val_monolith_actor_learned =actor_wears_bandit_outfit =fighting_actor}
+danger = danger_condition@val_x18_exit_base_zoneguard
+on_actor_dist_le = 7 | walker@val_x18_exit_base_zoneguard_silent %+val_monolith_actor_learned%
+on_info = {!see_actor} walker@val_x18_exit_base_zoneguard_remember
+on_info2 = {+val_monolith_actor_learned} walker@val_x18_exit_base_zoneguard_silent
+on_timer = 60000 | walker@val_x18_exit_base_zoneguard_silent %+val_monolith_actor_learned%
+
+;Состояние памяти
+[walker@val_x18_exit_base_zoneguard_remember]
+path_walk  = guard_walk
+path_look  = guard_look
+meet = no_meet
+combat_ignore_cond = {-val_monolith_actor_detected -val_monolith_actor_learned =actor_wears_bandit_outfit =fighting_actor}
+danger = danger_condition@val_x18_exit_base_zoneguard
+on_actor_dist_le = 7 | walker@val_x18_exit_base_zoneguard_silent %+val_monolith_actor_learned%
+on_info = {=see_actor} walker@val_x18_exit_base_zoneguard_detected
+on_info2 = {+val_monolith_actor_learned} walker@val_x18_exit_base_zoneguard_silent
+on_timer = 300000 | walker@val_x18_exit_base_zoneguard %-val_monolith_actor_detected%
+
+
+[meet@zoneguard_monolith_base]
+meet_state 		= 5| wait@talk_hello
+meet_state_wpn 	= 5| threat@threat_weap
+victim 			= 5| actor
+victim_wpn 		= 5| actor
+use			= true
+use_wpn		= true
+meet_dialog		= val_monolith_guard_password
+zone = val_monolith_base_guard_warn_zone|{+val_monolith_password_ok}guard,threat@{+val_monolith_password_ok}talk_hello,val_monolith_backoff
+precond			= visibility
+
+[combat_ignore@val_monolith_base]
+combat_ignore_cond = {-val_monolith_actor_detected -val_monolith_actor_learned =actor_wears_bandit_outfit =fighting_actor}
+
+[danger_condition@val_x18_exit_base_zoneguard]
+ignore_distance = 20
+
+[hit@monolith_zoneguard]
+on_info = {=hit_by_actor} %+val_monolith_actor_learned%
+
+[death@monolith_zoneguard]
+on_info = {=killed_by_actor} %+val_monolith_actor_learned +val_monolith_zg_died%, %+val_monolith_zg_died%

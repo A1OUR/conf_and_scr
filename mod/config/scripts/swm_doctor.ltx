@@ -1,0 +1,52 @@
+[logic]
+active = remark@idle
+combat_ignore = combat_ignore
+on_death = death
+
+[remark@idle]
+anim = wait
+combat_ignore_cond = {=check_fighting(1605)}
+on_info = {=swamp_doctor_patrol_time} walker@swm_doctor_patrol1, {=swamp_doctor_kamp_time} kamp@swm_doctor_kamp1, {=swamp_doctor_wpn_clear_time} walker@swm_doctor_wpn_clear1, {=swamp_doctor_sleep_time} sleeper@swm_doctor_sleep
+;on_info2 = {=swamp_doctor_kamp_time} kamp@swm_doctor_kamp1
+;on_info3 = {=swamp_doctor_wpn_clear_time} walker@swm_doctor_wpn_clear1
+;on_info4 = {=swamp_doctor_sleep_time} sleeper@swm_doctor_sleep
+
+[walker@swm_doctor_patrol1]
+path_walk = swm_doctor_patrol_walk1
+path_look = swm_doctor_patrol_look1
+combat_ignore_cond = {=check_fighting(1605)}
+;on_timer = 30000 | remark@idle
+;on_info = {=swamp_doctor_kamp_time} kamp@swm_doctor_kamp1
+;on_info2 = {=swamp_doctor_wpn_clear_time} walker@swm_doctor_wpn_clear1
+;on_info3 = {=swamp_doctor_sleep_time} sleeper@swm_doctor_sleep
+on_info = {=swamp_doctor_kamp_time} kamp@swm_doctor_kamp1, {=swamp_doctor_wpn_clear_time} walker@swm_doctor_wpn_clear1, {=swamp_doctor_sleep_time} sleeper@swm_doctor_sleep
+
+[kamp@swm_doctor_kamp1]
+center_point = swm_doctor_kamp_center1
+path_walk = swm_doctor_kamp_center_task
+combat_ignore_cond = {=check_fighting(1605)}
+;on_info = {=swamp_doctor_patrol_time ~50} walker@swm_doctor_patrol1, {=swamp_doctor_patrol_time} walker@swm_doctor_patrol2
+;on_info2 = {=swamp_doctor_wpn_clear_time} walker@swm_doctor_wpn_clear1
+;on_info3 = {=swamp_doctor_sleep_time} sleeper@swm_doctor_sleep
+on_info = {=swamp_doctor_patrol_time} walker@swm_doctor_patrol1, {=swamp_doctor_wpn_clear_time} walker@swm_doctor_wpn_clear1, {=swamp_doctor_sleep_time} sleeper@swm_doctor_sleep
+
+[walker@swm_doctor_wpn_clear1]
+path_walk = swm_doctor_wpn_clear1_walk
+path_look = swm_doctor_wpn_clear1_look
+combat_ignore_cond = {=check_fighting(1605)}
+;on_info = {=swamp_doctor_patrol_time ~50} walker@swm_doctor_patrol1, {=swamp_doctor_patrol_time} walker@swm_doctor_patrol2
+;on_info2 = {=swamp_doctor_kamp_time} kamp@swm_doctor_kamp1
+;on_info3 = {=swamp_doctor_sleep_time} sleeper@swm_doctor_sleep
+on_info = {=swamp_doctor_patrol_time} walker@swm_doctor_patrol1, {=swamp_doctor_kamp_time} kamp@swm_doctor_kamp1, {=swamp_doctor_sleep_time} sleeper@swm_doctor_sleep
+
+[sleeper@swm_doctor_sleep]
+path_main = swm_doctor_sleep
+combat_ignore_cond = {=check_fighting(1605)}
+;on_info = {=swamp_doctor_patrol_time ~50} walker@swm_doctor_patrol1, {=swamp_doctor_patrol_time} walker@swm_doctor_patrol2
+;on_info2 = {=swamp_doctor_kamp_time} kamp@swm_doctor_kamp1
+;on_info3 = {=swamp_doctor_wpn_clear_time} walker@swm_doctor_wpn_clear1
+on_info = {=swamp_doctor_patrol_time} walker@swm_doctor_patrol1, {=swamp_doctor_kamp_time} kamp@swm_doctor_kamp1, {=swamp_doctor_wpn_clear_time} walker@swm_doctor_wpn_clear1
+
+
+[death]
+on_info = nil %+cit_doctor_dead%

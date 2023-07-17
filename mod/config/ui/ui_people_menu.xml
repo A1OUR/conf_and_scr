@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<cheat>	
+	<back_video x="10" y="10" width="650" height="340" stretch="1">
+		<texture></texture>
+	</back_video>
+
+	<background x="0" y="0" width="500" height="460" stretch="1">
+		<texture x="190" y="235" width="530" height="450">ui_menu_options_dlg</texture>
+	</background>
+
+	<Info x="30" y="5" width="650" height="15" complex_mode="1">	
+			<text align="l" font="letterica18" a="255" r="216" g="188" b="140">НПС</text>	
+	</Info>
+
+
+----------------------------------------------------People------------------------------------------------------
+              <btn_bar_dolg_respawn_3 x="25" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Долг</text>
+	</btn_bar_dolg_respawn_3>
+
+	<btn_sar_monolith_respawn x="25" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Монолит</text>
+	</btn_sar_monolith_respawn>
+
+	<btn_mil_freedom_respawn_3 x="25" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Свобода</text>
+	</btn_mil_freedom_respawn_3>
+
+	<btn_ds_bandit_respawn_3 x="25" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Бандит</text>
+	</btn_ds_bandit_respawn_3>
+
+
+	<btn_esc_stalker_respawn_2 x="25" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Одиночка</text>
+	</btn_esc_stalker_respawn_2>
+	
+	
+	<btn_mil_freedom_respawn_sniper x="25" y="235" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Св Снайпер</text>
+	</btn_mil_freedom_respawn_sniper>
+	
+	
+	<btn_esc_stalker_respawn_1 x="25" y="265" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Одиночка новичок</text>
+	</btn_esc_stalker_respawn_1>
+	
+	
+	
+	<btn_gar_dolg_respawn_1 x="25" y="290" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Долговец</text>
+	</btn_gar_dolg_respawn_1>
+	
+	
+	
+	<btn_mil_killer_respawn_1 x="25" y="315" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Наёмник</text>
+	</btn_mil_killer_respawn_1>
+	
+	
+	
+	<btn_mil_killer_respawn_4 x="200" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Наёмник2</text>
+	</btn_mil_killer_respawn_4>
+	
+	
+	
+	<btn_ros_killer_respawn_2 x="200" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Наёмник3</text>
+	</btn_ros_killer_respawn_2>
+	
+	
+	
+	<btn_esc_soldier_respawn_1 x="200" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Солдат</text>
+	</btn_esc_soldier_respawn_1>
+	
+	
+	
+	<btn_agr_soldier_veteran x="200" y="175" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>СолдВетеран</text>
+	</btn_agr_soldier_veteran>
+	
+	
+	
+	<btn_esc_soldier_respawn_specnaz x="200" y="205" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Спецназ</text>
+	</btn_esc_soldier_respawn_specnaz>
+	
+	
+	
+	<btn_gar_bandit_respawn_2 x="200" y="235" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Бандит2</text>
+	</btn_gar_bandit_respawn_2>
+	
+	
+	
+	<btn_rad_monolith_respawn_1 x="200" y="265" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Монолитовец2</text>
+	</btn_rad_monolith_respawn_1>
+	
+	
+	
+	<btn_bar_dolg_respawn_2 x="200" y="295" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Долговец2</text>
+	</btn_bar_dolg_respawn_2>
+	
+	
+	
+	<btn_yan_ecolog_respawn_1 x="200" y="315" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Эколог</text>
+	</btn_yan_ecolog_respawn_1>
+	
+	
+	
+	<btn_rad_freedom_respawn_1 x="200" y="345" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Одиночка3</text>
+	</btn_rad_freedom_respawn_1>
+	
+	
+	
+	<btn_rad_freedom_respawn_2 x="350" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Свободарадр</text>
+	</btn_rad_freedom_respawn_2>
+	
+	
+	
+	<btn_pri_respawn_freedom x="350" y="115" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>свобода прип</text>
+	</btn_pri_respawn_freedom>
+	
+	
+	<btn_esc_bandit_respawn_1 x="350" y="145" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>свобода прип</text>
+	</btn_esc_bandit_respawn_1>
+-----------------------------------------------------------EXIT-------------------------------------------------------------------------------------
+	<btn_quit x="25" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ui_inv_exit</text>
+	</btn_quit>
+----------------------
+	<btn_back x="378" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Назад</text>
+	</btn_back>
+
+
+</cheat>

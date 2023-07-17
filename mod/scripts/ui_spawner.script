@@ -1,0 +1,231 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(50,50,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_atom_mod.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+              xml:InitStatic("Info", self)
+
+	-- кнопки
+        self:Register(xml:Init3tButton("btn_ammo_menu", self),"btn_ammo_menu") 
+        self:Register(xml:Init3tButton("btn_art_menu", self),"btn_art_menu") 
+        self:Register(xml:Init3tButton("btn_eat_menu", self),"btn_eat_menu") 
+        self:Register(xml:Init3tButton("btn_medic_menu", self),"btn_medic_menu") 
+        self:Register(xml:Init3tButton("btn_misc_menu", self),"btn_misc_menu") 
+        self:Register(xml:Init3tButton("btn_monster_menu", self),"btn_monster_menu") 
+        self:Register(xml:Init3tButton("btn_outfit_menu", self),"btn_outfit_menu") 
+        self:Register(xml:Init3tButton("btn_people_menu", self),"btn_people_menu")  
+        self:Register(xml:Init3tButton("btn_weapon_menu", self),"btn_weapon_menu") 
+
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+end
+
+function spawner:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_ammo_menu", ui_events.BUTTON_CLICKED, self.OnButton_ammo_menu, self)
+	self:AddCallback("btn_art_menu", ui_events.BUTTON_CLICKED, self.OnButton_art_menu, self)
+	self:AddCallback("btn_eat_menu", ui_events.BUTTON_CLICKED, self.OnButton_eat_menu, self)
+	self:AddCallback("btn_medic_menu", ui_events.BUTTON_CLICKED, self.OnButton_medic_menu, self)
+	self:AddCallback("btn_misc_menu", ui_events.BUTTON_CLICKED, self.OnButton_misc_menu, self)
+	self:AddCallback("btn_monster_menu", ui_events.BUTTON_CLICKED, self.OnButton_monster_menu, self)
+	self:AddCallback("btn_outfit_menu", ui_events.BUTTON_CLICKED, self.OnButton_outfit_menu, self)
+	self:AddCallback("btn_people_menu", ui_events.BUTTON_CLICKED, self.OnButton_people_menu, self)
+	self:AddCallback("btn_weapon_menu", ui_events.BUTTON_CLICKED, self.OnButton_weapon_menu, self)
+
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+			 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	local	pos = db.actor:position()
+		local	dir = db.actor:direction()
+		pos = pos:add(dir:mul(dist))
+		alife():create(spawn_item, pos, 1, db.actor:game_vertex_id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+-------------------------------------------
+function spawner:OnButton_weapon_menu()
+                           if self.ui_weapon_menu_dlg == nil then
+		self.ui_weapon_menu_dlg = ui_weapon_menu.spawner()
+		self.ui_weapon_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_weapon_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+function spawner:OnButton_ammo_menu()
+                           if self.ui_ammo_menu_dlg == nil then
+		self.ui_ammo_menu_dlg = ui_ammo_menu.spawner()
+		self.ui_ammo_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_ammo_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+function spawner:OnButton_eat_menu()
+                           if self.ui_eat_menu_dlg == nil then
+		self.ui_eat_menu_dlg = ui_eat_menu.spawner()
+		self.ui_eat_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_eat_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+function spawner:OnButton_art_menu()
+                           if self.ui_art_menu_dlg == nil then
+		self.ui_art_menu_dlg = ui_art_menu.spawner()
+		self.ui_art_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_art_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+function spawner:OnButton_medic_menu()
+                           if self.ui_medic_menu_dlg == nil then
+		self.ui_medic_menu_dlg = ui_medic_menu.spawner()
+		self.ui_medic_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_medic_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+function spawner:OnButton_people_menu()
+                           if self.ui_people_menu_dlg == nil then
+		self.ui_people_menu_dlg = ui_people_menu.spawner()
+		self.ui_people_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_people_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+function spawner:OnButton_monster_menu()
+                           if self.ui_monster_menu_dlg == nil then
+		self.ui_monster_menu_dlg = ui_monster_menu.spawner()
+		self.ui_monster_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_monster_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+function spawner:OnButton_outfit_menu()
+                           if self.ui_outfit_menu_dlg == nil then
+		self.ui_outfit_menu_dlg = ui_outfit_menu.spawner()
+		self.ui_outfit_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_outfit_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+function spawner:OnButton_misc_menu()
+                           if self.ui_misc_menu_dlg == nil then
+		self.ui_misc_menu_dlg = ui_misc_menu.spawner()
+		self.ui_misc_menu_dlg.owner = self
+
+	            end
+	self:GetHolder():start_stop_menu(self.ui_misc_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+---------------------------------------------------------------------------------------------------------
+function spawner:OnButton_next_menu()
+-- если еще ни разу не вызывали, то обозначим наш новый скрипт
+                           if self.ui_spawner_menu_dlg == nil then
+		self.ui_spawner_menu_dlg = ui_spawner_menu.spawner()
+		self.ui_spawner_menu_dlg.owner = self
+
+
+	end
+-- останавливаем родительский элемент, запускаем свой, но родителя показываем.
+	self:GetHolder():start_stop_menu(self.ui_spawner_menu_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------

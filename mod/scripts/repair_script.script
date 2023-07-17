@@ -1,0 +1,156 @@
+local repairability = 1
+function in_hideout()
+	local news_text = game.translate_string("в зоне")
+    db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+end
+function out_hideout()
+	local news_text = game.translate_string("вне зоны")
+    db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+end
+function repair(obj)
+local obj_sect = obj:section()
+if obj_sect == "enable_rep" then 
+db.actor:disable_info_portion("bar_heli_scene_stay_online")
+end
+if obj_sect == "disable_rep" then 
+level.create_story_save("хуй")
+end 
+if obj_sect == "dilo_pda_dec" then
+	escape_dialog.dechiph_pda()
+end
+if obj_sect == "repair_kit_w" and repairability == 1 then 
+	local hud = repair_ui(get_hud()) -- указываем на class "repair_ui" (CUIScriptWnd)
+        level.start_stop_menu(hud, true) -- открываем меню
+end
+if obj_sect == "repair_kit" and repairability == 1 then 
+	local item_s6 = db.actor:item_in_slot(6) --объ¤вл¤ем переменную (item_s6)
+    if item_s6 ~= nil and item_s6:condition() >=0.30 and item_s6:condition() ~=1 then --когда костюм можно чинить (состо¤ние больше или равно 30%)
+        item_s6:set_condition(1)
+        local snd_obj = xr_sound.get_safe_sound_object([[interface\inv_detach_addon]])
+        snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+        local news_text = game.translate_string("%c[255,160,160,160]Ремонт комплект:\\n%c[255,0,255,0]Ремонт костюма завершён.")
+        db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+    elseif item_s6 == nil then --когда костюма нет 
+        local news_text = game.translate_string("%c[255,160,160,160]Ремонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: нужно одеть коcтюм.")
+        db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+        alife():create("repair_kit", db.actor:position(), 1, db.actor:game_vertex_id(), db.actor:id())
+    elseif item_s6:condition() <0.30 then --когда костюм нельз¤ чинить (состо¤ние меньше 30%)
+        local news_text = game.translate_string("%c[255,160,160,160]Ремонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: костюм слишком сильно повреждён.")
+        db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+        alife():create("repair_kit", db.actor:position(), 1, db.actor:game_vertex_id(), db.actor:id())
+    elseif item_s6:condition() ==1 then --когда костюм в отличном состо¤ние
+        local news_text = game.translate_string("%c[255,160,160,160]Ремонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: %c[255,0,255,0]костюм в отличном состоянии.")
+        db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+        alife():create("repair_kit", db.actor:position(), 1, db.actor:game_vertex_id(), db.actor:id())
+    end
+end
+--if obj_sect == "ваш предмет" then 
+--local snd = sound_object([[путь к музыке\название музыки]])
+--snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 1.0)
+--end
+
+--if obj_sect == "ваш предмет" then 
+--alife():create("boar_normal",vector():set(-152.0,-18.0,-144.3),98126,45)
+--end
+end
+
+class "repair_ui" (CUIScriptWnd)
+ 
+function repair_ui:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+ 
+function repair_ui:__finalize() end
+ 
+function repair_ui:InitControls()
+	self:Init(50,50,550,450)
+ 
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_repair_wnd.xml") -- настройки будут воспроизводиться в этом xml файле
+
+	xml:InitStatic("background", self) -- рамка сзади
+ 
+	self:Register(xml:Init3tButton("caption", self),"caption") -- заголовок
+	self:Register(xml:Init3tButton("btn_1", self),"btn_1") -- кнопка на ремонт первого слота
+	self:Register(xml:Init3tButton("btn_2", self),"btn_2") -- кнопка на ремонт второго слота
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit") -- кнопка выхода
+end
+ 
+function repair_ui:InitCallBacks()
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED, self.repair_1, self) -- кнопка один идет на функцию repair1
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED, self.repair_2, self) -- кнопка два идет на функцию repair2
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self) -- кнопка идет на выход
+end
+ 
+function repair_ui:OnKeyboard(dik, keyboard_action) -- функция на отмену сна при нажатии клавиши Esc
+	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+		if dik == DIK_keys.DIK_ESCAPE then
+			self:on_quit()
+		end
+		if dik == DIK_keys.DIK_NUMPAD1 then
+			self:repair_1()
+		end
+		if dik == DIK_keys.DIK_NUMPAD2 then
+			self:repair_2()
+		end
+	end
+	return true
+end
+function repair_ui:repair_1()	
+	local item_s1 = db.actor:item_in_slot(1) --объ¤вл¤ем переменную (item_s1)
+		if item_s1 ~= nil and item_s1:condition() >=0.30 and item_s1:condition() ~=1 then --когда костюм можно чинить (состо¤ние больше или равно 30%)
+			item_s1:set_condition(1)
+			local snd_obj = xr_sound.get_safe_sound_object([[interface\inv_detach_addon]])
+			snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+			local news_text = game.translate_string("%c[255,160,160,160]Ремонт комплект:\\n%c[255,0,255,0]Ремонт оружия в первом слоте завершён.")
+			self:GetHolder():start_stop_menu(self, true)
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+		elseif item_s1 == nil then --когда костюма нет 
+			local news_text = game.translate_string("%c[255,160,160,160]Ремонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: нужно поставить оружие в первый слот.")
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+		elseif item_s1:condition() <0.30 then --когда костюм нельз¤ чинить (состо¤ние меньше 30%)
+			local news_text = game.translate_string("%c[255,160,160,160]Ремонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: оружие слишком сильно повреждено.")
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+		elseif item_s1:condition() ==1 then --когда костюм в отличном состо¤ние
+			local news_text = game.translate_string("%c[255,160,160,160]Ремонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: %c[255,0,255,0]оружие в первом слоту в отличном состоянии.")
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+		end
+end
+function repair_ui:repair_2()
+	local item_s2 = db.actor:item_in_slot(2) --объ¤вл¤ем переменную (item_s2)
+		if item_s2 ~= nil and item_s2:condition() >=0.30 and item_s2:condition() ~=1 then --когда костюм можно чинить (состо¤ние больше или равно 30%)
+			item_s2:set_condition(1)
+			local snd_obj = xr_sound.get_safe_sound_object([[interface\inv_detach_addon]])
+			snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+			local news_text = game.translate_string("%c[255,160,160,160]–емонт комплект:\\n%c[255,0,255,0]Ремонт оружия во втором слоте завершён.")
+			self:GetHolder():start_stop_menu(self, true)
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+		elseif item_s2 == nil then --когда костюма нет 
+			local news_text = game.translate_string("%c[255,160,160,160]–емонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: нужно поставить оружие во второй слот.")
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+		elseif item_s2:condition() <0.30 then --когда костюм нельз¤ чинить (состо¤ние меньше 30%)
+			local news_text = game.translate_string("%c[255,160,160,160]–емонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: оружие слишком сильно повреждено.")
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+		elseif item_s2:condition() ==1 then --когда костюм в отличном состо¤ние
+			local news_text = game.translate_string("%c[255,160,160,160]–емонт комплект:\\n%c[255,255,0,0]Ремонт невозможен: %c[255,0,255,0]оружие во втором слоту в отличном состоянии.")
+			db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(83,470,83,47), 1000, 5000)
+		end
+end
+
+function repair_ui:check_game() -- проверка запущена ли игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+ 
+function repair_ui:on_quit() -- вот кнопка выхода
+    self:GetHolder():start_stop_menu(self, true)
+    alife():create("repair_kit_w", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id()) -- спаун мешка обратно
+end
+
+

@@ -1,0 +1,66 @@
+;Искатель артефактов (Р.М.А.):
+[logic]
+active = walker1
+
+;Крутимся вокруг артефакта
+[walker1]
+path_walk = gar_newbie_artifact_walk
+path_look = gar_newbie_artifact_look
+on_actor_dist_le_nvis = 15| walker2
+meet = no_meet
+danger = danger_condition
+
+;Идём на поиски артефактов
+[walker2]
+path_walk = gar_newbie_search_walk
+path_look = gar_newbie_search_look
+danger = danger_condition
+on_signal = drink_vodka| remark1
+on_info = {!is_day ~50} sleeper1, {!is_day} sleeper2
+
+[remark1]
+anim = eat_vodka_p
+;snd = esc_petruha_vodka_good
+on_signal = anim_end| remark2
+target = nil
+meet = no_meet
+danger = danger_condition
+
+[remark2]
+anim = drunk_idle
+;on_signal = anim_end| walker3
+on_timer = 10000| walker3
+target = nil
+meet = no_meet
+danger = danger_condition
+
+[walker3]
+path_walk = gar_newbie_drunk_walk
+path_look = gar_newbie_search_look
+danger = danger_condition
+on_signal = drunk_stena| walker4
+
+[walker4]
+path_walk = gar_newbie_drunk_stena_walk
+path_look = gar_newbie_drunk_stena_look
+danger = danger_condition
+on_timer = 60000| walker5
+
+[walker5]
+path_walk = gar_newbie_drunk_spit_walk
+path_look = gar_newbie_drunk_stena_look
+danger = danger_condition
+on_timer = 360000| walker2
+
+[sleeper1]
+path_main = gar_newbie_sleep1
+wakeable = false
+on_info = {=is_day} walker2
+
+[sleeper2]
+path_main = gar_newbie_sleep2
+wakeable = false
+on_info = {=is_day} walker2
+
+[danger_condition]
+ignore_distance = 10

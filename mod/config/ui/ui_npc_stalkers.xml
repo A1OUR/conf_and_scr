@@ -1,0 +1,55 @@
+<ui_texture>
+
+     <file_name>ui\CP_stalkers</file_name>
+
+    <texture id="icon_stalker_balon_9" x="0" y="0" width="165" height="108" />
+    <texture id="icon_stalker_balon_10" x="165" y="0" width="165" height="108" />
+    <texture id="icon_butcher_sk1" x="330" y="0" width="165" height="108" />
+    <texture id="icon_stalker_ochki_1" x="495" y="0" width="165" height="108" />
+    <texture id="icon_stalker_ochki_2" x="660" y="0" width="165" height="108" />
+    <texture id="icon_stalker_hood_3" x="825" y="0" width="165" height="108" />
+    <texture id="icon_krot_sk2" x="0" y="108" width="165" height="108" />
+    <texture id="icon_stalker_hood_new_1" x="165" y="108" width="165" height="108" />
+    <texture id="icon_stalker_balon_8" x="330" y="108" width="165" height="108" />
+    <texture id="icon_hellcar" x="495" y="108" width="165" height="108" />
+    <texture id="icon_stalker_antigas" x="660" y="108" width="165" height="108" />
+    <texture id="icon_stalker_hood_2" x="825" y="108" width="165" height="108" />
+    <texture id="icon_stalker_balon_11" x="0" y="216" width="165" height="108" />
+    <texture id="icon_fox" x="165" y="216" width="165" height="108" />
+    <texture id="icon_stalker_usi" x="330" y="216" width="165" height="108" />
+    <texture id="icon_stalker_hood_uzor" x="495" y="216" width="165" height="108" />
+    <texture id="icon_stalker_prizrak" x="660" y="216" width="165" height="108" />
+    <texture id="icon_stalker_wolf" x="825" y="216" width="165" height="108" />
+    <texture id="icon_stalker_arnie" x="0" y="324" width="165" height="108" />
+    <texture id="icon_stalker_wolf_sk2" x="165" y="324" width="165" height="108" />
+    <texture id="icon_stalker_hood_1" x="330" y="324" width="165" height="108" />
+    <texture id="icon_stalker_hood_6" x="495" y="324" width="165" height="108" />
+    <texture id="icon_stalker_hood_8" x="660" y="324" width="165" height="108" />
+    <texture id="icon_stalker_hood_9" x="825" y="324" width="165" height="108" />
+    <texture id="icon_stalker_hood_uzor_2" x="0" y="432" width="165" height="108" />
+    <texture id="icon_stalker_rukzak_2" x="165" y="432" width="165" height="108" />
+    <texture id="icon_stalker_rukzak_6" x="330" y="432" width="165" height="108" />
+    <texture id="icon_stalker_hood_new_2" x="495" y="432" width="165" height="108" />
+    <texture id="icon_stalker_hood_new_3" x="660" y="432" width="165" height="108" />
+    <texture id="icon_stalker_hood_new_4" x="825" y="432" width="165" height="108" />
+    <texture id="icon_stalker_fanat" x="0" y="540" width="165" height="108" />
+    <texture id="icon_stalker_krot" x="165" y="540" width="165" height="108" />
+    <texture id="icon_stalker_rukzak_8" x="330" y="540" width="165" height="108" />
+
+    <texture id="icon_stalker_exo" x="0" y="648" width="165" height="108" />
+    <texture id="icon_stalker_scientific" x="165" y="648" width="165" height="108" />
+    <texture id="icon_stalker_exo_proto" x="330" y="648" width="165" height="108" />
+    <texture id="icon_stalker_ecolog_scientific" x="495" y="648" width="165" height="108" />
+    <texture id="icon_stalker_hood_3_sk2" x="660" y="648" width="165" height="108" />
+    <texture id="icon_stalker_hood_new_5" x="825" y="648" width="165" height="108" />
+
+    <texture id="icon_stalker_ecolog_1" x="0" y="756" width="165" height="108" />
+    <texture id="icon_stalker_ecolog_2" x="165" y="756" width="165" height="108" />
+    <texture id="icon_stalker_ecolog_3" x="330" y="756" width="165" height="108" />
+    <texture id="icon_stalker_ecolog_4" x="495" y="756" width="165" height="108" />
+    <texture id="icon_stalker_ecolog_exo_proto" x="660" y="756" width="165" height="108" />
+    <texture id="icon_stalker_ecolog_5" x="825" y="756" width="165" height="108" />
+    <texture id="icon_stalker_ecolog_6" x="0" y="864" width="165" height="108" />
+    <texture id="icon_stalker_ecolog_7" x="165" y="864" width="165" height="108" />
+
+</ui_texture>

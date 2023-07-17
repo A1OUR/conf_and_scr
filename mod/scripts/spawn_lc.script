@@ -1,0 +1,152 @@
+function create_space_restrictor(
+	p_story_id,
+	p_position,
+	p_lvertex_id,
+	p_gvertex_id)
+	local obj = alife():create("space_restrictor", p_position, p_lvertex_id, p_gvertex_id)
+ 
+	local packet = net_packet()
+	obj:STATE_Write(packet)
+ 
+	-- свойства cse_alife_object
+	local game_vertex_id 			= packet:r_u16()
+	local cse_alife_object__unk1_f32 	= packet:r_float()
+	local cse_alife_object__unk2_u32 	= packet:r_u32()
+	local level_vertex_id 			= packet:r_u32()
+	local object_flags 			= packet:r_u32()
+	local custom_data 			= packet:r_stringZ()
+	local story_id 				= packet:r_u32()
+	local spawn_story_id			= packet:r_u32()
+ 
+	-- свойства cse_shape
+	local shape_count 			= packet:r_u8()
+	for i=1,shape_count do
+		local shape_type 		= packet:r_u8()
+		if shape_type == 0 then
+			-- sphere
+			local center 		= packet:r_vec3()
+			local radius 		= packet:r_float()
+		else
+			-- box
+			local axis_x_x = packet:r_float()
+			local axis_x_y = packet:r_float()
+			local axis_x_z = packet:r_float()
+			local axis_y_x = packet:r_float()
+			local axis_y_y = packet:r_float()
+			local axis_y_z = packet:r_float()
+			local axis_z_x = packet:r_float()
+			local axis_z_y = packet:r_float()
+			local axis_z_z = packet:r_float()
+			local offset_x = packet:r_float()
+			local offset_y = packet:r_float()
+			local offset_z = packet:r_float()
+		end
+	end
+ 
+	-- свойства cse_alife_space_restrictor
+	local restrictor_type 			= packet:r_u8()
+ 
+ 
+	packet:w_begin(game_vertex_id)			-- game_vertex_id
+	packet:w_float(cse_alife_object__unk1_f32)
+	packet:w_u32(cse_alife_object__unk2_u32) 
+	packet:w_u32(level_vertex_id)			-- level_vertex_id
+	packet:w_u32( bit_not(193) )			-- object_flags = -193 = 0xFFFFFF3E
+	packet:w_stringZ(custom_data)
+	packet:w_u32(p_story_id)			-- story_id
+	packet:w_u32(spawn_story_id)
+ 
+	packet:w_u8(1)			-- количество фигур
+--		packet:w_u8(0)			-- тип фигуры: сфера
+--		packet:w_vec3(vector():set(0, 0, 0))  -- sphere_center
+--		packet:w_float(3.0)
+	packet:w_u8(1)			-- тип фигуры: box
+	packet:w_float(2)	   -- axis_x_x
+	packet:w_float(0)	   -- axis_x_y
+	packet:w_float(0)	   -- axis_x_z
+	packet:w_float(0)	   -- axis_y_x
+	packet:w_float(4)	   -- axis_y_y
+	packet:w_float(0)	   -- axis_y_z
+	packet:w_float(0)	   -- axis_z_x
+	packet:w_float(0)	   -- axis_z_y
+	packet:w_float(4)	   -- axis_z_z
+	packet:w_float(0)	   -- offset_x
+	packet:w_float(0)	   -- offset_y
+	packet:w_float(0)          -- offset_z
+ 
+	packet:w_u8(3)	 	   -- restrictor_type
+ 
+	packet:r_seek(0)
+	obj:STATE_Read(packet, packet:w_tell())
+ 
+--	news_manager.send_tip(db.actor, "LC creation finished", nil, nil, 30000)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,145 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(0,0,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_medic_menu.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- кнопки
+	self:Register(xml:Init3tButton("btn_antirad", self),"btn_antirad") 
+        self:Register(xml:Init3tButton("btn_medkit", self),"btn_medkit") 
+	self:Register(xml:Init3tButton("btn_medkit_army", self),"btn_medkit_army")
+	self:Register(xml:Init3tButton("btn_medkit_scientic", self),"btn_medkit_scientic") 
+	self:Register(xml:Init3tButton("btn_bandage", self),"btn_bandage") 
+------------------------------------------------------------------------------------
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+-------------------------
+
+	xml:InitStatic("Info", self)
+
+
+end
+
+function spawner:InitCallBacks()
+
+	self:AddCallback("btn_antirad", ui_events.BUTTON_CLICKED, self.spawn_antirad, self)
+	self:AddCallback("btn_medkit", ui_events.BUTTON_CLICKED, self.spawn_medkit, self)
+	self:AddCallback("btn_medkit_army", ui_events.BUTTON_CLICKED, self.spawn_medkit_army, self)
+	self:AddCallback("btn_medkit_scientic", ui_events.BUTTON_CLICKED, self.spawn_medkit_scientic, self)
+	self:AddCallback("btn_bandage", ui_events.BUTTON_CLICKED, self.spawn_bandage, self)
+
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+-----------------------------------
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+------------------
+
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+
+function spawner:spawn_antirad()
+	
+	self:spawn_item("antirad", 3)
+end
+
+function spawner:spawn_medkit()
+	
+	self:spawn_item("medkit", 10)
+end
+
+function spawner:spawn_medkit_army()
+	
+	self:spawn_item("medkit_army", 10)
+end
+
+function spawner:spawn_medkit_scientic()
+	
+	self:spawn_item("medkit_scientic", 3)
+end
+
+function spawner:spawn_bandage()
+	
+	self:spawn_item("bandage", 3)
+end
+---------------------Back------------------
+function spawner:on_back()
+-- если еще ни разу не вызывали, то обозначим наш новый скрипт
+                           if self.ui_spawnerdlg == nil then
+		self.ui_spawner_dlg = ui_spawner.spawner()
+		self.ui_spawner_dlg.owner = self
+
+
+	end
+-- останавливаем родительский элемент, запускаем свой, но родителя показываем.
+	self:GetHolder():start_stop_menu(self.ui_spawner_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end

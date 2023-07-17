@@ -1,0 +1,59 @@
+<ui_texture>
+
+     <file_name>ui\CP_freedom</file_name>
+
+    <texture id="icon_freedom_exo_proto" x="0" y="0" width="165" height="108" />
+    <texture id="icon_freedom_exo_proto_2" x="165" y="0" width="165" height="108" />
+    <texture id="icon_freedom_leader_sk2" x="330" y="0" width="165" height="108" />
+    <texture id="icon_freedom_balon_1" x="660" y="0" width="165" height="108" />
+    <texture id="icon_freedom_balon_2" x="825" y="0" width="165" height="108" />
+    <texture id="icon_freedom_balon_6" x="0" y="108" width="165" height="108" />
+    <texture id="icon_fleedom_script_2" x="165" y="108" width="165" height="108" />
+    <texture id="icon_fleedom_script_3" x="330" y="108" width="165" height="108" />
+    <texture id="icon_freedom_hood_1" x="495" y="108" width="165" height="108" />
+    <texture id="icon_freedom_hood_2" x="660" y="108" width="165" height="108" />
+    <texture id="icon_freedom_hood_3" x="825" y="108" width="165" height="108" />
+    <texture id="icon_freedom_hood_4" x="0" y="216" width="165" height="108" />
+    <texture id="icon_freedom_antigas_1" x="165" y="216" width="165" height="108" />
+    <texture id="icon_freedom_balon_5" x="330" y="216" width="165" height="108" />
+    <texture id="icon_freedom_balon_3" x="495" y="216" width="165" height="108" />
+    <texture id="icon_freedom_balon_4" x="660" y="216" width="165" height="108" />
+    <texture id="icon_freedom_trader_sk2" x="825" y="216" width="165" height="108" />
+    <texture id="icon_freedom_exo" x="0" y="324" width="165" height="108" />
+    <texture id="icon_freedom_hood_9" x="165" y="324" width="165" height="108" />
+    <texture id="icon_freedom_hood_10" x="330" y="324" width="165" height="108" />
+    <texture id="icon_freedom_scientific" x="495" y="324" width="165" height="108" />
+    <texture id="icon_freedom_stukach" x="660" y="324" width="165" height="108" />
+    <texture id="icon_freedom_rukzak_1_1" x="825" y="324" width="165" height="108" />
+    <texture id="icon_freedom_rukzak_2" x="0" y="432" width="165" height="108" />
+    <texture id="icon_freedom_rukzak_3" x="165" y="432" width="165" height="108" />
+    <texture id="icon_freedom_rukzak_3_1" x="330" y="432" width="165" height="108" />
+    <texture id="icon_freedom_hood_5" x="495" y="432" width="165" height="108" />
+    <texture id="icon_freedom_hood_6" x="660" y="432" width="165" height="108" />
+    <texture id="icon_freedom_cap" x="825" y="432" width="165" height="108" />
+    <texture id="icon_freedom_skryaga" x="0" y="540" width="165" height="108" />
+    <texture id="icon_freedom_hood_9_1" x="165" y="540" width="165" height="108" />
+    <texture id="icon_freedom_povar" x="330" y="540" width="165" height="108" />
+    <texture id="icon_freedom_leader" x="495" y="540" width="165" height="108" />
+    <texture id="icon_freedom_max" x="660" y="540" width="165" height="108" />
+    <texture id="icon_freedom_max_sk2" x="825" y="540" width="165" height="108" />
+    <texture id="icon_freedom_povar_sk2" x="0" y="648" width="165" height="108" />
+    <texture id="icon_freedom_balon_7" x="165" y="648" width="165" height="108" />
+    <texture id="icon_freedom_balon_8" x="330" y="648" width="165" height="108" />
+    <texture id="icon_freedom_hood_7" x="495" y="648" width="165" height="108" />
+    <texture id="icon_freedom_hood_8" x="660" y="648" width="165" height="108" />
+    <texture id="icon_freedom_resp_1" x="825" y="648" width="165" height="108" />
+    <texture id="icon_freedom_resp_2" x="0" y="756" width="165" height="108" />
+    <texture id="icon_freedom_resp_3" x="165" y="756" width="165" height="108" />
+    <texture id="icon_freedom_resp_4" x="330" y="756" width="165" height="108" />
+    <texture id="icon_freedom_resp_5" x="495" y="756" width="165" height="108" />
+    <texture id="icon_freedom_resp_6" x="660" y="756" width="165" height="108" />
+    <texture id="icon_freedom_balon_9" x="825" y="756" width="165" height="108" />
+    <texture id="icon_freedom_heavy" x="0" y="864" width="165" height="108" />
+    <texture id="icon_freedom_balon_10" x="165" y="864" width="165" height="108" />
+    <texture id="icon_freedom_balon_11" x="330" y="864" width="165" height="108" />
+    <texture id="icon_freedom_ochki_1" x="495" y="864" width="165" height="108" />
+    <texture id="icon_freedom_ochki_2" x="660" y="864" width="165" height="108" />
+    <texture id="icon_freedom_ochki_3" x="825" y="864" width="165" height="108" />
+
+</ui_texture>

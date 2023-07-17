@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding="windows-1251"?>
+<game_information_portions>
+
+	<info_portion id="gen_find_exit_lab_start">
+		<task>gen_find_exit_lab</task>
+	</info_portion>
+	<info_portion id="gen_find_exit_lab_done"></info_portion>
+	
+</game_information_portions>

@@ -1,0 +1,848 @@
+--------------------------------------------------------------------------------------------------------
+-- Dialog & InfoPortions Function
+--------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+-- Trader
+--------------------------------------------------------------------------------------------------------
+function trader_alredy_give_job(trader, actor)
+	if (has_alife_info("agroprom_military_case") and not has_alife_info("agroprom_military_case_done")) or
+	   (has_alife_info("escape_blockpost_case") and not has_alife_info("escape_blockpost_case_done")) or
+	   (has_alife_info("tutorial_artefact_start") and not has_alife_info("tutorial_artefact_done")) or
+	   (has_alife_info("tutorial_wounded_start") and not has_alife_info("esc_serious_talk"))
+	then
+		return true
+	end
+	return false 
+end
+
+function trader_give_extra_job(trader, actor)
+	local actor = db.actor
+	if has_alife_info("escape_blockpost_case") and not has_alife_info("escape_blockpost_case_done")
+	then
+		return true
+	end
+	return false
+end
+
+function bandits_die(actor,npc)
+	local actor = db.actor
+	if has_alife_info("esc_kill_bandits_quest_kill") and not has_alife_info("esc_kill_bandits_noquest_kill")
+	then
+		return true
+	end
+	return false
+end
+
+function trader_need_extra_job(trader, actor)
+	if not has_alife_info("escape_blockpost_case") and 
+	    has_alife_info("esc_return")
+	then
+		return true
+	end
+	return false
+end
+
+function is_tutorial()
+	return not has_alife_info("tutorial_end")
+end
+
+function is_not_tutorial()
+	return has_alife_info("tutorial_end")
+end
+
+function is_not_tutorial_art(actor, trader)
+	local tutorial_artefact = db.actor:object("af_blood_tutorial")
+	if (has_alife_info("tutorial_artefact_start") and not has_alife_info("tutorial_artefact_done")
+		and  tutorial_artefact ~= nil) or has_alife_info("tutorial_artefact_done")
+	then
+		return true
+	end
+	return false
+end
+
+function not_final_job(trader, actor)
+	local actor = db.actor
+	return not has_alife_info("escape_blockpost_case_done")
+end
+
+function trader_test(actor, npc)
+ 	printf ("!!!!!")	
+	return true
+end
+
+
+-- Карта Мёртвого города
+-- function esc_have_deadcity_map(actor, npc)
+--  	return db.actor:object("cit_deadcity_maps") ~= nil
+-- end
+
+function esc_give_deadcity_map(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "cit_deadcity_maps", "out")
+	dialogs.relocate_money(second_speaker, 25000, "in")
+end
+
+
+function trader_dont_give_job(first_speaker, second_speaker)
+	return not trader_alredy_give_job(first_speaker, second_speaker)
+end
+
+function finalize_quests(first_speaker, second_speaker)
+	if tutorial_artefact_end(first_speaker, second_speaker) == true or
+	   tutorial_wounded_end(first_speaker, second_speaker) == true
+	then
+		return true
+	end
+	return false
+end
+
+function not_finalize_quests(first_speaker, second_speaker)
+	return not this.finalize_quests(first_speaker, second_speaker)	
+end
+
+function tutorial_artefact_end(first_speaker, second_speaker)
+	local actor = db.actor
+	local tutorial_artefact = first_speaker:object("af_blood_tutorial")
+	if has_alife_info("tutorial_artefact_start") and 
+	   not has_alife_info("tutorial_artefact_done") and
+	   tutorial_artefact ~= nil
+	then
+		return true
+	end
+	return false
+end
+
+function tutorial_artefact_have_not(first_speaker, second_speaker)
+	local actor = db.actor
+	local tutorial_artefact = first_speaker:object("af_blood_tutorial")
+	if has_alife_info("tutorial_artefact_start") and 
+	   not has_alife_info("tutorial_artefact_done") and
+	   tutorial_artefact == nil
+	then
+		return true
+	end
+	return false
+end
+
+function tutorial_wounded_end(first_speaker, second_speaker)
+	local actor = db.actor
+	if has_alife_info("tutorial_wounded_start")	and 
+		has_alife_info("tutorial_wounded_give_info")	and 	
+	   not has_alife_info("esc_serious_talk")
+	then
+		return true
+	end
+	return false
+end
+
+function tutorial_wounded_angry()
+	local actor = db.actor
+	if not has_alife_info("tutorial_wounded_angry")	then
+		actor:change_character_reputation(-75)
+		actor:give_info_portion("tutorial_wounded_angry")
+	end
+end
+
+function trader_dont_has_job(first_speaker, second_speaker)
+    if trader_need_military_case(first_speaker, second_speaker) == false and
+	   trader_need_blockpost_box(first_speaker, second_speaker) == false
+	then
+		return true
+	end
+	return false
+end
+
+
+--' Escape tutorial artefact
+function have_tutorial_artefact(first_speaker, second_speaker)
+  	return first_speaker:object("af_blood_tutorial") ~= nil
+end
+function give_medkit(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "medkit", "in")
+end
+function give_tutorial_artefact(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_blood_tutorial", "out")
+	dialogs.relocate_item_section(second_speaker, "detector_advances_tutorial", "out")
+end
+
+function give_detector_to_actor(trader, actor)
+    dialogs.relocate_item_section(trader, "detector_advances_tutorial", "in")
+end
+
+--' Meet fox
+function have_fox_info(first_speaker, second_speaker)
+  	return first_speaker:object("fox_flash") ~= nil
+end
+
+--' fox help
+
+function transfer_medikit_to_fox (player, wounded)
+	wounded:set_relation(game_object.friend, player)
+	db.actor:give_info_portion("escape_fox_heal")
+end
+
+--Проверка наличия оружия у ГГ (Р.М.А.):
+function actor_has_weapon()
+    local actor = db.actor
+	local all_wpn = {"wpn_abakan", "wpn_ak74", "wpn_ak74u", "wpn_beretta", "wpn_bm16", "wpn_colt1911",
+						"wpn_desert_eagle", "wpn_fn2000", "wpn_fort", "wpn_g36", "wpn_gauss", "wpn_groza", 
+						"wpn_hpsa", "wpn_l85", "wpn_lr300", "wpn_mp5", "wpn_pb", "wpn_pm", "wpn_rg-6", "wpn_rpg7", 
+						"wpn_sig220", "wpn_sig550", "wpn_spas12", "wpn_svd", "wpn_svu", "wpn_toz34", "wpn_usp", 
+						"wpn_val", "wpn_vintorez", "wpn_walther", "wpn_wincheaster1300", "wpn_ak74_m1", 
+						"wpn_abakan_m1", "wpn_fort_m1", "wpn_ak74u_m1", "wpn_mp5_m1", "wpn_groza_m1", 
+						"wpn_spas12_m1", "wpn_winchester_m1", "wpn_l85_m1", "wpn_lr300_m1", "wpn_svd_m1", 
+						"wpn_sig_m1", "wpn_eagle_m1", "wpn_colt_m1", "wpn_val_m1", "wpn_mp5_m2", "wpn_abakan_m2", 
+						"wpn_l85_m2", "wpn_sig_m2", "wpn_rg6_m1", "wpn_walther_m1", "hunters_toz", "pri_lom_ak74", 
+						"wpn_deserteagle_coll", "wpn_vintorez_coll"}
+						
+	for i = 1, #all_wpn, 1 do
+		if actor ~= nil and actor:object(all_wpn[i]) ~= nil then
+			return true
+		end
+	end
+	
+	return false
+--[[	if actor ~= nil and
+	   (actor:object("wpn_abakan") ~= nil or actor:object("wpn_ak74") ~= nil or
+	   actor:object("wpn_ak74u") ~= nil or actor:object("wpn_beretta") ~= nil or
+	   actor:object("wpn_bm16") ~= nil or actor:object("wpn_colt1911") ~= nil or
+	   actor:object("wpn_desert_eagle") ~= nil or actor:object("wpn_fn2000") ~= nil or
+	   actor:object("wpn_fort") ~= nil or actor:object("wpn_g36") ~= nil or
+	   actor:object("wpn_gauss") ~= nil or actor:object("wpn_groza") ~= nil or
+	   actor:object("wpn_hpsa") ~= nil or actor:object("wpn_l85") ~= nil or
+	   actor:object("wpn_lr300") ~= nil or actor:object("wpn_mp5") ~= nil or
+	   actor:object("wpn_pb") ~= nil or actor:object("wpn_pm") ~= nil or
+	   actor:object("wpn_rg-6") ~= nil or actor:object("wpn_rpg7") ~= nil or
+	   actor:object("wpn_sig220") ~= nil or actor:object("wpn_sig550") ~= nil or
+	   actor:object("wpn_spas12") ~= nil or actor:object("wpn_svd") ~= nil or
+	   actor:object("wpn_svu") ~= nil or actor:object("wpn_toz34") ~= nil or
+	   actor:object("wpn_usp") ~= nil or actor:object("wpn_val") ~= nil or
+	   actor:object("wpn_vintorez") ~= nil or actor:object("wpn_walther") ~= nil or
+	   actor:object("wpn_wincheaster1300") ~= nil or actor:object("wpn_ak74_m1") ~= nil or
+	   actor:object("wpn_abakan_m1") ~= nil or actor:object("wpn_fort_m1") ~= nil or
+	   actor:object("wpn_ak74u_m1") ~= nil or actor:object("wpn_mp5_m1") ~= nil or
+	   actor:object("wpn_groza_m1") ~= nil or actor:object("wpn_spas12_m1") ~= nil or
+	   actor:object("wpn_winchester_m1") ~= nil or actor:object("wpn_l85_m1") ~= nil or
+	   actor:object("wpn_lr300_m1") ~= nil or actor:object("wpn_svd_m1") ~= nil or
+	   actor:object("wpn_sig_m1") ~= nil or actor:object("wpn_eagle_m1") ~= nil or
+	   actor:object("wpn_colt_m1") ~= nil or actor:object("wpn_val_m1") ~= nil or
+	   actor:object("wpn_mp5_m2") ~= nil or actor:object("wpn_abakan_m2") ~= nil or
+	   actor:object("wpn_l85_m2") ~= nil or actor:object("wpn_sig_m2") ~= nil or
+	   actor:object("wpn_rg6_m1") ~= nil or actor:object("wpn_walther_m1") ~= nil or
+	   actor:object("hunters_toz") ~= nil or actor:object("pri_lom_ak74") ~= nil or
+	   actor:object("wpn_deserteagle_coll") ~= nil or actor:object("wpn_vintorez_coll") ~= nil)
+	then
+		return true
+	else
+		return false
+	end ]]
+end
+
+function actor_dont_has_weapon(npc, actor)
+    return not this.actor_has_weapon(npc, actor)
+end
+--Конец проверки.
+
+function give_weapon_to_actor(trader, actor)
+    dialogs.relocate_item_section(trader, "wpn_pm", "in")
+    dialogs.relocate_item_section(trader, "ammo_9x18_fmj", "in")
+end
+function give_art_box(trader, actor)
+	dialogs.relocate_item_section(trader, "arc_art_box_1basic", "in")
+end
+
+--' Escape blockpost box
+function have_blockpost_case(first_speaker, second_speaker)
+  	return first_speaker:object("quest_case_01") ~= nil
+end
+
+
+function give_blockpost_case(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "quest_case_01", "out")
+end
+
+function give_blockpost_case_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(first_speaker, 2000, "in")
+end
+
+--' Agroprom military case
+function trader_need_military_case(first_speaker, second_speaker)
+    if has_alife_info("esc_serious_talk") and
+	   not has_alife_info("agroprom_military_case")
+	then
+		return true
+	end
+	return false
+end
+
+--' Escape trader artefact
+function have_artefact_from_fleshes(first_speaker, second_speaker)
+	local actor = db.actor
+	if actor ~= nil and
+	   (actor:object("af_vyvert") ~= nil or
+	   actor:object("af_gravi") ~= nil or
+	   actor:object("af_gold_fish") ~= nil)
+	then
+		return true
+	end
+  	return false
+end
+
+
+--' Ящик с блокпоста
+function trader_need_blockpost_box(first_speaker, second_speaker)
+    if has_alife_info("tutorial_end") and
+	   has_alife_info("esc_trader_speak") and
+	   not has_alife_info("escape_blockpost_case")
+	then
+		return true
+	end
+	return false
+end
+
+--' tutorial wounded in vagon
+function wounded_need_help(first_speaker, second_speaker)
+	local actor = db.actor
+	return actor ~= nil and not has_alife_info( "tutorial_wounded_help" )
+end
+
+--' trader needs military documents
+function trader_need_military_document(first_speaker, second_speaker)
+    if has_alife_info("escape_blockpost_case_done") and
+	   not has_alife_info("agroprom_military_case")
+	then
+		return true
+	end
+	return false
+end
+
+--' trader dialog about docs from labx18
+function actor_has_documents (actor, npc)
+	if actor:object("dar_document4") then
+		return true
+	else
+		return false
+	end
+end
+
+--' Escape dynamite for Wolf
+function transfer_wolf_reward(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "af_medusa", "in")
+end
+
+function wolf_additional_reward(first_speaker, second_speaker)
+    dialogs.relocate_item_section(first_speaker, "medkit", "in")
+    dialogs.relocate_item_section(first_speaker, "bandage", "in")
+    dialogs.relocate_item_section(first_speaker, "wpn_fort", "in")
+    dialogs.relocate_item_section(first_speaker, "grenade_f1", "in") 
+    dialogs.relocate_item_section(first_speaker, "ammo_9x18_fmj", "in")        
+end
+
+function have_dynamite(npc, actor)
+  	return db.actor:object("dynamite") ~= nil
+end
+
+function not_have_dynamite()
+  	return not this.have_dynamite(npc, actor)
+end
+
+function give_dynamite(npc, actor)
+	local item = db.actor:object("dynamite")
+
+	if item then
+		dialogs.relocate_item_section(actor, "dynamite", "out")
+		alife():release(alife():object(item:id()), true)
+		dialogs.relocate_money(actor, 1500, "in")
+	end
+end
+
+function trader_rwr_for_dnmt(npc, actor)
+	dialogs.relocate_item_section(actor, "wpn_toz34", "in")
+	dialogs.relocate_item_section(actor, "ammo_12x70_buck", "in")
+	dialogs.relocate_item_section(actor, "ammo_12x76_zhekan", "in")
+	dialogs.relocate_item_section(actor, "ammo_12x76_dart", "in")
+end
+
+function esc_wolf_need_grat(first_speaker, second_speaker)
+	return has_alife_info("tutorial_wounded_help") and not has_alife_info("tutorial_wounded_die") and not has_alife_info("esc_wolf_grat") and (not has_alife_info("tutorial_wounded_death") and has_alife_info("esc_wounded_arrive") or has_alife_info("tutorial_wounded_death"))
+end
+
+function esc_wolf_can_talk(first_speaker, second_speaker)
+	return (has_alife_info("esc_trader_actor_normal_man") or has_alife_info("esc_act_has_novice_access")) and (not has_alife_info("tutorial_wounded_help") or has_alife_info("tutorial_wounded_death") or has_alife_info("esc_wolf_grat")) or has_alife_info("esc_trader_actor_normal_man") and not has_alife_info("esc_wounded_arrive")
+end
+
+function esc_wolf_no_talk(first_speaker, second_speaker)
+	return not has_alife_info("esc_trader_actor_normal_man") and (has_alife_info("tutorial_wounded_help") and not has_alife_info("esc_wounded_arrive") and not has_alife_info("tutorial_wounded_death") or not has_alife_info("esc_act_has_novice_access"))
+end
+
+-- Проверка на раненость НПС (08.05.2010 Заменил на сандартные: dialogs.is_not_wounded, dialogs.is_wounded) (Р.М.А.):
+function npc_is_wounded(actor, npc)
+	return xr_conditions.is_wounded(actor, npc)
+end
+
+function npc_is_not_wounded(actor, npc)
+	return not this.npc_is_wounded(actor, npc)
+end
+
+--' Escape Wounded's flash
+function wounded_give_flash(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "esc_wounded_flash", "in")
+end
+
+function have_wounded_flash(first_speaker, second_speaker)
+  	return first_speaker:object("esc_wounded_flash") ~= nil
+end
+function dont_have_wounded_flash(first_speaker, second_speaker)
+  	return not have_wounded_flash(first_speaker, second_speaker)
+end
+
+function give_wounded_flash(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "esc_wounded_flash", "out")
+	dialogs.relocate_money(second_speaker, 1000, "in")
+end
+
+function give_knife_to_actor(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "wpn_knife", "in")
+end
+
+--' Escape bandits factory
+function give_factory_reward_trader(first_speaker, second_speaker)
+	dialogs.relocate_money(first_speaker, 500, "in")
+end
+
+--' Give X-18 documents read
+
+function give_documents_reward (first_speaker, second_speaker)
+	dialogs.relocate_money(first_speaker, 1000, "in")
+end
+
+
+--' Kill killers raid
+function give_reward_killers(first_speaker, second_speaker)
+	dialogs.relocate_money(first_speaker, 2500, "in")
+end
+
+
+--' Soldiers on bridge
+function has_soldiers_bribe(actor, npc)
+	return actor:money() >= 500
+end
+
+function give_soldiers_bribe(actor, npc)
+	dialogs.relocate_money(npc, 500, "out")	
+end
+
+function fox_pay_money(actor, npc)
+	dialogs.relocate_money(npc, 1000, "in")	
+	treasure_manager.get_treasure_manager():give_treasure("esc_secret_truck_goods")
+end
+
+function run_tutorial_pda(first_speaker, second_speaker)
+	printf("!-!-!")
+	first_speaker:stop_talk()
+    second_speaker:stop_talk()
+	game.start_tutorial("part_1_pda")
+end
+
+function wolf_precond_univ (actor, npc)
+	return has_alife_info("escape_dynamite_done") or ((has_alife_info("agroprom_military_case_have") or has_alife_info("esc_fanat_spawn")) and not has_alife_info("escape_dynamite_have"))
+end
+
+--Атака на фабрику:
+function assault_ready()
+	return db.actor:has_info("assault_have_vodka")
+end
+function assault_dont_ready()
+	return db.actor:dont_has_info("assault_have_vodka")
+end
+function assault_actor_have_vodka()
+	return db.actor:object("vodka") ~= nil
+end
+function assault_actor_dont_have_vodka()
+	return not this.assault_actor_have_vodka()
+end
+function transfer_vodka_to_assault(first_speaker, second_speaker)
+	local obj = first_speaker:object("vodka")
+	dialogs.relocate_item(second_speaker, obj, "out")
+end
+
+function actor_have_mechanic_case()
+	return db.actor:object("quest_case_03") ~= nil
+end
+function transfer_mechanic_case(actor, npc)
+	local item = db.actor:object("quest_case_03")
+
+	if item then
+		dialogs.relocate_item_section(npc, "quest_case_03", "out")
+		alife():release(alife():object(item:id()), true)
+	end
+end
+
+--Починка
+----Условия:
+-------Основные
+function repair_precond_s1()
+	local item_in_slot_1 = db.actor:item_in_slot(1)
+	local item = ""
+	
+	if item_in_slot_1 then
+		item = item_in_slot_1:section()
+	else
+		item = "no_item"
+	end
+	
+	-- Проверка того, что оружие является уникальным (первый слот):
+	if string.find(item, "wpn_fort_m1") or string.find(item, "wpn_eagle_m1") or 
+		string.find(item, "wpn_colt_m1") or string.find(item, "wpn_walther_m1") or 
+		string.find(item, "wpn_deserteagle_coll") then
+		if item_in_slot_1 and 1 > item_in_slot_1:condition() + 0.01 then 
+			return true
+		else
+			return false
+		end
+	else
+		return false
+    end 
+end
+
+function repair_precond_s2()
+	local item_in_slot_2 = db.actor:item_in_slot(2)
+	local item = ""
+	
+	if item_in_slot_2 then
+		item = item_in_slot_2:section()
+	else
+		item = "no_item"
+	end
+	
+	-- Проверка того, что оружие является уникальным (второй слот):
+	if string.find(item, "wpn_ak74_m1") or string.find(item, "wpn_abakan_m1") or 
+		string.find(item, "wpn_ak74u_m1") or string.find(item, "wpn_mp5_m1") or 
+		string.find(item, "wpn_groza_m1") or string.find(item, "wpn_spas12_m1") or 
+		string.find(item, "wpn_winchester_m1") or string.find(item, "wpn_l85_m1") or 
+		string.find(item, "wpn_lr300_m1") or string.find(item, "wpn_svd_m1") or 
+		string.find(item, "wpn_sig_m1") or string.find(item, "wpn_val_m1") or 
+		string.find(item, "wpn_mp5_m2") or string.find(item, "wpn_abakan_m2") or 
+		string.find(item, "wpn_l85_m2") or string.find(item, "wpn_sig_m2") or 
+		string.find(item, "wpn_rg6_m1") or string.find(item, "hunters_toz") or 
+		string.find(item, "pri_lom_ak74") or string.find(item, "wpn_vintorez_coll") then
+		if item_in_slot_2 and 1 > item_in_slot_2:condition() + 0.01 then 
+			return true
+		else
+			return false
+		end
+	else
+		return false
+    end 
+end
+
+function repair_precond_s6()
+	local item_in_slot_6 = db.actor:item_in_slot(6)
+	local item = ""
+	
+	if item_in_slot_6 then
+		item = item_in_slot_6:section()
+	else
+		item = "no_item"
+	end
+	
+		-- Проверка того, что бронежелет является уникальным (шестой слот):
+	if string.find(item, "outfit_novice_m1") or string.find(item, "outfit_bandit_m1") or 
+		string.find(item, "outfit_dolg_m1") or string.find(item, "outfit_killer_m1") or 
+		string.find(item, "outfit_specnaz_m1") or string.find(item, "outfit_stalker_m1") or 
+		string.find(item, "outfit_stalker_m2") or string.find(item, "outfit_svoboda_m1") or 
+		string.find(item, "outfit_exo_m1") or string.find(item, "outfit_monolith_m1") or 
+		string.find(item, "outfit_killer_m2") then
+		if item_in_slot_6 and 1 > item_in_slot_6:condition() + 0.01 then 
+			return true
+		else
+			return false
+		end
+	else
+		return false
+    end 
+end
+
+-------Второстепенные 1
+function repair_precond1_s1()
+	local item_in_slot_1 = db.actor:item_in_slot(1)
+	
+	if item_in_slot_1:condition() >= 0.5 then 
+		return true
+	else 
+		return false
+	end	 
+end
+
+function repair_precond1_s2()
+	local item_in_slot_2 = db.actor:item_in_slot(2)
+	
+	if item_in_slot_2:condition() >= 0.5 then 
+		return true
+	else 
+		return false
+	end	 
+end
+
+function repair_precond1_s6()
+	local item_in_slot_6 = db.actor:item_in_slot(6)
+	
+	if item_in_slot_6:condition() >= 0.5 then 
+		return true
+	else 
+		return false
+	end	 
+end
+
+-------Второстепенные 2
+function repair_precond2_s1()
+	local item_in_slot_1 = db.actor:item_in_slot(1)
+	
+	if item_in_slot_1:condition() < 0.5 then 
+		return true
+	else 
+		return false
+	end	 
+end
+
+function repair_precond2_s2()
+	local item_in_slot_2 = db.actor:item_in_slot(2)
+	
+	if item_in_slot_2:condition() < 0.5 then 
+		return true
+	else 
+		return false
+	end	 
+end
+
+function repair_precond2_s6()
+	local item_in_slot_6 = db.actor:item_in_slot(6)
+	
+	if item_in_slot_6:condition() < 0.5 then 
+		return true
+	else 
+		return false
+	end	 
+end
+
+-------Проверка на наличие денег
+function has_money_for_repiar_weapon_s1(actor, npc)
+	if this.repair_precond1_s1() then
+		return actor:money() >= 1000
+	else
+		return actor:money() >= 3000
+	end
+end
+
+function has_money_for_repiar_weapon_s2(actor, npc)
+	if repair_precond1_s2() then
+		return actor:money() >= 3000
+	else
+		return actor:money() >= 9000
+	end
+end
+
+function has_money_for_repiar_outfit_s6(actor, npc)
+	if this.repair_precond1_s6() then
+		return actor:money() >= 5000
+	else
+		return actor:money() >= 15000
+	end
+end
+
+--Сама починка:
+-----Первый ствол
+function repiar_weapon_s1(actor, npc)
+	local item_in_slot = db.actor:item_in_slot(1)
+
+	if item_in_slot then
+		if this.repair_precond1_s1() then
+			dialogs.relocate_money(actor, 1000, "out")
+		else
+			dialogs.relocate_money(actor, 3000, "out")
+		end
+		item_in_slot:set_condition(1)
+	end
+end
+
+-----Второй ствол
+function repiar_weapon_s2(actor, npc)
+	local item_in_slot = db.actor:item_in_slot(2)
+
+	if item_in_slot then
+		if repair_precond1_s2() then
+			dialogs.relocate_money(actor, 3000, "out")
+		else
+			dialogs.relocate_money(actor, 9000, "out")
+		end
+		item_in_slot:set_condition(1)
+	end
+end
+
+-----Бронежелет
+function repiar_outfit_s6(actor, npc)
+	local item_in_slot = db.actor:item_in_slot(6)
+
+	if item_in_slot then
+		if this.repair_precond1_s6() then
+			dialogs.relocate_money(actor, 5000, "out")
+		else
+			dialogs.relocate_money(actor, 15000, "out")
+		end
+		item_in_slot:set_condition(1)
+	end
+end
+--Конец
+function have_a_art()
+    local actor = db.actor
+    if actor ~= nil and actor:object("amk_af_night_star") ~= nil and actor:dont_has_info("test_quest_art_vziat") then
+actor:give_info_portion("test_quest_art_vziat")
+    end
+end
+function have_a_art2 (stalker, player)
+    return stalker:object ("amk_af_night_star") ~= nil
+end
+function have_a_box (stalker, player)
+    return stalker:object ("arc_art_box_1basic") ~= nil
+end
+function otday_art (first_speaker, second_speaker)
+    dialogs.relocate_item_section(second_speaker, "amk_af_night_star", "out")
+end
+function transfer_deneg(first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 1400, "in")
+    dialogs.relocate_item_section(second_speaker, "detector_simple", "in")
+	dialogs.relocate_item_section(second_speaker, "arc_art_box_8basic", "in")
+	dialogs.relocate_item_section(first_speaker, "arc_art_box_1basic", "out")	
+end
+function have_kurtka(first_speaker, second_speaker)
+  	return first_speaker:object("outfit_bandit_m1") ~= nil
+end
+function give_kurtka (first_speaker, second_speaker)
+    dialogs.relocate_item_section(second_speaker, "outfit_bandit_m1", "out")
+	dialogs.relocate_money(second_speaker, 7000, "in")
+end
+function have_dilo_pda(first_speaker, second_speaker)
+  	return first_speaker:object("dilo_pda") ~= nil
+end
+function otday_dilo_pda (first_speaker, second_speaker)
+    dialogs.relocate_item_section(second_speaker, "dilo_pda", "out")
+end
+function plata_za_pda(first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 1400, "out")
+end
+function has_plata_za_pda(actor, npc)
+	return actor:money() >= 1400
+end
+function dechiph_pda()
+	local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_tip]])
+	db.actor:give_info_portion("pda_used")
+	if db.actor:has_info("kurtka_otdal_dengy") then
+	db.actor:give_money(3374)
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    local news_text = game.translate_string("\\n%c[255,160,160,160]Получено денег:\\n%c[255,0,255,0]3374 рублей")
+    db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,0,83,47), 1000, 5000)
+	else
+	db.actor:give_money(3224)
+    local news_text = game.translate_string("\\n%c[255,160,160,160]Получено денег:\\n%c[255,0,255,0]3224 рублей")
+    db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,0,83,47), 1000, 5000)
+	end
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+	if db.actor:dont_has_info("kurtka_end_dialog") then
+	db.actor:give_info_portion("kurtka_end_dialog")
+	garbage_dialogs.kurtec()
+	end
+end
+function return_pda(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "dilo_pda_dec", "in")
+end
+function indulgencia_dolg()
+	relation_registry.set_community_goodwill ("dolg", db.actor:id(), (0))
+db.actor:give_info_portion("dolg_mir")
+db.actor:disable_info_portion("bar_dolg_territory_kill")
+db.actor:disable_info_portion("bar_dolg_territory_3_hit")
+db.actor:disable_info_portion("bar_dolg_territory_2_hit")
+db.actor:disable_info_portion("bar_dolg_territory_1_hit")
+local OnObjectExitOnline = function (objectId, gameObject)
+		if db.actor:has_info("dolg_mir") then
+			if gameObject:character_community() == "dolg" and gameObject:relation(db.actor) == game_object.enemy then
+				gameObject:set_relation(game_object.neutral, db.actor);
+				--db.actor:give_game_news(gameObject:name(), "ui\\ui_iconsTotal", Frect():set(0,0,83,47), 1000, 5000)
+			end
+		end
+	end
+for i = 0, 65535 do
+        if alife():object(i) ~= nil then
+            local gameObject = level.object_by_id(id)
+			if IsStalker(gameObject) then
+			if gameObject:character_community() == "dolg" and gameObject:relation(db.actor) == game_object.enemy then
+				gameObject:set_relation(game_object.neutral, db.actor);
+				--db.actor:give_game_news(gameObject:name(), "ui\\ui_iconsTotal", Frect():set(0,0,83,47), 1000, 5000)
+			end
+			local obj = alife():object(i)
+			if IsStalker(obj) then
+			level.client_spawn_manager():add(obj.id, -1, OnObjectExitOnline)
+			end
+			end
+        end
+    end
+end
+function indulgencia_stalker()
+relation_registry.set_community_goodwill ("stalker", db.actor:id(), (0))
+db.actor:give_info_portion("stalker_mir")
+local OnObjectExitOnline1 = function (objectId, gameObject)
+		if db.actor:has_info("stalker_mir") then
+			if gameObject:character_community() == "stalker" and gameObject:relation(db.actor) == game_object.enemy then
+				gameObject:set_relation(game_object.neutral, db.actor);
+				--db.actor:give_game_news(gameObject:name(), "ui\\ui_iconsTotal", Frect():set(0,0,83,47), 1000, 5000)
+			end
+		end
+	end
+for i = 0, 65535 do
+        if alife():object(i) ~= nil then
+            local gameObject = level.object_by_id(id)
+			if IsStalker(gameObject) then
+			if gameObject:character_community() == "stalker" and gameObject:relation(db.actor) == game_object.enemy then
+				gameObject:set_relation(game_object.neutral, db.actor);
+				--db.actor:give_game_news(gameObject:name(), "ui\\ui_iconsTotal", Frect():set(0,0,83,47), 1000, 5000)
+			end
+			local obj = alife():object(i)
+			if IsStalker(obj) then
+			level.client_spawn_manager():add(obj.id, -1, OnObjectExitOnline1)
+			end
+			end
+        end
+    end
+end
+function indulgencia_freedom()
+relation_registry.set_community_goodwill ("freedom", db.actor:id(), (0))
+db.actor:give_info_portion("freedom_mir")
+local OnObjectExitOnline2 = function (objectId, gameObject)
+		if db.actor:has_info("freedom_mir") then
+			if gameObject:character_community() == "freedom" and gameObject:relation(db.actor) == game_object.enemy then
+				gameObject:set_relation(game_object.neutral, db.actor);
+				--db.actor:give_game_news(gameObject:name(), "ui\\ui_iconsTotal", Frect():set(0,0,83,47), 1000, 5000)
+			end
+		end
+	end
+for i = 0, 65535 do
+        if alife():object(i) ~= nil then
+            local gameObject = level.object_by_id(id)
+			if IsStalker(gameObject) then
+			if gameObject:character_community() == "freedom" and gameObject:relation(db.actor) == game_object.enemy then
+				gameObject:set_relation(game_object.neutral, db.actor);
+				--db.actor:give_game_news(gameObject:name(), "ui\\ui_iconsTotal", Frect():set(0,0,83,47), 1000, 5000)
+			end
+			local obj = alife():object(i)
+			if IsStalker(obj) then
+			level.client_spawn_manager():add(obj.id, -1, OnObjectExitOnline2)
+			end
+			end
+        end
+    end
+end
+function has_plata_za_indulgencia(actor, npc)
+	return actor:money() >= 100000
+end
+function plata_za_indulgencia(first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 100000, "out")
+end

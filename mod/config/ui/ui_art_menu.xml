@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<cheat>	
+	<back_video x="10" y="10" width="650" height="340" stretch="1">
+		<texture></texture>
+	</back_video>
+
+	<background x="0" y="0" width="500" height="460" stretch="1">
+		<texture x="190" y="235" width="530" height="450">ui_menu_options_dlg</texture>
+	</background>
+
+	<Info x="30" y="5" width="650" height="15" complex_mode="1">	
+			<text align="l" font="letterica18" a="255" r="216" g="188" b="140">АРТЕФАКТЫ</text>	
+	</Info>
+
+              <btn_af_medusa x="0" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Медуза</text>
+	</btn_af_medusa>
+
+              <btn_af_vyvert x="126" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Выверт</text>
+	 </btn_af_vyvert>
+
+              <btn_af_cristall_flower x="0" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Каменный цветок</text>
+	</btn_af_cristall_flower>
+
+	<btn_af_night_star x="0" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Ночная звезда</text>
+	</btn_af_night_star>
+
+	<btn_af_gravi x="0" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Грави</text>
+	</btn_af_gravi>
+
+	<btn_af_gold_fish x="0" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Золотая рыбка</text>
+	</btn_af_gold_fish>
+
+	<btn_af_drops x="0" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Капли</text>
+	</btn_af_drops>
+
+<btn_af_fireball x="126" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Огненный шар</text>
+	</btn_af_fireball>
+
+<btn_af_cristall x="126" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Кристалл</text>
+	</btn_af_cristall>
+
+<btn_af_blood x="126" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Кровь камня</text>
+	</btn_af_blood>
+
+<btn_af_mincer_meat x="126" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Ломоть мяса</text>
+	</btn_af_mincer_meat>
+
+<btn_af_soul x="126" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Душа</text>
+	</btn_af_soul>
+
+<btn_af_electra_sparkler x="126" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Бенгальский огонь</text>
+	</btn_af_electra_sparkler>
+
+<btn_af_electra_flash x="252" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Вспышка</text>
+	</btn_af_electra_flash>
+
+<btn_af_electra_moonlight x="252" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Лунный свет</text>
+	</btn_af_electra_moonlight>
+
+<btn_af_ameba_slime x="252" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Слизь</text>
+	</btn_af_ameba_slime>
+
+<btn_af_ameba_slug x="252" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Слизняк</text>
+	</btn_af_ameba_slug>
+
+<btn_af_ameba_mica x="252" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Слюда</text>
+	</btn_af_ameba_mica>
+
+<btn_af_dummy_spring x="252" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Пружина</text>
+	</btn_af_dummy_spring>
+
+
+<btn_af_dummy_battery x="378" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Батарейка</text>
+	</btn_af_dummy_battery>
+
+<btn_af_dummy_pellicle x="378" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Пленка</text>
+	</btn_af_dummy_pellicle>
+
+<btn_af_dummy_glassbeads x="378" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Мамины бусы</text>
+	</btn_af_dummy_glassbeads>
+
+<btn_af_rusty_thorn x="378" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Колючка</text>
+	</btn_af_rusty_thorn>
+
+<btn_af_rusty_kristall x="378" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Кристальная колючка</text>
+	</btn_af_rusty_kristall>
+
+<btn_af_rusty_seaurchin x="0" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Морской ёж</text>
+	</btn_af_rusty_seaurchin>
+
+<btn_af_fuzz_kolobok x="378" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Колобок</text>
+	</btn_af_fuzz_kolobok>
+
+
+-----------------------------------------------------------EXIT-------------------------------------------------------------------------------------
+	<btn_quit x="25" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ui_inv_exit</text>
+	</btn_quit>
+----------------------
+	<btn_back x="378" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Назад</text>
+	</btn_back>
+
+
+</cheat>

@@ -1,0 +1,8 @@
+<ui_texture>
+    <file_name>ui\ui_icons_outfit</file_name>
+
+    <texture id="npc_icon_soldier_outfit" x="0" y="0"   width="128" height="320" />
+    <texture id="npc_icon_old_exo_outfit" x="128" y="0"   width="128" height="320" />
+    <texture id="npc_icon_military_stalker_outfit" x="256" y="0"   width="128" height="320" />
+   
+</ui_texture>

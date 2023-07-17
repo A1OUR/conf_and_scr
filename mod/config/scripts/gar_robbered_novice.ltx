@@ -1,0 +1,130 @@
+[logic]
+active = walker1
+
+;Сидим, ворчим...
+[walker1]
+path_walk = gar_rob_walk_sit
+path_look = gar_rob_look_sit
+on_actor_dist_le = 20| remark1
+on_actor_dist_le_nvis = 5| walker3
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Видим актёра и зовём его...
+[remark1]
+anim = hello
+snd = gar_robbered_replic_2_1
+target = actor
+on_signal = sound_end| remark2
+on_actor_dist_le_nvis = 5| walker3
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Ждём реакции ГГ...
+[remark2]
+target = actor
+on_timer = 5000| remark3
+on_actor_dist_le_nvis = 5| walker3
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Что-то ГГ долго не реагирует, зовём ещй раз...
+[remark3]
+anim = hello
+snd = gar_robbered_replic_2_2
+target = actor
+on_signal = sound_end| remark4
+on_actor_dist_le_nvis = 5| walker3
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Опять ждём...
+[remark4]
+target = actor
+on_timer = 5000| remark5
+on_actor_dist_le_nvis = 5| walker3
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Непрядок, зовём ещё раз...
+[remark5]
+anim = hello
+snd = gar_robbered_replic_2_3
+target = actor
+on_signal = sound_end| remark6
+on_actor_dist_le_nvis = 5| walker3
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Ждём, нам не привыкать...
+[remark6]
+target = actor
+on_timer = 5000| remark7
+on_actor_dist_le_nvis = 5| walker3
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Зовём, теперь последний раз...
+[remark7]
+anim = hello
+snd = gar_robbered_replic_2_4
+target = actor
+on_signal = sound_end| remark8
+on_actor_dist_le_nvis = 5| walker3
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Просто смотрим на ГГ, что он будет делать...
+[remark8]
+target = actor
+on_actor_dist_le_nvis = 5| walker3
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9
+
+;Наконец-то у нас есть оружие...
+[remark9]
+snd = gar_robbered_replic_3
+target = nil
+on_signal = sound_end| camper ;walker2
+meet = no_meet
+
+;Ну-с, в бой...
+;[walker2]
+[camper]
+path_walk = gar_rob_attacks_way
+path_look = gar_rob_attacks_look
+radius = 25
+no_retreat = true
+def_state_moving = assault
+def_state_moving_fire = assault_fire
+def_state_campering = hide
+def_state_campering_fire = hide_fire
+on_signal = gar_rob_end| nil %+gar_rob_novice_end%
+on_info = {+bar_darklab_document_done} nil
+meet = no_meet
+
+;Если ГГ подошёл, то стоим молча...
+[walker3]
+path_walk = gar_rob_walk_wait
+path_look = gar_rob_look_wait
+on_actor_dist_ge_nvis = 20| walker1
+on_info = {+gar_rob_actor_given_wpn} remark9
+on_info2 = {+bar_darklab_document_done} nil %+gar_rob_novice_end%
+on_info3 = {-gar_rob_has_wpn =npc_has_weapon} remark9 %+gar_rob_has_wpn%, {+gar_rob_has_wpn} remark9

@@ -1,0 +1,16 @@
+[logic]
+active = camper
+on_death = death
+
+[camper]
+path_walk = bar_arena_monstr_walk
+path_look = bar_arena_monstr_look
+on_signal = arrived | %+bar_arena_monstr_ready% ;=bar_arena_hit%
+danger = danger
+
+[danger]
+ignore_distance = 0
+ignore_types = grenade, hit, corpse, sound
+
+[death]
+on_info = %+bar_arena_monstr_dead%

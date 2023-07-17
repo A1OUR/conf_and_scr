@@ -1,0 +1,15 @@
+	<string id="war_take_key1_hint">
+		<text>Электронный ключ №1</text>
+	</string>
+	<string id="war_take_key2_hint">
+		<text>Электронный ключ №2</text>
+	</string>
+	<string id="war_take_key3_hint">
+		<text>Электронный ключ №3</text>
+	</string>
+	<string id="war_take_notebook_hint">
+		<text>Ноутбук</text>
+	</string>
+	<string id="war_open_door_hint">
+		<text>Открыть дверь</text>
+	</string>

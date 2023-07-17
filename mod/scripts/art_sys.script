@@ -1,0 +1,10 @@
+function check(obj)
+--db.actor:give_game_news(obj:name(), "ui\\ui_iconsTotal", Frect():set(x,y,83,47))
+--db.actor:give_game_news(obj:section(), "ui\\ui_iconsTotal", Frect():set(x,y,83,47))
+if obj and string.find(obj:name(),"_genart") then
+amk.drop_item(db.actor,obj) amk.remove_item(obj)
+local fake_art = obj:section()
+local real_art = string.sub(fake_art, 1 , -7)
+alife():create(real_art, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+end
+end

@@ -1,0 +1,42 @@
+	<string id="bar_arena_locator">
+		<text>Арена.</text>
+	</string>
+	<string id="bar_bar_locator">
+		<text>Бар "100 Рентген".</text>
+	</string>
+	<string id="bar_dolg_locator">
+		<text>База группировки "Долг".</text>
+	</string>
+	<string id="bar_petrenko">
+		<text>Полковник Петренко</text>
+	</string>
+	<string id="bar_ivancov">
+		<text>Капитан Иванцов</text>
+	</string>
+	<string id="bar_arhive_doc">
+		<text>Архивная папка Долга</text>
+	</string>
+	<string id="bar_lisiy">
+		<text>Лысый.</text>
+	</string>
+	<string id="rostok_banda_volkodava">
+		<text>Волкодав с головорезами возле вертолета</text>
+	</string>
+	<string id="rostok_kruglov">
+		<text>Круглов</text>
+	</string>
+	<string id="rostok_tainyi_hod">
+		<text>Засада возле завода</text>
+	</string>
+	<string id="rostok_volkodav">
+		<text>Волкодав.</text>
+	</string>
+	<string id="rostok_fake_art_zone">
+		<text>Артефакты.</text>
+	</string>
+	<string id="bar_water_tower_zone">
+		<text>Водонапорная башня.</text>
+	</string>
+	<string id="rostok_krot_art_zone">
+		<text>Ценные артефакты.</text>
+	</string>

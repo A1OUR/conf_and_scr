@@ -1,0 +1,10 @@
+
+-- забирает все документы
+function explorer_take_away_docs(first_speaker, second_speaker)
+end
+
+--Пленный долговец говорит последнюю фразу:
+function val_prisoner_speaks_last_phrase(first_speaker, second_speaker)
+	return has_alife_info("val_prisoner_give_info") and not has_alife_info("val_prisoner_wait_actor") or has_alife_info("val_prisoner_sector_clear")
+end
+

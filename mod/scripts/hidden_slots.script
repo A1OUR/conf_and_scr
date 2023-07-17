@@ -1,0 +1,268 @@
+---------------------[[Скриптовая эмуляция невидимых слотов]]--------------------------------
+-- Автор: Charsi
+-- Дата: 15/11/2010 - 30/03/2011
+-- Спасибо: Malandrinus, Erlik
+-- Last update: Shadows - корректировка и доработка скрипта для билдовского назначения
+---------------------------------------------------------------------------------------------
+local rec_wnd      = nil
+local initial      = false
+local TBtn         = {}
+local slots        = {{9990,44},{99885,42},{99739,40}}
+local sleep_static = 0
+
+class "BkgrWnd" (CUIScriptWnd)
+function BkgrWnd:__init(owner) super()
+    self.sleep_time = 0
+    self.owner = owner
+    self:Init(0,0,1024,768)
+    self.ClickBtn = {}
+
+self.ClickBtn[1] = function()
+	local item = db.actor:object("govno_1")
+	if item then spawn_item_in_inv("fake_wpn_knife") remove_item(item:id()) end TBtn["check_button_1"]:Show(false)
+end
+
+self.ClickBtn[2]=function()
+	local item = db.actor:object("govno_2")
+	if item then spawn_item_in_inv("fake_wpn_binoc") remove_item(item:id()) end TBtn["check_button_2"]:Show(false)
+end
+
+self.ClickBtn[3]=function()
+	local item = db.actor:object("govno_3")
+	if item then spawn_item_in_inv("fake_device_torch") remove_item(item:id()) end TBtn["check_button_3"]:Show(false)
+end
+
+    self:InitControls()
+end
+
+function BkgrWnd:__finalize() end
+function BkgrWnd:InitControls()
+    clear_table(TBtn)
+    self.bkgr_static=CUIStatic()
+    self.bkgr_static:Init("ui\\ui_disk_io",10,0,1024,100)
+    self.bkgr_static:SetStretchTexture(true)
+    self.bkgr_static:SetOriginalRect(0,0,1024,100)
+    self.owner:AttachChild(self.bkgr_static)
+    self.stat = CUIStatic()
+    self.stat:Init(0, 0, 1024, 768)
+    self.owner:AttachChild(self.stat) 
+    for k,v in pairs (slots) do
+        local name="check_button_"..k
+        self.btn = CUIButton()
+        self.btn:SetAutoDelete(false)
+        self.btn:SetWindowName(name) 
+        self:Register(self.btn)
+        self.stat:AttachChild(self.btn)
+        TBtn[name]= self.btn
+        init_btn(k)
+        self:AddCallback(name,ui_events.WINDOW_LBUTTON_DB_CLICK,self.ClickBtn[k],self)
+    end
+	local ctrl
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_olr_mod.xml")
+	-- кнопка сброса
+	ctrl = xml:Init3tButton("btn_drop_item",self.stat)
+	self:Register(ctrl,"btn_drop_item")
+	self:AddCallback("btn_drop_item",ui_events.BUTTON_CLICKED,self.DropItem,self)
+	-- кнопка сна
+	ctrl = xml:Init3tButton("btn_sleep",self.stat)
+	if device().width/device().height==5/4 then ctrl:SetTextX(-2)
+	elseif device().width/device().height==16/10 or device().width/device().height==16/9 then ctrl:SetTextX(15) end
+	self:Register(ctrl,"btn_sleep")
+	self:AddCallback("btn_sleep",ui_events.BUTTON_CLICKED,self.ClickBtnSleep,self)
+    initial = true
+end
+
+---------------------------------------------------------------------------------------
+--Коллбек на выделение предмета в инвентаре
+function on_select_item(obj)
+select_item_obj = obj
+end
+
+
+------------------------------------------------------------------------------------------
+function BkgrWnd:DropItem()
+	if select_item_obj ~= nil then
+		local ini = system_ini()
+		if ini:line_exist(select_item_obj:section(), "quest_item") and ini:r_bool(select_item_obj:section(), "quest_item") == true then
+			return nil
+		end
+		db.actor:drop_item(select_item_obj)
+		select_item_obj = nil
+	end
+end
+
+-----------------------------------------------------------------------------------------
+
+-- инициализация с учетом размеров иконки статика
+function init_btn(num,sec)
+    local function sections(num)
+        if num==1 then
+	        local item = db.actor:item_in_slot(0)
+	        if item then return "wpn_knife" else return end
+        elseif num==2 then
+	        local item = db.actor:item_in_slot(4)
+	        if item then return "wpn_binoc" else return end
+        elseif num==3 then
+	        local item = db.actor:item_in_slot(9)
+	        if item then return "device_torch" else return end
+        end
+    end
+    local btn=TBtn["check_button_"..num]
+    local sect = sec or sections(num)
+    if sect then
+	    local ini=system_ini()
+	    local x=ini:r_u32(sect, "inv_grid_x")*50
+ 	    local y=ini:r_u32(sect, "inv_grid_y")*50
+	    local width=ini:r_u32(sect, "inv_grid_width")*50
+ 	    local height=ini:r_u32(sect, "inv_grid_height")*50
+	    btn:InitTexture("ui\\ui_icon_equipment")
+	    btn:SetOriginalRect(x,y,width,height)
+	    btn:Init(slots[num][1]-width/2,slots[num][2]-height/2,width,height)
+	    btn:Show(true)
+    else
+	    btn:Init(slots[num][1],slots[num][2],0,0)
+    end
+end
+
+function BkgrWnd:ClickBtnSleep()
+    local open_menu = true
+    for k,v in pairs(db.storage) do
+        local stalker = level.object_by_id(k)
+            if stalker and (get_clsid(stalker)==clsid.script_stalker) and stalker:alive() and stalker:relation(db.actor)==game_object.enemy then
+				if stalker:position():distance_to(db.actor:position()) < 45 then
+			    	open_menu = false break
+				end
+			end
+		end
+    if open_menu then
+        level.start_stop_menu(olr_sleep.OldMenu(), true)
+    else
+	    inventory_close()
+		get_hud():AddCustomStatic("cant_sleep_near_enemies")
+		sleep_static = time_global() + 5000
+    end
+end
+	
+function BkgrWnd:ShowWnd()
+    if initial and rec_wnd.stat~= nil then rec_wnd.stat:Show(true) end
+end 
+
+function BkgrWnd:HideWnd()
+    if initial and rec_wnd.stat~= nil then rec_wnd.stat:Show(false) end
+end 
+
+function BkgrWnd:DetachWnd()
+	self.owner:DetachChild(self.stat) initial = false
+end
+
+function on_eat(sect)
+	if sect=="fake_wpn_knife" then
+		if db.actor:object("wpn_knife") then
+			spawn_item_in_inv("fake_wpn_knife")
+		else
+			spawn_item_in_inv("wpn_knife") init_btn(1,"wpn_knife")
+		end
+	end
+	if sect=="fake_wpn_binoc" then
+		if db.actor:object("wpn_binoc") then
+			spawn_item_in_inv("fake_wpn_binoc")
+		else
+			spawn_item_in_inv("wpn_binoc") init_btn(2,"wpn_binoc")
+		end
+	end
+	if sect=="fake_device_torch" then
+		if db.actor:object("device_torch") then
+			spawn_item_in_inv("fake_device_torch")
+		else
+			spawn_item_in_inv("device_torch") init_btn(3,"device_torch")
+		end
+	end
+end
+
+function spawn_item_in_inv(sect)
+	alife():create(sect,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),0)
+end
+
+function remove_item(id)
+	if id then
+		local sobj = alife():object(id)
+		if sobj then alife():release(sobj,true) end
+	end
+end
+
+local inv_window
+function on_info(info_id)
+	if info_id=="ui_inventory" then
+	    inv_window = level.main_input_receiver()
+        if not initial then	
+            rec_wnd = BkgrWnd(level.main_input_receiver())
+		end  
+    	if not rec_wnd.stat:IsShown() then
+			rec_wnd:ShowWnd()
+		end 
+	elseif info_id=="ui_inventory_hide" then
+		if rec_wnd then
+       	    rec_wnd:DetachWnd()
+		end
+ 	end
+end
+
+function inventory_close()
+    if inv_window and inv_window:IsShown() then
+        level.start_stop_menu(inv_window,true)
+    end
+end
+
+local id,sect
+function on_item_drop(obj)
+	sect = obj:section()
+	if string.sub(sect,1,5)=="fake_" then id = obj:id() end
+end
+
+function update()
+	if id and not level.object_by_id(id) then
+		on_eat(sect)
+		id = nil
+		sect = nil
+	end
+	if get_hud():GetCustomStatic("cant_sleep_near_enemies") ~= nil then 
+	    if sleep_static < time_global() then get_hud():RemoveCustomStatic("cant_sleep_near_enemies") end
+	end
+end
+
+class "sleep_dialog" (CUIScriptWnd)
+function sleep_dialog:__init(time) super()
+    self:Init(0,0,1024,768)
+	self.sleep_time = time
+	self.ClickBtnYes = function() olr_func.sleep_main(self.sleep_time) self:on_exit() inventory_close() end
+	self.ClickBtnNo = function() self:on_exit() end
+	local ctrl
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_olr_mod.xml")
+	-- фон
+	self.back = xml:InitStatic("sleep_dialog_main",self)
+	-- иконка
+    xml:InitStatic("dialogs_yellow_icon",self.back)
+	-- текст
+    xml:InitStatic("sleep_dialog_text",self.back)
+	-- кнопка Да
+	ctrl = xml:Init3tButton("btn_ok",self.back)	
+	self:Register(ctrl,"btn_ok")
+	self:AddCallback("btn_ok",ui_events.BUTTON_CLICKED,self.ClickBtnYes,self)
+	-- кнопка Нет
+	ctrl = xml:Init3tButton("btn_no",self.back)	
+	self:Register(ctrl,"btn_no")
+	self:AddCallback("btn_no",ui_events.BUTTON_CLICKED,self.ClickBtnNo,self)
+end
+
+function sleep_dialog:on_exit() level.start_stop_menu(self,true) end
+function sleep_dialog:OnKeyboard(dik, keyboard_action)
+	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then 
+	    if dik == DIK_keys.DIK_ESCAPE then self:on_exit() 
+		elseif dik == DIK_keys.DIK_RETURN then olr_func.sleep_main(self.sleep_time) self:on_exit() inventory_close()
+		end 
+	end
+	return true
+end

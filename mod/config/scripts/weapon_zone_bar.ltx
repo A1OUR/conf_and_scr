@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {=actor_has_weapon =actor_in_zone(bar_hide_weapon_zone)} sr_idle@1 %+actor_prinyal_usl =actor_punch_bar =bar_drop_actor_inventory =disable_ui2 =naprosilsya%
+[sr_idle@1]
+on_timer = 4500 | sr_idle %=cutscene_to_jail%; =play_snd(characters_voice\scenario\aes\aes_first_desant_wave)%
+
+

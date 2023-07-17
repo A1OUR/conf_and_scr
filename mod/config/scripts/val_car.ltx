@@ -1,0 +1,20 @@
+[logic]
+active = ph_idle@wait
+
+; ждём начала сцены
+[ph_idle@wait]
+on_death_info   = val_car_failed
+on_info         = {+val_car_arrived} ph_car@drive, {+val_car_start} ph_car@start
+
+; Едем на базу Монолита
+[ph_car@start]
+path_walk       = val_car_walk
+on_death_info   = val_car_failed
+on_signal       = arrived | ph_car@drive %+val_car_arrived%
+on_info         = {+val_car_arrived} ph_car@drive
+;usable = {+bar_darklab_document_gain}
+
+; Актёр может управлять машиной
+[ph_car@drive]
+usable = {+bar_darklab_document_gain}
+on_death_info   = val_car_failed

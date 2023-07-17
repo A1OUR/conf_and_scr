@@ -1,0 +1,40 @@
+function proceed()
+    local actor = db.actor
+
+	-- Radar
+	if not has_alife_info("rad_code_door") and
+	   actor:object("rad_scientist_flash")
+	then
+		actor:give_info_portion("rad_code_door") 
+	end
+
+	if not has_alife_info("rad_find_stalkers_found") and
+	   actor:object("pri_lom_ak74")
+	then
+		actor:give_info_portion("rad_find_stalkers_found") 
+	end
+	
+	-- Секретная лаборатория
+	if not has_alife_info("sec_monster_attack_done") and has_alife_info("sec_monster_1_die") and
+		has_alife_info("sec_monster_2_die") and has_alife_info("sec_monster_3_die")
+	then
+		actor:give_info_portion("sec_monster_attack_done") 
+	end
+
+end
+
+function process_info_portion(info_id)
+	if info_id == "rad_code_door" then
+		level_tasks.add_location(1001, "crlc_mdl", "rad_code_door_location")
+	elseif info_id == "rad_code_door_found" then
+		level_tasks.remove_location(1001, "crlc_mdl")
+		
+	elseif info_id == "rad_find_treasurer_start" then
+		level_tasks.add_location(1009, "crlc_big", "rad_jaw_zam2_ms")
+		level_tasks.add_location(1010, "crlc_big", "rad_jaw_zam2_ms")
+	elseif info_id == "rad_find_treasurer_done" then
+		level_tasks.remove_location(1009, "crlc_big")
+		level_tasks.remove_location(1010, "crlc_big")
+	end
+	return false
+end

@@ -1,0 +1,29 @@
+
+-- Based on jr_outfit_arms.script by Lordmuzer
+
+
+local outfits_mask = { "ecolog_outfit", "orange", "pear", "banana" }
+
+function on_item_to_slot()
+	local outfit = db.actor:item_in_slot(6)
+	if outfit then
+		itemo = outfit:section()
+		for _,v in pairs(outfits_mask) do
+			if v == itemo then
+				get_console():execute( "r2_rain_drops_control 1" )
+				break
+			end
+		end
+	else
+		get_console():execute( "r2_rain_drops_control 0" )
+	end
+end
+
+function check_drop(obj)
+	if obj:is_outfit() then
+	local outfit = db.actor:item_in_slot(6)
+	if not outfit then
+		get_console():execute( "r2_rain_drops_control 0" )
+	end
+	end
+end

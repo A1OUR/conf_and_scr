@@ -1,0 +1,854 @@
+
+--Взнос Долгу для прохода на территорию
+function has_dolg_deposite(actor, npc)
+	return actor:money() >= 10000
+end
+
+function give_dolg_deposite(actor, npc)	
+	dialogs.relocate_money(npc, 10000, "out")
+end
+
+function spawn_arena_mnstr()	
+	alife():create("res_savage_arena",vector():set(157.737,0.097,90.203),41398,1182)
+--	alife():create("burer_arena",vector():set(161.652,0.098,110.378),42158,1183)
+end
+
+-- Петренко
+function actor_reputation_bad(actor, npc) 
+	return db.actor:character_reputation() <= -1000 
+end
+
+function actor_reputation_not_bad(actor, npc) 
+	return not this.actor_reputation_bad(actor, npc) 
+end
+
+--Долг архивные документы
+function have_dolg_arhive_document(first_speaker, second_speaker)
+  	return first_speaker:object("dolg_arhive_documents") ~= nil
+end
+
+function give_dolg_arhive_document(actor, npc)
+	local item = db.actor:object("dolg_arhive_documents")
+
+	if item then
+		dialogs.relocate_item_section(npc, "dolg_arhive_documents", "out")
+		alife():release(alife():object(item:id()), true)
+	end
+end
+
+-- Карта Мёртвого города
+--function bar_have_deadcity_map(actor, npc)
+--  	return db.actor:object("cit_deadcity_maps") ~= nil
+--end
+
+function bar_give_deadcity_map(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "cit_deadcity_maps", "out")
+	if second_speaker:profile_name() == "bar_dolg_leader" then
+		dialogs.relocate_money(second_speaker, 20000, "in")
+	elseif second_speaker:profile_name() == "bar_barman" then
+		dialogs.relocate_money(second_speaker, 30000, "in")
+	elseif second_speaker:profile_name() == "bar_bar_osvedomitel" then
+		dialogs.relocate_money(second_speaker, 10000, "in")
+	end
+end
+
+--Бармен в комнате
+function give_agroprom_documents(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "quest_case_02", "out")
+end
+
+function give_agroprom_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 5000, "in")
+end
+
+function give_extra_task(actor, npc)
+	if barman_darklab_documents_given(actor,npc) or
+	   barman_x16_given(actor,npc) or
+	   has_alife_info("bar_deactivate_radar_start")
+	then
+		return true
+	end
+	return false
+end
+function dont_give_extra_task(actor, npc)
+	return not give_extra_task(actor, npc)
+end
+
+function barman_dont_has_room_job(actor,npc)
+	return not barman_has_room_job(actor,npc)
+end
+function barman_has_room_job(actor,npc)	
+	if barman_need_darklab_documents(actor,npc)
+	then
+		return true
+	end
+	return false
+end
+
+function barman_need_complete_job(actor,npc)
+	if barman_darklab_documents_given(actor,npc) and 
+	   have_darklab_documents(actor,npc)
+	then
+		return true
+	end
+	return false
+end
+
+function barman_dont_has_job(actor,npc)
+	return not barman_has_job(actor,npc)
+end
+
+function barman_has_job(actor,npc)
+	if barman_need_research(actor,npc) or barman_need_kill_veterans(actor,npc)
+	then
+		return true
+	end
+	return false
+end
+
+
+
+-- ********************************************************
+--			БАРМЕН В КОМНАТЕ
+-- ********************************************************
+-- Документы с дарклаба
+function barman_need_darklab_documents(actor,npc)
+	if not has_alife_info("bar_darklab_document_start")
+	then
+		return true
+	end
+	return false
+end
+
+function barman_darklab_documents_given(actor,npc)
+	if has_alife_info("bar_darklab_document_start") and
+	   not has_alife_info("bar_darklab_document_done") 
+	then
+		return true
+	end
+	return false
+end
+
+function have_darklab_documents(first_speaker, second_speaker)
+  	return first_speaker:object("dar_document4") ~= nil
+end
+
+function hasnt_darklab_documents(first_speaker, second_speaker)
+    return first_speaker:object("dar_document4") == nil
+end
+
+function give_darklab_documents(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "dar_document4", "out")
+end
+function give_darklab_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 10000, "in")
+end
+
+function barman_give_back_darklab_doc(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "dar_document4", "in")
+end
+
+-- Документы с Янтаря
+function barman_x16_given(actor,npc)
+	if has_alife_info("bar_x16_documents_start") and
+	   not has_alife_info("bar_x16_documents_done")
+	then
+		return true
+	end
+	return false
+end
+
+-- Документы из янтаря
+function have_x16_documents(first_speaker, second_speaker)
+  	return first_speaker:object("lab_x16_documents") ~= nil
+end
+function give_x16_documents(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "lab_x16_documents", "out")
+end
+function have_dec_documents(first_speaker, second_speaker)
+  	return first_speaker:object("bar_decoding_documents") ~= nil
+end
+function give_dec_documents(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "bar_decoding_documents", "out")
+end
+function give_x16_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 15000, "in")
+end
+
+--Псих
+function bar_barman_psih_path(actor, npc)
+	return has_alife_info("bar_psih_come") and not has_alife_info("bar_psih_done")
+end
+
+function bar_barman_not_psih_path(actor, npc)
+	return not this.bar_barman_psih_path(actor, npc)
+end
+
+function bar_actor_has_scientic_medkit(actor, npc)
+	return db.actor:object("medkit_scientic") ~= nil
+end
+
+function bar_actor_has_not_scientic_medkit(actor, npc)
+	return not this.bar_actor_has_scientic_medkit(actor, npc)
+end
+
+function actor_give_scientic_medkit(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "medkit_scientic", "out")
+end
+
+function ryaboy_give_art(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fuzz_kolobok", "in")
+end
+
+function barman_give_scientic_medkit(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "medkit_scientic", "in")
+end
+
+function bar_barman_medkit_path(actor, npc)
+	return has_alife_info("bar_barman_need_1_phrase") and not has_alife_info("bar_barman_say_1_phrase") and not has_alife_info("bar_psih_nopain")
+end
+
+function bar_barman_not_medkit_path(actor, npc)
+	return not this.bar_barman_medkit_path(actor, npc)
+end
+
+function actor_has_ryaboy_art(actor, npc)
+	return db.actor:object("af_fuzz_kolobok") ~= nil
+end
+
+function actor_give_ryaboy_art(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_fuzz_kolobok", "out")
+end
+
+-- Выдача задания на отключение радара
+function barman_need_radar(actor,npc)
+	if has_alife_info("bar_deactivate_radar_start")	then
+		return true
+	end
+	return false
+end
+
+-- Условия появления диалога "Что за работа?" (пока не завершено! Создано: 12.07.2009 11:10 Обновлено: 23.08.2009 22:33 (завершено)) (Р.М.А.):
+function barmen_jobs_room_cond()
+	return has_alife_info("barman_job_1") and not has_alife_info("bar_darklab_document_start") or 
+			has_alife_info("barman_job_2") and not has_alife_info("bar_x16_documents_start") or 
+			has_alife_info("barman_job_3") and not has_alife_info("bar_deactivate_radar_start")
+end
+
+-- ********************************************************
+--			БАРМЕН ЗА ПРИЛАВКОМ
+-- ********************************************************
+-- Флешка ученных с ростка
+function barman_need_research(actor,npc)
+	if not has_alife_info("bar_barman_kruglov_flash_start") and not has_alife_info("bar_barman_kruglov_flash_fail") and not has_alife_info("bar_barman_kruglov_flash_done") then
+		return true
+	end
+	return false
+end
+function actor_have_research(first_speaker, second_speaker)
+  	return first_speaker:object("bar_ecolog_flash") ~= nil
+end
+function actor_not_have_research(first_speaker, second_speaker)
+  	return not this.actor_have_research(first_speaker, second_speaker)
+end
+function actor_transfer_research(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "bar_ecolog_flash", "out")
+	if has_alife_info("rostok_kruglov_give_flash") and not has_alife_info("bar_kill_professor_done") then
+        dialogs.relocate_money(second_speaker, 5000, "in")
+    end
+end
+
+--КПК Счастливчика
+function barman_need_kill_veterans(actor,npc)
+	if not has_alife_info("bar_kill_veteran_start") and not has_alife_info("bar_kill_veteran_done") and (has_alife_info("bar_rescue_research_start") or has_alife_info("bar_kill_professor_done") or has_alife_info("bar_barman_kruglov_flash_done") or has_alife_info("bar_barman_kruglov_flash_fail")) then
+		return true
+	end
+	return false
+end
+
+--[[function crazy_veterans_task_precond(first_speaker, second_speaker)
+  	return not has_alife_info("bar_kill_veteran_start") and (has_alife_info("bar_rescue_research_start") or has_alife_info("bar_barman_kruglov_flash_done"))
+end]]
+
+function have_lucky_pda(actor,npc)
+	if db.actor:object("bar_lucky_pda") then
+		return true
+	end
+	return false
+end
+
+function give_lucky_pda(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "bar_lucky_pda", "out")
+	dialogs.relocate_money(second_speaker, 2500, "in")
+end
+
+function have_deserter_pda(actor,npc)
+	if db.actor:object("agr_deserter_pda") then
+		return true
+	end
+	return false
+end
+
+function give_deserter_pda(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "agr_deserter_pda", "out")
+	dialogs.relocate_item_section(second_speaker, "af_ameba_slug", "in")
+	dialogs.relocate_money(second_speaker, 2000, "in")
+end
+
+function have_night_sniper_pda(actor,npc)
+	if db.actor:object("bar_sniper_pda") then
+		return true
+	end
+	return false
+end
+
+function give_night_sniper_pda(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "bar_sniper_pda", "out")
+	dialogs.relocate_item_section(second_speaker, "detector_advances", "in")
+end
+
+
+-- ********************************************************
+--			Лидер Долга
+-- ********************************************************
+--Свобода РГ-6
+function have_rg6(first_speaker, second_speaker)
+  	return first_speaker:object("wpn_rg-6") ~= nil
+end
+
+function dont_have_rg6(first_speaker, second_speaker)
+  	return first_speaker:object("wpn_rg-6") == nil or not has_alife_info("mil_svoboda_rg6_gain")
+end
+
+
+function give_rg6(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_rg-6", "out")
+end
+
+function enter_to_dolg(first_speaker, second_speaker)
+--	dialogs.relocate_item_section(second_speaker, "dolg_scientific_outfit", "in")
+	dialogs.relocate_item_section(second_speaker, "dolg_outfit", "in")
+end
+
+function actor_have_borov_flash(first_speaker, second_speaker)
+  	return first_speaker:object("borov_flash") ~= nil
+end
+
+function give_borov_flash(actor, npc)
+	local item = db.actor:object("borov_flash")
+
+	if item then
+		dialogs.relocate_item_section(npc, "borov_flash", "out")
+		alife():release(alife():object(item:id()), true)
+	end
+end
+
+--Возвращает "истина", если имеются активные задания или задание на "Тирана" не доступно, иначе - "ложь".
+function actor_have_active_dolg_task(actor,npc)
+	if has_alife_info("bar_dolg_borov_quest_start") and not has_alife_info("bar_dolg_borov_quest_done") or 
+	   has_alife_info("bar_dolg_borov_quest_done") and voronin_not_need_kill_tiran(actor,npc) or 
+	   has_alife_info("bar_kill_svoboda_ambush_start") and not has_alife_info("bar_kill_svoboda_ambush_done") or 
+	   has_alife_info("bar_kill_svoboda_leader_start") and not has_alife_info("bar_kill_svoboda_leader_done") 
+	then
+		return true
+	end
+	return false
+end
+
+function actor_not_have_active_dolg_task(actor,npc)
+	return not this.actor_have_active_dolg_task(actor,npc)
+end
+
+function voronin_need_kill_tiran(actor,npc)
+	if not has_alife_info("bar_kill_svoboda_ambush_start") and has_alife_info("bar_dolg_borov_quest_done") and (has_alife_info("bar_rescue_research_start") or has_alife_info("bar_kill_professor_done") or has_alife_info("bar_rescue_research_fail")) then
+		return true
+	end
+	return false
+end
+
+function voronin_not_need_kill_tiran(actor,npc)
+	return not this.voronin_need_kill_tiran(actor,npc) and not has_alife_info("bar_kill_svoboda_ambush_done")
+end
+
+function actor_have_tiran_pda(first_speaker, second_speaker)
+  	return first_speaker:object("bar_tiran_pda") ~= nil
+end
+
+function give_tiran_pda(actor, npc)
+	local item = db.actor:object("bar_tiran_pda")
+
+	if item then
+		dialogs.relocate_item_section(npc, "bar_tiran_pda", "out")
+		alife():release(alife():object(item:id()), true)
+	end
+end
+
+function actor_have_lukash_pda(first_speaker, second_speaker)
+  	return first_speaker:object("mil_svoboda_leader_pda") ~= nil
+end
+
+function give_lukash_pda(actor, npc)
+	local item = db.actor:object("mil_svoboda_leader_pda")
+
+	if item then
+		dialogs.relocate_item_section(npc, "mil_svoboda_leader_pda", "out")
+		alife():release(alife():object(item:id()), true)
+	end
+end
+
+-- Петренко, выдача награды
+
+function actor_need_petrenko_reward(actor, npc)
+	if (has_alife_info("bar_dolg_borov_quest_done") and not has_alife_info("bar_dolg_borov_quest_reward")) or
+	   (has_alife_info("bar_kill_svoboda_ambush_done") and not has_alife_info("bar_kill_svoboda_reward")) or 
+	   (has_alife_info("bar_kill_svoboda_leader_done") and not has_alife_info("bar_kill_svoboda_leader_reward")) or 
+	   (db.actor:object("svoboda_pda") ~= nil and has_alife_info("bar_kill_svoboda_leader_done"))
+	then
+		return true
+	end
+	return false
+end	
+
+function give_borov_reward(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_spas12", "in")
+	dialogs.relocate_money(second_speaker, 1000, "in")
+end
+
+function give_tiran_reward(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_groza", "in")
+	dialogs.relocate_money(second_speaker, 2000, "in")
+end
+
+function give_svoboda_leader_reward(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "dolg_scientific_outfit", "in")
+	dialogs.relocate_money(second_speaker, 10000, "in")
+end
+
+function actor_have_sv_do_pda(first_speaker, second_speaker)
+  	return first_speaker:object("svoboda_pda") ~= nil or first_speaker:object("dolg_pda") ~= nil
+end
+
+function give_svoboda_pda(actor, npc)
+	
+	--Тип награды
+	local reward_types = {"ammo_12x70_buck", "ammo_12x76_zhekan", "ammo_12x76_dart", "ammo_5.45x39_fmj", "ammo_5.45x39_ap", "ammo_9x18_fmj", "ammo_9x18_pmm", "ammo_9x19_fmj", "ammo_9x19_pbp", "ammo_7.62x54_7h1", "ammo_7.62x54_ap", "ammo_7.62x54_7h14", "ammo_9x39_pab9", "ammo_9x39_ap", "ammo_9x39_sp5", "ammo_gauss", "ammo_11.43x23_fmj", "ammo_11.43x23_hydro", "ammo_og-7b", "grenade_rgd5", "grenade_f1", "grenade_gd-05", "ammo_vog-25", "ammo_vog-25p", "wpn_addon_scope", "wpn_addon_silencer", "wpn_addon_grenade_launcher"}
+
+	--Перебираем инвентарь ГГ.
+	function item(actor)
+		actor:iterate_inventory(item_trns_reward, actor)
+	end
+	
+	--Удаляем предмет и получаем случайную награду из reward_types
+	function item_trns_reward(actor, item)
+		if item:section() == "svoboda_pda" then
+--			actor:transfer_item(item, npc)
+			dialogs.relocate_item_section(actor, reward_types[math.random(#reward_types)], "in")
+			dialogs.relocate_money(actor, 100, "in")
+			alife():release(alife():object(item:id()), true)
+		elseif item:section() == "dolg_pda" then
+			alife():release(alife():object(item:id()), true)
+		end
+	end
+	
+	item(actor)
+end
+
+
+--КПК для информатора
+function act_have_pda_to_inf(first_speaker, second_speaker)
+  	return this.act_have_sv_pda_to_inf(first_speaker, second_speaker) or this.act_have_dg_pda_to_inf(first_speaker, second_speaker) or rad_dialogs.act_have_zam_pda() or deadcity_dialog.leader_killer_die(first_speaker, second_speaker)
+end
+
+function act_have_sv_pda_to_inf(first_speaker, second_speaker)
+  	return first_speaker:object("svoboda_pda") ~= nil
+end
+
+function act_have_dg_pda_to_inf(first_speaker, second_speaker)
+  	return first_speaker:object("dolg_pda") ~= nil
+end
+
+function give_sv_pda_to_informer(actor, npc)
+
+	--Перебираем инвентарь ГГ.
+	function item(actor)
+		actor:iterate_inventory(item_trns_reward, actor)
+	end
+	
+	--Удаляем предмет
+	function item_trns_reward(actor, item)
+		if item:section() == "svoboda_pda" then
+			dialogs.relocate_money(actor, 50 + math.random(100), "in")
+			alife():release(alife():object(item:id()), true)
+		end
+	end
+	
+	item(actor)
+end
+
+function give_dlg_pda_to_informer(actor, npc)
+
+	--Перебираем инвентарь ГГ.
+	function item(actor)
+		actor:iterate_inventory(item_trns_reward, actor)
+	end
+	
+	--Удаляем предмет
+	function item_trns_reward(actor, item)
+		if item:section() == "dolg_pda" then
+			dialogs.relocate_money(actor, 50 + math.random(100), "in")
+			alife():release(alife():object(item:id()), true)
+		end
+	end
+	
+	item(actor)
+end
+
+function give_jaw_zam_pda_to_inf(actor, npc)
+	local item = db.actor:object("rad_jaw_zam_pda")
+	
+	if item then
+		dialogs.relocate_item_section(npc, "rad_jaw_zam_pda", "out")
+		alife():release(alife():object(item:id()), true)
+		dialogs.relocate_money(actor, 50 + math.random(100), "in")
+	end
+end
+
+function give_killer_leader_pda(actor, npc)
+	local item = db.actor:object("cit_leader_killer_pda")
+	
+	if item then
+		dialogs.relocate_item_section(npc, "cit_leader_killer_pda", "out") --Вначале отдаём предмет, потом удаляем
+		alife():release(alife():object(item:id()), true)
+		dialogs.relocate_money(actor, 450 + math.random(100), "in")
+	end
+end
+
+function bar_give_vp_pda(actor, npc)
+	local item = db.actor:object("cit_vp_pda")
+	
+	if item then
+		dialogs.relocate_item_section(npc, "cit_vp_pda", "out")
+		alife():release(alife():object(item:id()), true)
+		dialogs.relocate_money(actor, 50 + math.random(100), "in")
+	end
+end
+
+function give_dlg_doc_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 1000, "in")
+end
+
+function bar_give_killer_doc_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 1500, "in")
+end
+
+
+--Фамильное ружье охотника
+function have_hunters_toz(first_speaker, second_speaker)
+  	return first_speaker:object("hunters_toz") ~= nil
+end
+function give_hunters_toz(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "hunters_toz", "out")
+end
+function have_hunter_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 4000, "in")
+end
+
+
+-- Оплата информации осведомителю.
+function has_money_for_informer_1(actor, npc)
+	return actor:money() >= 4000
+end
+
+function give_money_for_informer_1(actor, npc)
+	dialogs.relocate_money(npc, 4000, "out")
+end
+
+function has_money_for_informer_2(actor, npc)
+	return actor:money() >= 2000
+end
+
+function give_money_for_informer_2(actor, npc)	
+	dialogs.relocate_money(npc, 2000, "out")
+end
+
+function has_money_for_informer_3(actor, npc)
+	return actor:money() >= 3500
+end
+
+function give_money_for_informer_3(actor, npc)	
+	dialogs.relocate_money(npc, 3500, "out")
+end
+
+function give_volkodav_reward(first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "wpn_addon_grenade_launcher", "in")
+	dialogs.relocate_money(first_speaker, 1000, "in")
+end
+
+function barman_give_outfit(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "stalker_outfit", "in")
+end
+
+function barman_give_val_key(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "bar_key_to_val_underground", "in")
+end
+
+
+function professor_for_resque(npc, actor)
+    if not has_alife_info("rostok_kruglov_give_flash") then
+	    dialogs.relocate_item_section(npc, "bar_ecolog_flash", "in")
+        db.actor:give_info_portion("rostok_kruglov_give_flash")
+    end
+end
+
+function volkodav_angry(actor, npc)
+	return not has_alife_info("bar_kill_professor_done") and 
+			(has_alife_info("bar_freedom_attack_ecolog") and not has_alife_info("bar_heli_scene_professor_die") or 
+			has_alife_info("bar_kill_professor_fail") or has_alife_info("ros_actor_say_has_no_flash") or 
+			has_alife_info("ros_actor_has_not_given_flash")) 
+end
+
+function actor_in_freedom_cmn(actor, npc)
+	if db.actor then
+		return db.actor:character_community() == "actor_freedom"
+	end
+end
+
+function actor_not_in_freedom_cmn(actor, npc)
+	return not this.actor_in_freedom_cmn(actor, npc)
+end
+
+function set_actor_enemy_for_rostok_freedom(actor, npc)
+	local volkodav = level_object_by_sid(509)
+	if volkodav then
+		volkodav:set_relation(game_object.enemy, actor)
+	end
+	xr_gulag.setGulagRelation ("bar_freedom_attack", game_object.enemy, db.actor) 
+	xr_gulag.setGulagRelation ("bar_freedom_chasers_attack", game_object.enemy, db.actor) 
+	db.actor:give_info_portion("bar_ecolog_crush_actor_enemy")	
+end
+
+-- Биографии
+function actor_have_all_bio(actor, npc)
+	return has_alife_info("actor_have_esc_bio_1") and has_alife_info("actor_have_esc_bio_2") and 
+		   has_alife_info("actor_have_esc_bio_3") and has_alife_info("actor_have_esc_bio_4") and 
+		   has_alife_info("actor_have_esc_bio_5") and has_alife_info("actor_have_esc_bio_6") and 
+		   has_alife_info("actor_have_esc_bio_7") and has_alife_info("actor_have_esc_bio_8") and 
+		   has_alife_info("actor_have_esc_bio_9") and has_alife_info("actor_have_esc_bio_10") and 
+		   has_alife_info("actor_have_gar_bio_1") and has_alife_info("actor_have_gar_bio_2") and 
+		   has_alife_info("actor_have_gar_bio_3") and has_alife_info("actor_have_gar_bio_4") and 
+		   has_alife_info("actor_have_gar_bio_5") and has_alife_info("actor_have_agr_bio_1") and 
+		   has_alife_info("actor_have_agr_bio_2") and has_alife_info("actor_have_agr_bio_3") and 
+		   has_alife_info("actor_have_agr_u_bio_1") and has_alife_info("actor_have_val_bio_1") and 
+		   has_alife_info("actor_have_val_bio_2") and has_alife_info("actor_have_val_bio_3") and 
+		   has_alife_info("actor_have_x18_bio_1") and has_alife_info("actor_have_x18_bio_2") and 
+		   has_alife_info("actor_have_bar_bio_1") and has_alife_info("actor_have_bar_bio_2") and 
+		   has_alife_info("actor_have_bar_bio_3") and --[[has_alife_info("actor_have_bar_bio_4") and ]]
+		   has_alife_info("actor_have_bar_bio_5") and has_alife_info("actor_have_bar_bio_6") and 
+		   has_alife_info("actor_have_bar_bio_7") and has_alife_info("actor_have_bar_bio_8") and 
+		   has_alife_info("actor_have_bar_bio_9") and has_alife_info("actor_have_bar_bio_10") and 
+		   has_alife_info("actor_have_bar_bio_11") and has_alife_info("actor_have_bar_bio_12") and 
+		   has_alife_info("actor_have_bar_bio_13") and has_alife_info("actor_have_bar_bio_14") and 
+		   has_alife_info("actor_have_bar_bio_15") and has_alife_info("actor_have_bar_bio_16") and 
+		   has_alife_info("actor_have_ros_bio_1") and has_alife_info("actor_have_ros_bio_2") and 
+		   has_alife_info("actor_have_ros_bio_3") and has_alife_info("actor_have_ros_bio_4") and 
+		   has_alife_info("actor_have_ros_bio_5") and has_alife_info("actor_have_mil_bio_1") and 
+		   has_alife_info("actor_have_mil_bio_2") and has_alife_info("actor_have_mil_bio_3") and 
+		   has_alife_info("actor_have_mil_bio_4") and has_alife_info("actor_have_mil_bio_5") and 
+		   has_alife_info("actor_have_mil_bio_6") and has_alife_info("actor_have_mil_bio_7") and 
+		   has_alife_info("actor_have_mil_bio_8") and has_alife_info("actor_have_mil_bio_9") and 
+		   has_alife_info("actor_have_mil_bio_10") and has_alife_info("actor_have_mil_bio_11") and 
+		   has_alife_info("actor_have_mil_bio_12") and has_alife_info("actor_have_mil_bio_13") and 
+		   has_alife_info("actor_have_yan_bio_1") and has_alife_info("actor_have_yan_bio_2") and 
+		   has_alife_info("actor_have_yan_bio_3") and has_alife_info("actor_have_x16_bio_1") and 
+		   has_alife_info("actor_have_sim_bio_1") and has_alife_info("actor_have_sim_bio_2") and 
+		   has_alife_info("actor_have_sim_bio_3") and has_alife_info("actor_have_sim_bio_4") and 
+		   has_alife_info("actor_have_sim_bio_5") and has_alife_info("actor_have_sim_bio_6") and 
+		   has_alife_info("actor_have_sim_bio_7") and has_alife_info("actor_have_sim_bio_8") and 
+		   has_alife_info("actor_have_sim_bio_9") and has_alife_info("actor_have_sim_bio_10") and 
+		   has_alife_info("actor_have_sim_bio_11") and has_alife_info("actor_have_sim_bio_12") and 
+		   has_alife_info("actor_have_sim_bio_13") and has_alife_info("actor_have_sim_bio_14") and 
+		   has_alife_info("actor_have_sim_bio_15") and has_alife_info("actor_have_sim_bio_16") and 
+		   has_alife_info("actor_have_rad_bio_1") and has_alife_info("actor_have_pri_bio_1") and 
+		   has_alife_info("actor_have_pri_bio_2") and has_alife_info("actor_have_cit_bio_1") and 
+		   has_alife_info("actor_have_cit_bio_2") and has_alife_info("actor_have_cit_bio_3")
+end
+
+function actor_not_have_all_bio(actor, npc)
+	return not this.actor_have_all_bio(actor, npc)
+end
+
+function actor_has_100(actor,npc)
+	return actor:money() >= 100
+end
+function give_money_100(actor, npc)	
+	dialogs.relocate_money(npc, 100, "out")
+end
+
+
+-- ********************************************************
+--			ARENA
+-- ********************************************************
+--Условие начала арены
+function arena_mnstr_start_cond()
+	return has_alife_info("bar_arena_mnstr_open") and ((not has_alife_info("bar_arena_actor_victory") and not has_alife_info("bar_arena_actor_lose")) or (has_alife_info("bar_arena_talked_after_fight") and (has_alife_info("bar_arena_actor_victory") or has_alife_info("bar_arena_actor_lose"))))
+end
+
+--Условия выбора монстра для борьбы
+function arena_pseudodog_cond()
+	return not has_alife_info("bar_arena_pause") and ((not has_alife_info("bar_arena_mnstr_end") and (not has_alife_info("bar_arena_pseudodog_choosen") and not has_alife_info("bar_arena_pseudodog_defeated"))) or has_alife_info("bar_arena_mnstr_end"))
+end
+
+function arena_snork_cond()
+	return not has_alife_info("bar_arena_pause") and has_alife_info("bar_arena_pseudodog_defeated") and ((not has_alife_info("bar_arena_mnstr_end") and (not has_alife_info("bar_arena_snork_choosen") and not has_alife_info("bar_arena_snork_defeated"))) or has_alife_info("bar_arena_mnstr_end"))
+end
+
+function arena_bloodsucker_cond()
+	return not has_alife_info("bar_arena_pause") and has_alife_info("bar_arena_snork_defeated") and ((not has_alife_info("bar_arena_mnstr_end") and (not has_alife_info("bar_arena_bloodsucker_choosen") and not has_alife_info("bar_arena_bloodsucker_defeated"))) or has_alife_info("bar_arena_mnstr_end"))
+end
+
+function arena_burer_cond()
+	return not has_alife_info("bar_arena_pause") and has_alife_info("bar_arena_bloodsucker_defeated") and ((not has_alife_info("bar_arena_mnstr_end") and (not has_alife_info("bar_arena_burer_choosen") and not has_alife_info("bar_arena_burer_defeated"))) or has_alife_info("bar_arena_mnstr_end"))
+end
+
+function arena_savage_cond()
+	return not has_alife_info("bar_arena_pause") and has_alife_info("bar_arena_burer_defeated") and ((not has_alife_info("bar_arena_mnstr_end") and (not has_alife_info("bar_arena_savage_choosen") and not has_alife_info("bar_arena_savage_defeated"))) or has_alife_info("bar_arena_mnstr_end"))
+end
+
+--Условие выбора ставки
+function arena_stavka_cond()
+	return has_alife_info("bar_arena_1000_r") or has_alife_info("bar_arena_2000_r") or has_alife_info("bar_arena_3000_r") or has_alife_info("bar_arena_5000_r")
+end
+
+--Выдача наград за победу над мутантом
+function arena_give_reward_mnstr(actor, npc)
+	local m = 0
+	if has_alife_info("bar_arena_1000_r") then
+		m = 1000
+	elseif has_alife_info("bar_arena_2000_r") then
+		m = 2000
+	elseif has_alife_info("bar_arena_3000_r") then
+		m = 3000
+	elseif has_alife_info("bar_arena_5000_r") then
+		m = 5000
+	end
+	local p = 0
+	if has_alife_info("bar_arena_20_p") then
+		p = 1.2
+	elseif has_alife_info("bar_arena_50_p") then
+		p = 1.5
+	elseif has_alife_info("bar_arena_100_p") then
+		p = 2
+	end
+
+	dialogs.relocate_money(npc, m*p, "in")
+	db.actor:give_info_portion("bar_arena_mnstr_reset")	
+	xr_zones.purge_arena_items("bar_arena_sr")
+end
+
+function arena_give_reward(actor, npc)
+	local m = 0
+	if has_alife_info("bar_arena_fight_1_reward") then
+		m = 1000
+	elseif has_alife_info("bar_arena_fight_2_reward") then
+		m = 2000
+	elseif has_alife_info("bar_arena_fight_3_reward") then
+		m = 3000
+	elseif has_alife_info("bar_arena_fight_4_reward") then
+		m = 4000
+	elseif has_alife_info("bar_arena_fight_5_reward") then
+		m = 6000
+	elseif has_alife_info("bar_arena_fight_6_reward") then
+		m = 8000
+	elseif has_alife_info("bar_arena_fight_7_reward") then
+		m = 10000   
+	elseif has_alife_info("bar_arena_fight_8_reward") then
+		m = 10000
+	end
+	dialogs.relocate_money(npc, m, "in")
+	db.actor:give_info_portion("bar_arena_reset")	
+	xr_zones.purge_arena_items("bar_arena")
+end
+
+
+function actor_has_1000(actor,npc)
+	return actor:money() >= 1000
+end
+function give_money_1000(actor, npc)	
+	dialogs.relocate_money(npc, 1000, "out")
+end
+function actor_has_2000(actor,npc)
+	return actor:money() >= 2000
+end
+function give_money_2000(actor, npc)	
+	dialogs.relocate_money(npc, 2000, "out")
+end
+function actor_has_3000(actor,npc)
+	return actor:money() >= 3000
+end
+function give_money_3000(actor, npc)	
+	dialogs.relocate_money(npc, 3000, "out")
+end
+function actor_has_5000(actor,npc)
+	return actor:money() >= 5000
+end
+function give_money_5000(actor, npc)	
+	dialogs.relocate_money(npc, 5000, "out")
+end
+
+-- new arena
+
+function arena_has_reward ()
+	return has_alife_info("bar_arena_fight_1_reward") or has_alife_info("bar_arena_fight_2_reward") or has_alife_info("bar_arena_fight_3_reward") or has_alife_info("bar_arena_fight_4_reward") or has_alife_info("bar_arena_fight_5_reward") or has_alife_info("bar_arena_fight_6_reward") or has_alife_info("bar_arena_fight_7_reward") or has_alife_info("bar_arena_fight_8_reward")
+end
+
+function arena_hasnt_reward ()
+	return not( has_alife_info("bar_arena_fight_1_reward") or has_alife_info("bar_arena_fight_2_reward") or has_alife_info("bar_arena_fight_3_reward") or has_alife_info("bar_arena_fight_4_reward") or has_alife_info("bar_arena_fight_5_reward") or has_alife_info("bar_arena_fight_6_reward") or has_alife_info("bar_arena_fight_7_reward") or has_alife_info("bar_arena_fight_8_reward"))
+end
+
+function arena_rank_check_true ()
+	if has_alife_info("bar_arena_fight_6_done") or has_alife_info("bar_arena_fight_3_done") then
+		if has_alife_info("bar_arena_fight_3_done") and (db.actor:character_rank() > 300) and not(has_alife_info("bar_arena_fight_6_done")) then
+			return true
+		end
+	elseif has_alife_info("bar_arena_fight_6_done") and (db.actor:character_rank() > 600) then
+		return true 	
+	else 
+		return false
+	end
+end
+
+function arena_rank_check_false ()
+	return not arena_rank_check_true ()
+end
+
+-- Отметка интересных мест на карте
+function locate_bar_bar(actor,npc)
+	local sim = alife()
+	if sim == nil then
+		return
+	end
+	local obj = sim:story_object(570)
+	if obj then
+		level.map_add_object_spot(obj.id, "crlc_small", "bar_bar_locator")
+	end
+end
+function locate_bar_arena(actor,npc)
+	local sim = alife()
+	if sim == nil then
+		return
+	end
+	local obj = sim:story_object(571)
+	if obj then
+		level.map_add_object_spot(obj.id, "crlc_small", "bar_arena_locator")
+	end
+end
+function locate_bar_dolg(actor,npc)
+	local sim = alife()
+	if sim == nil then
+		return
+	end
+	local obj = sim:story_object(507)
+	if obj then
+		level.map_add_object_spot(obj.id, "green_location", "bar_voronin_name")
+	end
+end

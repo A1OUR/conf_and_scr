@@ -1,0 +1,375 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(0,0,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_misc_menu.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- кнопки
+	self:Register(xml:Init3tButton("btn_device_pda", self),"btn_device_pda") 
+        self:Register(xml:Init3tButton("btn_mutant_flesh_eye", self),"btn_mutant_flesh_eye") 
+	self:Register(xml:Init3tButton("btn_mutant_boar_leg", self),"btn_mutant_boar_leg")
+	self:Register(xml:Init3tButton("btn_mutant_dog_tail", self),"btn_mutant_dog_tail") 
+	self:Register(xml:Init3tButton("btn_mutant_psevdodog_tail", self),"btn_mutant_psevdodog_tail") 
+	self:Register(xml:Init3tButton("btn_mutant_krovosos_jaw", self),"btn_mutant_krovosos_jaw")
+	self:Register(xml:Init3tButton("btn_mutant_burer_hand", self),"btn_mutant_burer_hand")
+        self:Register(xml:Init3tButton("btn_mutant_zombie_hand", self),"btn_mutant_zombie_hand")
+	self:Register(xml:Init3tButton("btn_mutant_snork_leg", self),"btn_mutant_snork_leg")
+	self:Register(xml:Init3tButton("btn_af_blood_tutorial", self),"btn_af_blood_tutorial")
+	self:Register(xml:Init3tButton("btn_quest_case_01", self),"btn_quest_case_01")
+	self:Register(xml:Init3tButton("btn_esc_wounded_flash", self),"btn_esc_wounded_flash")
+	self:Register(xml:Init3tButton("btn_gunslinger_flash", self),"btn_gunslinger_flash")
+	self:Register(xml:Init3tButton("btn_quest_case_02", self),"btn_quest_case_02")
+	self:Register(xml:Init3tButton("btn_val_key_to_underground", self),"btn_val_key_to_underground")
+	self:Register(xml:Init3tButton("btn_bar_tiran_pda", self),"btn_bar_tiran_pda")
+	self:Register(xml:Init3tButton("btn_bar_lucky_pda", self),"btn_bar_lucky_pda")
+	self:Register(xml:Init3tButton("btn_bar_ecolog_flash", self),"btn_bar_ecolog_flash")
+	self:Register(xml:Init3tButton("btn_lab_x16_documents", self),"btn_lab_x16_documents")
+	self:Register(xml:Init3tButton("btn_good_psy_helmet", self),"btn_good_psy_helmet")
+	self:Register(xml:Init3tButton("btn_bad_psy_helmet", self),"btn_bad_psy_helmet")
+	self:Register(xml:Init3tButton("btn_kruglov_flash", self),"btn_kruglov_flash")
+	self:Register(xml:Init3tButton("btn_crazy_flash", self),"btn_crazy_flash")
+	self:Register(xml:Init3tButton("btn_mil_svoboda_leader_pda", self),"btn_mil_svoboda_leader_pda")
+	self:Register(xml:Init3tButton("btn_dar_pass_flash", self),"btn_dar_pass_flash")
+	self:Register(xml:Init3tButton("btn_dar_pass_document", self),"btn_dar_pass_document")
+	self:Register(xml:Init3tButton("btn_dar_document1", self),"btn_dar_document1")
+	self:Register(xml:Init3tButton("btn_dar_document2", self),"btn_dar_document2")
+	self:Register(xml:Init3tButton("btn_dar_document3", self),"btn_dar_document3")
+	self:Register(xml:Init3tButton("btn_dar_document4", self),"btn_dar_document4")
+	self:Register(xml:Init3tButton("btn_dar_document5", self),"btn_dar_document5")
+	self:Register(xml:Init3tButton("btn_pri_decoder_documents", self),"btn_pri_decoder_documents")
+	self:Register(xml:Init3tButton("btn_decoder", self),"btn_decoder")
+	self:Register(xml:Init3tButton("btn_wpn_addon_scope", self),"btn_wpn_addon_scope") 
+	self:Register(xml:Init3tButton("btn_wpn_addon_scope_susat", self),"btn_wpn_addon_scope_susat") 
+	self:Register(xml:Init3tButton("btn_wpn_addon_silencer", self),"btn_wpn_addon_silencer") 
+	self:Register(xml:Init3tButton("btn_wpn_addon_grenade_launcher", self),"btn_wpn_addon_grenade_launcher") 
+	self:Register(xml:Init3tButton("btn_wpn_addon_grenade_launcher_m203", self),"btn_wpn_addon_grenade_launcher_m203") 
+------------------------------------------------------------------------------------
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+-------------------------
+
+	xml:InitStatic("Info", self)
+
+
+end
+
+function spawner:InitCallBacks()
+	self:AddCallback("btn_device_pda", ui_events.BUTTON_CLICKED, self.spawn_device_pda, self)
+	self:AddCallback("btn_mutant_flesh_eye", ui_events.BUTTON_CLICKED, self.spawn_mutant_flesh_eye, self)
+	self:AddCallback("btn_mutant_boar_leg", ui_events.BUTTON_CLICKED, self.spawn_mutant_boar_leg, self)
+	self:AddCallback("btn_mutant_dog_tail", ui_events.BUTTON_CLICKED, self.spawn_mutant_dog_tail, self)
+	self:AddCallback("btn_mutant_krovosos_jaw", ui_events.BUTTON_CLICKED, self.spawn_mutant_krovosos_jaw, self)
+	self:AddCallback("btn_mutant_burer_hand", ui_events.BUTTON_CLICKED, self.spawn_mutant_burer_hand, self)
+	self:AddCallback("btn_mutant_zombie_hand", ui_events.BUTTON_CLICKED, self.spawn_mutant_zombie_hand, self)
+	self:AddCallback("btn_mutant_snork_leg", ui_events.BUTTON_CLICKED, self.spawn_mutant_snork_leg, self)
+	self:AddCallback("btn_mutant_psevdodog_tail", ui_events.BUTTON_CLICKED, self.spawn_mutant_psevdodog_tail, self)
+	self:AddCallback("btn_af_blood_tutorial", ui_events.BUTTON_CLICKED, self.spawn_af_blood_tutorial, self)
+	self:AddCallback("btn_quest_case_01", ui_events.BUTTON_CLICKED, self.spawn_quest_case_01, self)
+	self:AddCallback("btn_esc_wounded_flash", ui_events.BUTTON_CLICKED, self.spawn_esc_wounded_flash, self)
+	self:AddCallback("btn_gunslinger_flash", ui_events.BUTTON_CLICKED, self.spawn_gunslinger_flash, self)
+	self:AddCallback("btn_quest_case_02", ui_events.BUTTON_CLICKED, self.spawn_quest_case_02, self)
+	self:AddCallback("btn_val_key_to_underground", ui_events.BUTTON_CLICKED, self.spawn_val_key_to_underground, self)
+	self:AddCallback("btn_bar_tiran_pda", ui_events.BUTTON_CLICKED, self.spawn_bar_tiran_pda, self)
+	self:AddCallback("btn_bar_lucky_pda", ui_events.BUTTON_CLICKED, self.spawn_bar_lucky_pda, self)
+	self:AddCallback("btn_bar_ecolog_flash", ui_events.BUTTON_CLICKED, self.spawn_bar_ecolog_flash, self)
+	self:AddCallback("btn_lab_x16_documents", ui_events.BUTTON_CLICKED, self.spawn_lab_x16_documents, self)
+	self:AddCallback("btn_good_psy_helmet", ui_events.BUTTON_CLICKED, self.spawn_good_psy_helmet, self)
+	self:AddCallback("btn_bad_psy_helmet", ui_events.BUTTON_CLICKED, self.spawn_bad_psy_helmet, self)
+	self:AddCallback("btn_kruglov_flash", ui_events.BUTTON_CLICKED, self.spawn_kruglov_flash, self)
+	self:AddCallback("btn_crazy_flash", ui_events.BUTTON_CLICKED, self.spawn_crazy_flash, self)
+	self:AddCallback("btn_mil_svoboda_leader_pda", ui_events.BUTTON_CLICKED, self.spawn_mil_svoboda_leader_pda, self)
+	self:AddCallback("btn_dar_pass_flash", ui_events.BUTTON_CLICKED, self.spawn_dar_pass_flash, self)
+	self:AddCallback("btn_dar_pass_document", ui_events.BUTTON_CLICKED, self.spawn_dar_pass_document, self)
+	self:AddCallback("btn_dar_document1", ui_events.BUTTON_CLICKED, self.spawn_dar_document1, self)
+	self:AddCallback("btn_dar_document2", ui_events.BUTTON_CLICKED, self.spawn_dar_document2, self)
+	self:AddCallback("btn_dar_document3", ui_events.BUTTON_CLICKED, self.spawn_dar_document3, self)
+	self:AddCallback("btn_dar_document4", ui_events.BUTTON_CLICKED, self.spawn_dar_document4, self)
+	self:AddCallback("btn_dar_document5", ui_events.BUTTON_CLICKED, self.spawn_dar_document5, self)
+	self:AddCallback("btn_pri_decoder_documents", ui_events.BUTTON_CLICKED, self.spawn_pri_decoder_documents, self)
+	self:AddCallback("btn_decoder", ui_events.BUTTON_CLICKED, self.spawn_decoder, self)
+	self:AddCallback("btn_wpn_addon_scope", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_scope, self)
+	self:AddCallback("btn_wpn_addon_scope_susat", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_scope_susat, self)
+	self:AddCallback("btn_wpn_addon_silencer", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_silencer, self)
+	self:AddCallback("btn_wpn_addon_grenade_launcher", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_grenade_launcher, self)
+	self:AddCallback("btn_wpn_addon_grenade_launcher_m203", ui_events.BUTTON_CLICKED, self.spawn_wpn_addon_grenade_launcher_m203, self)
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+-----------------------------------
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+------------------
+
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+
+function spawner:spawn_device_pda()
+	
+	self:spawn_item("device_pda", 3)
+end
+
+function spawner:spawn_mutant_flesh_eye()
+	
+	self:spawn_item("mutant_flesh_eye", 10)
+end
+
+function spawner:spawn_mutant_boar_leg()
+	
+	self:spawn_item("mutant_boar_leg", 10)
+end
+
+function spawner:spawn_mutant_dog_tail()
+	
+	self:spawn_item("mutant_dog_tail", 3)
+end
+
+function spawner:spawn_mutant_psevdodog_tail()
+	
+	self:spawn_item("mutant_psevdodog_tail", 3)
+end
+
+function spawner:spawn_mutant_krovosos_jaw()
+	
+	self:spawn_item("mutant_krovosos_jaw", 3)
+end
+
+
+function spawner:spawn_mutant_burer_hand()
+	
+	self:spawn_item("mutant_burer_hand", 7)
+end
+
+function spawner:spawn_mutant_zombie_hand()
+	
+	self:spawn_item("mutant_zombie_hand", 7)
+end
+
+function spawner:spawn_mutant_snork_leg()
+	
+	self:spawn_item("mutant_snork_leg", 7)
+end
+
+function spawner:spawn_af_blood_tutorial()
+	
+	self:spawn_item("af_blood_tutorial", 7)
+end
+
+function spawner:spawn_quest_case_01()
+	
+	self:spawn_item("quest_case_01", 7)
+end
+
+function spawner:spawn_esc_wounded_flash()
+	
+	self:spawn_item("esc_wounded_flash", 3)
+end
+
+function spawner:spawn_gunslinger_flash()
+	
+	self:spawn_item("gunslinger_flash", 3)
+end
+
+
+function spawner:spawn_quest_case_02()
+	
+	self:spawn_item("quest_case_02", 3)
+end
+
+function spawner:spawn_val_key_to_underground()
+	
+	self:spawn_item("val_key_to_underground", 3)
+end
+
+function spawner:spawn_bar_tiran_pda()
+	
+	self:spawn_item("bar_tiran_pda", 3)
+end
+
+function spawner:spawn_bar_lucky_pda()
+	
+	self:spawn_item("bar_lucky_pda", 3)
+end
+
+function spawner:spawn_bar_ecolog_flash()
+	
+	self:spawn_item("bar_ecolog_flash", 3)
+end
+
+function spawner:spawn_wpn_addon_scope()
+         
+             self:spawn_item("wpn_addon_scope", 3)
+end
+
+function spawner:spawn_wpn_addon_scope_susat()
+          
+             self:spawn_item("wpn_addon_scope_susat", 3)
+end
+
+function spawner:spawn_wpn_addon_silencer()
+           
+             self:spawn_item("wpn_addon_silencer", 3)
+end
+
+function spawner:spawn_wpn_addon_grenade_launcher()
+            
+             self:spawn_item("wpn_addon_grenade_launcher", 3)
+end
+
+function spawner:spawn_wpn_addon_grenade_launcher_m203()
+         
+             self:spawn_item("wpn_addon_grenade_launcher_m203", 3)
+end
+
+function spawner:spawn_lab_x16_documents()
+         
+             self:spawn_item("lab_x16_documents", 3)
+end
+
+function spawner:spawn_good_psy_helmet()
+         
+             self:spawn_item("good_psy_helmet", 3)
+end
+
+function spawner:spawn_bad_psy_helmet()
+         
+             self:spawn_item("bad_psy_helmet", 3)
+end
+
+function spawner:spawn_kruglov_flash()
+         
+             self:spawn_item("kruglov_flash", 3)
+end
+function spawner:spawn_crazy_flash()
+         
+             self:spawn_item("crazy_flash", 3)
+end
+
+function spawner:spawn_mil_svoboda_leader_pda()
+         
+             self:spawn_item("mil_svoboda_leader_pda", 3)
+end
+
+function spawner:spawn_dar_pass_flash()
+         
+             self:spawn_item("dar_pass_flash", 3)
+end
+
+function spawner:spawn_dar_pass_document()
+         
+             self:spawn_item("dar_pass_document", 3)
+end
+
+function spawner:spawn_dar_document1()
+         
+             self:spawn_item("dar_document1", 3)
+end
+
+function spawner:spawn_dar_document2()
+         
+             self:spawn_item("dar_document2", 3)
+end
+
+function spawner:spawn_dar_document3()
+         
+             self:spawn_item("dar_document3", 3)
+end
+
+function spawner:spawn_dar_document4()
+         
+             self:spawn_item("dar_document4", 3)
+end
+
+function spawner:spawn_dar_document5()
+         
+             self:spawn_item("dar_document5", 3)
+end
+
+function spawner:spawn_pri_decoder_documents()
+         
+             self:spawn_item("pri_decoder_documents", 3)
+end
+
+function spawner:spawn_decoder()
+         
+             self:spawn_item("decoder", 3)
+end
+---------------------Back------------------
+function spawner:on_back()
+-- если еще ни разу не вызывали, то обозначим наш новый скрипт
+                           if self.ui_spawnerdlg == nil then
+		self.ui_spawner_dlg = ui_spawner.spawner()
+		self.ui_spawner_dlg.owner = self
+
+
+	end
+-- останавливаем родительский элемент, запускаем свой, но родителя показываем.
+	self:GetHolder():start_stop_menu(self.ui_spawner_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end

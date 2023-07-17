@@ -1,0 +1,4 @@
+harmonica_a = 1, prob=0.1 \n
+detector_simple = 1, prob=0.15 \n
+device_torch = 1, prob=1 \n
+grenade_rgd5 = 1, prob=0.04 \n

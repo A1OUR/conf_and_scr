@@ -1,0 +1,4 @@
+medkit = 1, prob=0.15 \n
+medkit_army = 1, prob=0.05 \n
+bandage = 1, prob=0.1 \n
+antirad = 1, prob=0.05 \n

@@ -1,0 +1,304 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(0,0,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_granat_menu.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- кнопки
+	self:Register(xml:Init3tButton("btn_m_controller_normal", self),"btn_m_controller_normal") 
+              self:Register(xml:Init3tButton("btn_snork_weak", self),"btn_snork_weak") 
+	self:Register(xml:Init3tButton("btn_dog_weak", self),"btn_dog_weak")
+	self:Register(xml:Init3tButton("btn_bloodsucker_weak", self),"btn_bloodsucker_weak") 
+	self:Register(xml:Init3tButton("btn_pseudodog_weak", self),"btn_pseudodog_weak") 
+	self:Register(xml:Init3tButton("btn_m_gigant_e", self),"btn_m_gigant_e")
+---------------------------
+	self:Register(xml:Init3tButton("btn_esc_stalker_respawn_2", self),"btn_esc_stalker_respawn_2")
+	self:Register(xml:Init3tButton("btn_ds_bandit_respawn_3", self),"btn_ds_bandit_respawn_3")
+	self:Register(xml:Init3tButton("btn_mil_freedom_respawn_3", self),"btn_mil_freedom_respawn_3")
+	self:Register(xml:Init3tButton("btn_sar_monolith_respawn", self),"btn_sar_monolith_respawn")
+	self:Register(xml:Init3tButton("btn_bar_dolg_respawn_3", self),"btn_bar_dolg_respawn_3")
+	self:Register(xml:Init3tButton("btn_mil_freedom_respawn_sniper", self),"btn_mil_freedom_respawn_sniper")
+	self:Register(xml:Init3tButton("btn_esc_stalker_respawn_1", self),"btn_esc_stalker_respawn_1")
+	self:Register(xml:Init3tButton("btn_gar_dolg_respawn_1", self),"btn_gar_dolg_respawn_1")
+	self:Register(xml:Init3tButton("btn_mil_killer_respawn_1", self),"btn_mil_killer_respawn_1")
+	self:Register(xml:Init3tButton("btn_mil_killer_respawn_4", self),"btn_mil_killer_respawn_4")
+	self:Register(xml:Init3tButton("btn_ros_killer_respawn_2", self),"btn_ros_killer_respawn_2")
+	self:Register(xml:Init3tButton("btn_esc_soldier_respawn_1", self),"btn_esc_soldier_respawn_1")
+	self:Register(xml:Init3tButton("btn_agr_soldier_veteran", self),"btn_agr_soldier_veteran")
+	self:Register(xml:Init3tButton("btn_esc_soldier_respawn_specnaz", self),"btn_esc_soldier_respawn_specnaz")
+	self:Register(xml:Init3tButton("btn_gar_bandit_respawn_2", self),"btn_gar_bandit_respawn_2")
+	self:Register(xml:Init3tButton("btn_rad_monolith_respawn_1", self),"btn_rad_monolith_respawn_1")
+	self:Register(xml:Init3tButton("btn_bar_dolg_respawn_2", self),"btn_bar_dolg_respawn_2")
+	self:Register(xml:Init3tButton("btn_yan_ecolog_respawn_1", self),"btn_yan_ecolog_respawn_1")
+	self:Register(xml:Init3tButton("btn_rad_freedom_respawn_1", self),"btn_rad_freedom_respawn_1")
+	self:Register(xml:Init3tButton("btn_pri_respawn_freedom", self),"btn_pri_respawn_freedom")
+	self:Register(xml:Init3tButton("btn_rad_freedom_respawn_2", self),"btn_rad_freedom_respawn_2")
+	self:Register(xml:Init3tButton("btn_esc_bandit_respawn_1", self),"btn_esc_bandit_respawn_1")
+------------------------------------------------------------------------------------
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+-----------------------------------------------------------------------------------------------------
+	xml:InitStatic("Monsters", self)
+	xml:InitStatic("Transport", self)
+	xml:InitStatic("Info", self)
+	xml:InitStatic("People", self)
+
+end
+
+function spawner:InitCallBacks()
+	self:Register(xml:Init3tButton("btn_esc_stalker_respawn_2", self),"btn_esc_stalker_respawn_2")
+	self:Register(xml:Init3tButton("btn_ds_bandit_respawn_3", self),"btn_ds_bandit_respawn_3")
+	self:Register(xml:Init3tButton("btn_mil_freedom_respawn_3", self),"btn_mil_freedom_respawn_3")
+	self:Register(xml:Init3tButton("btn_sar_monolith_respawn", self),"btn_sar_monolith_respawn")
+	self:Register(xml:Init3tButton("btn_bar_dolg_respawn_3", self),"btn_bar_dolg_respawn_3")
+	self:Register(xml:Init3tButton("btn_mil_freedom_respawn_sniper", self),"btn_mil_freedom_respawn_sniper")
+	self:Register(xml:Init3tButton("btn_esc_stalker_respawn_1", self),"btn_esc_stalker_respawn_1")
+	self:Register(xml:Init3tButton("btn_gar_dolg_respawn_1", self),"btn_gar_dolg_respawn_1")
+	self:Register(xml:Init3tButton("btn_mil_killer_respawn_1", self),"btn_mil_killer_respawn_1")
+	self:Register(xml:Init3tButton("btn_mil_killer_respawn_4", self),"btn_mil_killer_respawn_4")
+	self:Register(xml:Init3tButton("btn_ros_killer_respawn_2", self),"btn_ros_killer_respawn_2")
+	self:Register(xml:Init3tButton("btn_esc_soldier_respawn_1", self),"btn_esc_soldier_respawn_1")
+	self:Register(xml:Init3tButton("btn_agr_soldier_veteran", self),"btn_agr_soldier_veteran")
+	self:Register(xml:Init3tButton("btn_esc_soldier_respawn_specnaz", self),"btn_esc_soldier_respawn_specnaz")
+	self:Register(xml:Init3tButton("btn_gar_bandit_respawn_2", self),"btn_gar_bandit_respawn_2")
+	self:Register(xml:Init3tButton("btn_rad_monolith_respawn_1", self),"btn_rad_monolith_respawn_1")
+	self:Register(xml:Init3tButton("btn_bar_dolg_respawn_2", self),"btn_bar_dolg_respawn_2")
+	self:Register(xml:Init3tButton("btn_yan_ecolog_respawn_1", self),"btn_yan_ecolog_respawn_1")
+	self:Register(xml:Init3tButton("btn_rad_freedom_respawn_1", self),"btn_rad_freedom_respawn_1")
+	self:Register(xml:Init3tButton("btn_pri_respawn_freedom", self),"btn_pri_respawn_freedom")
+	self:Register(xml:Init3tButton("btn_rad_freedom_respawn_2", self),"btn_rad_freedom_respawn_2")
+	self:Register(xml:Init3tButton("btn_esc_bandit_respawn_1", self),"btn_esc_bandit_respawn_1")
+----------------------------------------------------------------------------
+	self:AddCallback("btn_esc_stalker_respawn_2", ui_events.BUTTON_CLICKED, self.spawn_esc_stalker_respawn_2, self)
+	self:AddCallback("btn_ds_bandit_respawn_3", ui_events.BUTTON_CLICKED, self.spawn_ds_bandit_respawn_3, self)
+	self:AddCallback("btn_mil_freedom_respawn_3", ui_events.BUTTON_CLICKED, self.spawn_mil_freedom_respawn_3, self)
+	self:AddCallback("btn_sar_monolith_respawn", ui_events.BUTTON_CLICKED, self.spawn_sar_monolith_respawn, self)
+	self:AddCallback("btn_bar_dolg_respawn_3", ui_events.BUTTON_CLICKED, self.spawn_bar_dolg_respawn_3, self)
+	self:AddCallback("btn_mil_freedom_respawn_sniper", ui_events.BUTTON_CLICKED, self.spawn_mil_freedom_respawn_sniper, self)
+	self:AddCallback("btn_esc_stalker_respawn_1", ui_events.BUTTON_CLICKED, self.spawn_esc_stalker_respawn_1, self)
+	self:AddCallback("btn_gar_dolg_respawn_1", ui_events.BUTTON_CLICKED, self.spawn_gar_dolg_respawn_1, self)
+	self:AddCallback("btn_mil_killer_respawn_1", ui_events.BUTTON_CLICKED, self.spawn_mil_killer_respawn_1, self)
+	self:AddCallback("btn_mil_killer_respawn_4", ui_events.BUTTON_CLICKED, self.spawn_mil_killer_respawn_4, self)
+	self:AddCallback("btn_ros_killer_respawn_2", ui_events.BUTTON_CLICKED, self.spawn_ros_killer_respawn_2, self)
+	self:AddCallback("btn_esc_soldier_respawn_1", ui_events.BUTTON_CLICKED, self.spawn_esc_soldier_respawn_1, self)
+	self:AddCallback("btn_agr_soldier_veteran", ui_events.BUTTON_CLICKED, self.spawn_agr_soldier_veteran, self)
+	self:AddCallback("btn_esc_soldier_respawn_specnaz", ui_events.BUTTON_CLICKED, self.spawn_esc_soldier_respawn_specnaz, self)
+	self:AddCallback("btn_gar_bandit_respawn_2", ui_events.BUTTON_CLICKED, self.spawn_gar_bandit_respawn_2, self)
+	self:AddCallback("btn_rad_monolith_respawn_1", ui_events.BUTTON_CLICKED, self.spawn_rad_monolith_respawn_1, self)
+	self:AddCallback("btn_bar_dolg_respawn_2", ui_events.BUTTON_CLICKED, self.spawn_bar_dolg_respawn_2, self)
+	self:AddCallback("btn_yan_ecolog_respawn_1", ui_events.BUTTON_CLICKED, self.spawn_yan_ecolog_respawn_1, self)
+	self:AddCallback("btn_rad_freedom_respawn_1", ui_events.BUTTON_CLICKED, self.spawn_rad_freedom_respawn_1, self)
+	self:AddCallback("btn_pri_respawn_freedom", ui_events.BUTTON_CLICKED, self.spawn_pri_respawn_freedom, self)
+	self:AddCallback("btn_rad_freedom_respawn_2", ui_events.BUTTON_CLICKED, self.spawn_rad_freedom_respawn_2, self)
+	self:AddCallback("btn_esc_bandit_respawn_1", ui_events.BUTTON_CLICKED, self.spawn_esc_bandit_respawn_1, self)
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+		local	pos = db.actor:position()
+		local	dir = db.actor:direction()
+		pos = pos:add(dir:mul(dist))
+		alife():create(spawn_item, pos, 1, db.actor:game_vertex_id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+
+function spawner:spawn_m_controller_normal()
+	
+	self:spawn_item("m_controller_normal", 3)
+end
+
+function spawner:spawn_snork_weak()
+	
+	self:spawn_item("snork_weak", 10)
+end
+
+function spawner:spawn_dog_weak()
+	
+	self:spawn_item("dog_weak", 10)
+end
+
+function spawner:spawn_bloodsucker_weak()
+	
+	self:spawn_item("bloodsucker_weak", 3)
+end
+
+function spawner:spawn_pseudodog_weak()
+	
+	self:spawn_item("pseudodog_weak", 3)
+end
+
+function spawner:spawn_m_gigant_e()
+	
+	self:spawn_item("m_gigant_e", 3)
+end
+
+--------------------------------
+function spawner:spawn_esc_stalker_respawn_2()
+	
+	self:spawn_item("esc_stalker_respawn_2", 3)
+end
+
+function spawner:spawn_ds_bandit_respawn_3()
+	
+	self:spawn_item("ds_bandit_respawn_3", 3)
+end
+
+function spawner:spawn_mil_freedom_respawn_3()
+	
+	self:spawn_item("mil_freedom_respawn_3", 3)
+end
+
+function spawner:spawn_mil_freedom_respawn_sniper()
+	
+	self:spawn_item("mil_freedom_respawn_sniper", 3)
+end
+
+function spawner:spawn_sar_monolith_respawn()
+	
+	self:spawn_item("sar_monolith_respawn", 3)
+end
+
+function spawner:spawn_bar_dolg_respawn_3()
+	
+	self:spawn_item("bar_dolg_respawn_3", 3)
+end
+
+function spawner:spawn_esc_stalker_respawn_1()
+	
+	self:spawn_item("esc_stalker_respawn_1", 3)
+end
+
+function spawner:spawn_gar_dolg_respawn_1()
+	
+	self:spawn_item("gar_dolg_respawn_1", 3)
+end
+
+function spawner:spawn_mil_killer_respawn_1()
+	
+	self:spawn_item("mil_killer_respawn_1", 3)
+end
+function spawner:spawn_mil_killer_respawn_4()
+	
+	self:spawn_item("mil_killer_respawn_4", 3)
+end
+
+function spawner:spawn_ros_killer_respawn_2()
+	
+	self:spawn_item("ros_killer_respawn_2", 3)
+end
+
+function spawner:spawn_esc_soldier_respawn_1()
+	
+	self:spawn_item("esc_soldier_respawn_1", 3)
+end
+
+function spawner:spawn_agr_soldier_veteran()
+	
+	self:spawn_item("agr_soldier_veteran", 3)
+end
+
+function spawner:spawn_esc_soldier_respawn_specnaz()
+	
+	self:spawn_item("esc_soldier_respawn_specnaz", 3)
+end
+
+function spawner:spawn_gar_bandit_respawn_2()
+	
+	self:spawn_item("gar_bandit_respawn_2", 3)
+end
+
+function spawner:spawn_rad_monolith_respawn_1()
+	
+	self:spawn_item("rad_monolith_respawn_1", 3)
+end
+
+function spawner:spawn_bar_dolg_respawn_2()
+	
+	self:spawn_item("bar_dolg_respawn_2", 3)
+end
+
+function spawner:spawn_yan_ecolog_respawn_1()
+	
+	self:spawn_item("yan_ecolog_respawn_1", 3)
+end
+
+function spawner:spawn_rad_freedom_respawn_1()
+	
+	self:spawn_item("rad_freedom_respawn_1", 3)
+end
+
+function spawner:spawn_rad_freedom_respawn_2()
+	
+	self:spawn_item("rad_freedom_respawn_2", 3)
+end
+
+function spawner:spawn_pri_respawn_freedom()
+	
+	self:spawn_item("pri_respawn_freedom", 3)
+end
+
+function spawner:spawn_esc_bandit_respawn_1()
+	
+	self:spawn_item("esc_bandit_respawn_1", 3)
+end

@@ -1,0 +1,105 @@
+function on_item_take(obj)
+arc_main.get_item(obj)
+art_sys.check(obj)
+escape_dialog.have_a_art()
+end
+function on_item_drop(obj)
+	arc_main.lose_item(obj)
+end
+function on_actor_update()
+	arc_main.actor_update()
+	ogsr_outfit_arms.on_first_update()
+end
+function spawn_item(spawn_item, pos)
+	return alife():create(spawn_item, pos, 1, db.actor:game_vertex_id())
+end
+function send_tip(news_text, header, timeout, showtime, sender, sound)
+	if news_text==nil then return end
+	if header==nil then header=game.translate_string("st_tip") end
+	if timeout == nil then timeout = 0 end
+	if showtime == nil then showtime = 5 end
+	
+	local player
+	if sound=="news" then
+		player=pda_news
+	elseif sound=="task" then
+		player=pda_task
+	else
+		player=pda_tips
+	end		
+	
+	player:play(db.actor, timeout, sound_object.s2d)
+	
+	if sender == nil then
+		sender = "default"
+	end
+	local x = tips_icons[sender][1]
+	local y = tips_icons[sender][2]
+	
+	local news_text = "%c[255,160,160,160]"..header.."\\n".."%c[default]"..news_text
+	db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(x,y,83,47), timeout*1000, showtime*1000)
+	return true
+end
+function parse_object_packet(ret,stpk,updpk)
+  ret.gvid=stpk:r_u16()
+  ret.obf32u1=stpk:r_float()
+  ret.obs32u2=stpk:r_s32()
+  ret.lvid=stpk:r_s32()
+  ret.oflags=stpk:r_s32()
+  ret.custom=stpk:r_stringZ()
+  ret.sid=stpk:r_s32()
+  ret.obs32u3=stpk:r_s32()
+  return ret
+end
+
+function parse_visual_packet(ret,stpk,updpk)
+  ret.visual=stpk:r_stringZ()
+  ret.vsu8u1=stpk:r_u8()
+  return ret
+end
+
+function fill_object_packet(ret,stpk,updpk)
+  stpk:w_u16(ret.gvid)
+  stpk:w_float(ret.obf32u1)
+  stpk:w_s32(ret.obs32u2)
+  stpk:w_s32(ret.lvid)
+  stpk:w_s32(ret.oflags)
+  stpk:w_stringZ(ret.custom)
+  stpk:w_s32(ret.sid)
+  stpk:w_s32(ret.obs32u3)
+end
+
+function fill_visual_packet(ret,stpk,updpk)
+  stpk:w_stringZ(ret.visual)
+  stpk:w_u8(ret.vsu8u1)
+end
+-- удаляем объект из игры
+function remove_item(remove_item)
+  if remove_item~=nil then
+    alife():release(alife():object(remove_item:id()), true)
+    return true
+  end
+  return false
+end
+
+-- выбрасываем объект из инвентаря, применимо к ГГ
+function drop_item(npc,item)
+  if item~=nil then
+--      npc:mark_item_dropped(item)
+    npc:drop_item(item)
+  end
+end
+--[[
+copiright © xStream
+
+MMMMMMM    MMMMM    MMMMMM  MMMMMMMMMMMMM  MMMMMMMMMMM     MMMMMMMMMMM    MMMMMM    MMMMMMM     MMMMMM
+ MMMMMMM MMMMMM  MMMMMMMMMM MMMMMMMMMMMMMM MMMMMMMMMMMMMM  MMMMMMMMMMM   MMMMMMMM   MMMMMMMM   MMMMMMM
+  MMMMMMMMMMMM  MMMMMMMMMMMM MMMMMMMMMMMMM  MMMMMMMMMMMMMM MMMMMMMMMMM   MMMMMMMM    MMMMMMMM MMMMMMMM
+   MMMMMMMMM     MMMMMMMM MMM   MMMMMMM     MMMMMMMMMMMMMM MMMMMMM      MMMMMMMMMM   MMMMMMMMMMMMMMMMM
+    MMMMMMM       MMMMMMM       MMMMMM      MMMMMMM  MMMMM MMMMMMM      MMMMMMMMMM   MMMMMMMMMMMMMMMMM
+    MMMMMMMM       MMMMMMM      MMMMMM      MMMMMMM MMMM   MMMMMMMMMM  MMMM MMMMMMM  MMMMMMMMMMMMMMMMM
+   MMMMMMMMMM        MMMMM      MMMMMM      MMMMMMMMMMM    MMMMMMM     MMMM  MMMMMM  MMMMMMMMMMMMMMMMM
+  MMMMM  MMMMM    MMMMMMMM      MMMMMM      MMMMMMMMMMMMMM MMMMMMMMMMM MMMMMMMMMMMMM MMMMM MMMMM MMMMM
+ MMMMM   MMMMMM    MMMMMM       MMMMMM      MMMMMMM MMMMM  MMMMMMMMMM MMMMMMM MMMMMM MMMM   MM   MMMM 
+ 
+]]

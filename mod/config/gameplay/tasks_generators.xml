@@ -1,0 +1,16 @@
+<game_task id="gen_find_exit_lab" prio="500">
+	<title>gen_find_exit_lab</title>
+	<objective>
+		<text>gen_find_exit_lab_0</text>
+		<icon>ui_iconsTotal_esc_help_wounded_from_raid</icon>
+		<infoportion_complete>gen_find_exit_lab_done</infoportion_complete>
+		<article>gen_find_exit_lab_desc</article>
+	</objective>
+	<objective>
+		<text>gen_find_exit_lab_1</text>
+		<map_location_type hint="gen_exit_find">green_location</map_location_type>
+		<object_story_id>gen_exit_to_warlab</object_story_id>
+		<infoportion_complete>war_final_task_start</infoportion_complete>
+		<infoportion_set_complete>gen_find_exit_lab_done</infoportion_set_complete>
+	</objective>
+</game_task>

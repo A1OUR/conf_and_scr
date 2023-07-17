@@ -1,0 +1,65 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = ros_bandit_stranger_0_way
+path_look = ros_bandit_stranger_0_look
+on_actor_dist_le = 25 | remark
+on_actor_dist_le_nvis = 5 | walker2
+danger = danger_condition
+meet = meet
+
+[remark]
+anim                = hello_wpn
+snd                 = val_rob_leader_call
+tips                = val_rob_leader_call
+target              = actor
+on_signal 			= sound_end| walker2
+on_actor_dist_le_nvis = 5 | walker2
+meet                = meet
+
+[walker2]
+path_walk = ros_bandit_stranger_0_way
+path_look = ros_bandit_stranger_0_look
+on_info = {+ros_banditst_krovosos_spawn} walker3
+danger = danger_condition
+meet = meet
+
+[walker3]
+path_walk = ros_bandit_stranger_0_way
+path_look = ros_bandit_stranger_0_look
+danger = danger_condition
+meet = meet1
+
+;[remark]
+;anim = smeh
+;snd = story_reac_laughter
+;snd_anim_sync = true
+;no_move = true
+;target = actor
+;on_signal = anim_end | walker ;action_end | walker
+;danger = danger_condition
+
+[danger_condition]
+ignore_distance = 5
+ignore_distance_corpse  = 0
+
+[meet]
+meet_state		= 10|guard@wait
+meet_state_wpn	= 10|backoff@threat_weap
+victim		= 15|actor
+victim_wpn		= 15|actor
+use			= true
+use_wpn		= false
+syndata		= backoff@threat_weap
+;meet_dialog = {-agroprom_military_case_have} escape_lager_volk_talk, escape_lager_leader_hello
+
+[meet1]
+meet_state		= 30|smeh@story_reac_laughter
+meet_state_wpn	= 30|smeh@story_reac_laughter
+victim		= 15|actor
+victim_wpn		= 15|actor
+use			= false
+use_wpn		= false
+syndata		= smeh@story_reac_laughter
+;meet_dialog = {-agroprom_military_case_have} escape_lager_volk_talk, escape_lager_leader_hello

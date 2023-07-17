@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<cheat>	
+	<back_video x="10" y="10" width="650" height="340" stretch="1">
+		<texture></texture>
+	</back_video>
+
+	<background x="0" y="0" width="500" height="460" stretch="1">
+		<texture x="190" y="235" width="530" height="450">ui_menu_options_dlg</texture>
+	</background>
+
+	<Info x="30" y="5" width="650" height="15" complex_mode="1">	
+			<text align="l" font="letterica18" a="255" r="216" g="188" b="140">РАЗНОЕ</text>	
+	</Info>
+
+------------------------Misc------------------------------------------------------------------------------------------------------------------
+	<btn_device_pda x="0" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ПДА</text>
+	</btn_device_pda>
+
+        <btn_mutant_flesh_eye x="0" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>mutant_flesh_eye</text>
+	</btn_mutant_flesh_eye>
+
+	<btn_mutant_boar_leg x="0" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>mutant_boar_leg</text>
+	</btn_mutant_boar_leg>
+
+	<btn_mutant_dog_tail x="0" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>mutant_dog_tail</text>
+	</btn_mutant_dog_tail>
+
+	<btn_mutant_krovosos_jaw x="0" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Щупальца</text>
+	</btn_mutant_krovosos_jaw>
+
+	<btn_mutant_burer_hand x="0" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Рука бюрера</text>
+	</btn_mutant_burer_hand>
+
+	<btn_mutant_zombie_hand x="0" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Рука зомби</text>
+	</btn_mutant_zombie_hand>
+
+              <btn_mutant_snork_leg x="0" y="275" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>mutant_snork_leg</text>
+	</btn_mutant_snork_leg>
+
+	<btn_af_blood_tutorial x="0" y="305" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Кровь камня</text>
+	</btn_af_blood_tutorial>
+
+	<btn_quest_case_01 x="0" y="335" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Кейс 1</text>
+	</btn_quest_case_01>
+
+	<btn_esc_wounded_flash x="0" y="365" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Флешка Шустрого</text>
+	</btn_esc_wounded_flash>
+
+	<btn_gunslinger_flash x="126" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Флешка Стрелка</text>
+	</btn_gunslinger_flash>
+
+              <btn_quest_case_02 x="126" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Кейс 2</text>
+	</btn_quest_case_02>
+
+	<btn_val_key_to_underground x="126" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Ключ Борова</text>
+	</btn_val_key_to_underground>
+
+	<btn_bar_tiran_pda x="126" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ПДА Тирана</text>
+	</btn_bar_tiran_pda>
+
+	<btn_bar_lucky_pda x="126" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ПДА Счасливчика</text>
+	</btn_bar_lucky_pda>
+
+
+	<btn_bar_ecolog_flash x="126" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Флешка Круглова</text>
+	</btn_bar_ecolog_flash>
+
+
+	<btn_lab_x16_documents x="126" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Документы х16</text>
+	</btn_lab_x16_documents>
+
+	<btn_good_psy_helmet x="126" y="275" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ПСИ устройство(х)</text>
+	</btn_good_psy_helmet>
+
+	<btn_bad_psy_helmet x="126" y="305" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ПСИ устройство(п)</text>
+	</btn_bad_psy_helmet>
+
+	<btn_kruglov_flash x="126" y="335" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Сенсор</text>
+	</btn_kruglov_flash>
+
+	<btn_crazy_flash x="126" y="365" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Флешка Психа</text>
+	</btn_crazy_flash>
+
+	<btn_mil_svoboda_leader_pda x="252" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ПДА Лидера С.</text>
+	</btn_mil_svoboda_leader_pda>
+
+	<btn_dar_pass_flash x="252" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Пароль ТД</text>
+	</btn_dar_pass_flash>
+
+	<btn_dar_pass_document x="252" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Документы ТД</text>
+	</btn_dar_pass_document>
+
+	<btn_dar_document1 x="252" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Документы 1</text>
+	</btn_dar_document1>
+
+	<btn_dar_document2 x="252" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Документы 2</text>
+	</btn_dar_document2>
+
+	<btn_dar_document3 x="378" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Документы 3</text>
+	</btn_dar_document3>
+
+	<btn_dar_document4 x="252" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Документы 4</text>
+	</btn_dar_document4>
+
+	<btn_dar_document5 x="252" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Документы 5</text>
+	</btn_dar_document5>
+
+	<btn_pri_decoder_documents x="252" y="275" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Документы декодера</text>
+	</btn_pri_decoder_documents>
+
+	<btn_decoder x="252" y="305" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Декодер</text>
+	</btn_decoder>
+
+              <btn_wpn_addon_scope x="378" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Опт.Прицел</text>
+	</btn_wpn_addon_scope>
+
+              <btn_wpn_addon_scope_susat x="378" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Прицел</text>
+	</btn_wpn_addon_scope_susat>
+
+              <btn_wpn_addon_silencer x="378" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Глушитель</text>
+	</btn_wpn_addon_silencer>
+
+              <btn_wpn_addon_grenade_launcher x="378" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Подствольник 1</text>
+	</btn_wpn_addon_grenade_launcher>
+
+              <btn_wpn_addon_grenade_launcher_m203 x="378" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Подствольник 2</text>
+	</btn_wpn_addon_grenade_launcher_m203>
+
+             <btn_mutant_psevdodog_tail x="378" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Хвост Псевдособаки</text>
+	</btn_mutant_psevdodog_tail>
+-----------------------------------------------------------EXIT-------------------------------------------------------------------------------------
+	<btn_quit x="25" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ui_inv_exit</text>
+	</btn_quit>
+----------------------
+	<btn_back x="378" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Назад</text>
+	</btn_back>
+
+
+</cheat>

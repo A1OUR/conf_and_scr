@@ -1,0 +1,311 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(0,0,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_ammo_menu.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- кнопки
+	self:Register(xml:Init3tButton("btn_ammo_9x18_fmj", self),"btn_ammo_9x18_fmj") 
+        self:Register(xml:Init3tButton("btn_ammo_9x18_pbp", self),"btn_ammo_9x18_pbp") 
+	self:Register(xml:Init3tButton("btn_ammo_9x18_pmm", self),"btn_ammo_9x18_pmm")
+	self:Register(xml:Init3tButton("btn_ammo_9x19_fmj", self),"btn_ammo_9x19_fmj") 
+	self:Register(xml:Init3tButton("btn_ammo_9x19_pbp", self),"btn_ammo_9x19_pbp") 
+	self:Register(xml:Init3tButton("btn_ammo_545x39_fmj", self),"btn_ammo_545x39_fmj")
+        self:Register(xml:Init3tButton("btn_ammo_545x39_ap", self),"btn_ammo_545x39_ap")
+        self:Register(xml:Init3tButton("btn_ammo_556x45_ss190", self),"btn_ammo_556x45_ss190")
+	self:Register(xml:Init3tButton("btn_ammo_556x45_ap", self),"btn_ammo_556x45_ap")
+	self:Register(xml:Init3tButton("btn_ammo_57x28_fmj", self),"btn_ammo_57x28_fmj")
+	self:Register(xml:Init3tButton("btn_ammo_57x28_ap", self),"btn_ammo_57x28_ap")
+	self:Register(xml:Init3tButton("btn_ammo_762x54_7h1", self),"btn_ammo_762x54_7h1")
+	self:Register(xml:Init3tButton("btn_ammo_762x54_ap", self),"btn_ammo_762x54_ap")
+	self:Register(xml:Init3tButton("btn_ammo_762x54_7h14", self),"btn_ammo_762x54_7h14")
+	self:Register(xml:Init3tButton("btn_ammo_9x39_pab9", self),"btn_ammo_9x39_pab9")
+	self:Register(xml:Init3tButton("btn_ammo_gauss", self),"btn_ammo_gauss")
+	self:Register(xml:Init3tButton("btn_ammo_9x39_ap", self),"btn_ammo_9x39_ap")
+	self:Register(xml:Init3tButton("btn_ammo_9x39_sp5", self),"btn_ammo_9x39_sp5")
+	self:Register(xml:Init3tButton("btn_ammo_1143x23_fmj", self),"btn_ammo_1143x23_fmj")
+	self:Register(xml:Init3tButton("btn_ammo_1143x23_hydro", self),"btn_ammo_1143x23_hydro")
+	self:Register(xml:Init3tButton("btn_ammo_12x70_buck", self),"btn_ammo_12x70_buck")
+	self:Register(xml:Init3tButton("btn_ammo_12x76_dart", self),"btn_ammo_12x76_dart")
+	self:Register(xml:Init3tButton("btn_ammo_12x76_zhekan", self),"btn_ammo_12x76_zhekan")
+	self:Register(xml:Init3tButton("btn_ammo_og7b", self),"btn_ammo_og7b")
+	self:Register(xml:Init3tButton("btn_grenade_f1", self),"btn_grenade_f1")
+	self:Register(xml:Init3tButton("btn_grenade_rgd5", self),"btn_grenade_rgd5")
+	self:Register(xml:Init3tButton("btn_ammo_vog25", self),"btn_ammo_vog25")
+	self:Register(xml:Init3tButton("btn_ammo_vog25p", self),"btn_ammo_vog25p")
+	self:Register(xml:Init3tButton("btn_ammo_m209", self),"btn_ammo_m209")
+------------------------------------------------------------------------------------
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+----------------------------------------------------------------------------------------------------- 
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+-------------------------
+
+	xml:InitStatic("Info", self)
+
+
+end
+
+function spawner:InitCallBacks()
+	self:AddCallback("btn_ammo_9x18_fmj", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x18_fmj, self)
+	self:AddCallback("btn_ammo_9x18_pbp", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x18_pbp, self)
+	self:AddCallback("btn_ammo_9x18_pmm", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x18_pmm, self)
+	self:AddCallback("btn_ammo_9x19_fmj", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x19_fmj, self)
+	self:AddCallback("btn_ammo_9x19_pbp", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x19_pbp, self)
+	self:AddCallback("btn_ammo_545x39_fmj", ui_events.BUTTON_CLICKED, self.spawn_ammo_545x39_fmj, self)
+	self:AddCallback("btn_ammo_545x39_ap", ui_events.BUTTON_CLICKED, self.spawn_ammo_545x39_ap, self)
+	self:AddCallback("btn_ammo_556x45_ss190", ui_events.BUTTON_CLICKED, self.spawn_ammo_556x45_ss190, self)
+	self:AddCallback("btn_ammo_556x45_ap", ui_events.BUTTON_CLICKED, self.spawn_ammo_556x45_ap, self)
+	self:AddCallback("btn_ammo_57x28_fmj", ui_events.BUTTON_CLICKED, self.spawn_ammo_57x28_fmj, self)
+	self:AddCallback("btn_ammo_57x28_ap", ui_events.BUTTON_CLICKED, self.spawn_ammo_57x28_ap, self)
+	self:AddCallback("btn_ammo_762x54_7h1", ui_events.BUTTON_CLICKED, self.spawn_ammo_762x54_7h1, self)
+	self:AddCallback("btn_ammo_762x54_ap", ui_events.BUTTON_CLICKED, self.spawn_ammo_762x54_ap, self)
+	self:AddCallback("btn_ammo_762x54_7h14", ui_events.BUTTON_CLICKED, self.spawn_ammo_762x54_7h14, self)
+	self:AddCallback("btn_ammo_9x39_pab9", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x39_pab9, self)
+	self:AddCallback("btn_ammo_gauss", ui_events.BUTTON_CLICKED, self.spawn_ammo_gauss, self)
+	self:AddCallback("btn_ammo_9x39_ap", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x39_ap, self)
+	self:AddCallback("btn_ammo_9x39_sp5", ui_events.BUTTON_CLICKED, self.spawn_ammo_9x39_sp5, self)
+	self:AddCallback("btn_ammo_1143x23_fmj", ui_events.BUTTON_CLICKED, self.spawn_ammo_1143x23_fmj, self)
+	self:AddCallback("btn_ammo_1143x23_hydro", ui_events.BUTTON_CLICKED, self.spawn_ammo_1143x23_hydro, self)
+	self:AddCallback("btn_ammo_12x70_buck", ui_events.BUTTON_CLICKED, self.spawn_ammo_12x70_buck, self)
+	self:AddCallback("btn_ammo_12x76_dart", ui_events.BUTTON_CLICKED, self.spawn_ammo_12x76_dart, self)
+	self:AddCallback("btn_ammo_12x76_zhekan", ui_events.BUTTON_CLICKED, self.spawn_ammo_12x76_zhekan, self)
+	self:AddCallback("btn_ammo_og7b", ui_events.BUTTON_CLICKED, self.spawn_ammo_og7b, self)
+	self:AddCallback("btn_grenade_f1", ui_events.BUTTON_CLICKED, self.spawn_grenade_f1, self)
+	self:AddCallback("btn_grenade_rgd5", ui_events.BUTTON_CLICKED, self.spawn_grenade_rgd5, self)
+	self:AddCallback("btn_ammo_vog25", ui_events.BUTTON_CLICKED, self.spawn_ammo_vog25, self)
+	self:AddCallback("btn_ammo_vog25p", ui_events.BUTTON_CLICKED, self.spawn_ammo_vog25p, self)
+	self:AddCallback("btn_ammo_m209", ui_events.BUTTON_CLICKED, self.spawn_ammo_m209, self)
+
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+-----------------------------------
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+------------------
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+
+function spawner:spawn_ammo_9x18_fmj()
+	
+	self:spawn_item("ammo_9x18_fmj", 3)
+end
+
+function spawner:spawn_ammo_9x18_pbp()
+	
+	self:spawn_item("ammo_9x18_pbp", 3)
+end
+
+function spawner:spawn_ammo_9x18_pmm()
+	
+	self:spawn_item("ammo_9x18_pmm", 3)
+end
+
+function spawner:spawn_ammo_9x19_fmj()
+	
+	self:spawn_item("ammo_9x19_fmj", 3)
+end
+
+function spawner:spawn_ammo_9x19_pbp()
+	
+	self:spawn_item("ammo_9x19_pbp", 3)
+end
+
+function spawner:spawn_ammo_545x39_fmj()
+	
+	self:spawn_item("ammo_5.45x39_fmj", 3)
+end
+
+function spawner:spawn_ammo_545x39_ap()
+	
+	self:spawn_item("ammo_5.45x39_ap", 3)
+end
+
+function spawner:spawn_ammo_556x45_ss190()
+	
+	self:spawn_item("ammo_5.56x45_ss190", 3)
+end
+
+function spawner:spawn_ammo_556x45_ap()
+	
+	self:spawn_item("ammo_5.56x45_ap", 3)
+end
+
+function spawner:spawn_ammo_57x28_fmj()
+	
+	self:spawn_item("ammo_5.7x28_fmj", 3)
+end
+
+function spawner:spawn_ammo_57x28_ap()
+	
+	self:spawn_item("ammo_5.7x28_ap", 3)
+end
+
+function spawner:spawn_ammo_762x54_7h1()
+	
+	self:spawn_item("ammo_7.62x54_7h1", 3)
+end
+
+function spawner:spawn_ammo_762x54_ap()
+	
+	self:spawn_item("ammo_7.62x54_ap", 3)
+end
+
+function spawner:spawn_ammo_762x54_7h14()
+	
+	self:spawn_item("ammo_7.62x54_7h14", 3)
+end
+
+function spawner:spawn_ammo_9x39_pab9()
+	
+	self:spawn_item("ammo_9x39_pab9", 3)
+end
+
+function spawner:spawn_ammo_gauss()
+	
+	self:spawn_item("ammo_gauss", 3)
+end
+
+function spawner:spawn_ammo_9x39_ap()
+	
+	self:spawn_item("ammo_9x39_ap", 3)
+end
+
+function spawner:spawn_ammo_9x39_sp5()
+	
+	self:spawn_item("ammo_9x39_sp5", 3)
+end
+
+function spawner:spawn_ammo_1143x23_fmj()
+	
+	self:spawn_item("ammo_11.43x23_fmj", 3)
+end
+
+function spawner:spawn_ammo_1143x23_hydro()
+	
+	self:spawn_item("ammo_11.43x23_hydro", 3)
+end
+
+function spawner:spawn_ammo_12x70_buck()
+	
+	self:spawn_item("ammo_12x70_buck", 3)
+end
+
+function spawner:spawn_ammo_12x76_dart()
+	
+	self:spawn_item("ammo_12x76_dart", 3)
+end
+
+function spawner:spawn_ammo_12x76_zhekan()
+	
+	self:spawn_item("ammo_12x76_zhekan", 3)
+end
+
+function spawner:spawn_ammo_og7b()
+	
+	self:spawn_item("ammo_og-7b", 3)
+end
+
+function spawner:spawn_grenade_f1()
+            
+             self:spawn_item("grenade_f1", 3)
+end
+
+function spawner:spawn_grenade_rgd5()
+            
+             self:spawn_item("grenade_rgd5", 3)
+end
+
+function spawner:spawn_ammo_vog25()
+            
+             self:spawn_item("ammo_vog-25", 3)
+end
+
+function spawner:spawn_ammo_vog25p()
+            
+             self:spawn_item("ammo_vog-25p", 3)
+end
+
+function spawner:spawn_ammo_m209()
+            
+             self:spawn_item("ammo_m209", 3)
+end
+
+---------------------Back------------------
+function spawner:on_back()
+-- если еще ни разу не вызывали, то обозначим наш новый скрипт
+                           if self.ui_spawnerdlg == nil then
+		self.ui_spawner_dlg = ui_spawner.spawner()
+		self.ui_spawner_dlg.owner = self
+
+
+	end
+-- останавливаем родительский элемент, запускаем свой, но родителя показываем.
+	self:GetHolder():start_stop_menu(self.ui_spawner_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end

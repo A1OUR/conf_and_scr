@@ -1,0 +1,17 @@
+harmonica_a = 1, prob=0.12 \n
+device_torch = 1, prob=1 \n
+wpn_binoc = 1, prob=1 \n
+detector_simple = 1, prob=0.15 \n
+af_medusa = 1, prob=0.007 \n
+af_cristall_flower = 1, prob=0.005 \n
+af_vyvert = 1, prob=0.007 \n
+af_gravi = 1, prob=0.005 \n
+af_blood = 1, prob=0.007 \n
+af_mincer_meat = 1, prob=0.005 \n
+af_electra_sparkler = 1, prob=0.007 \n
+af_drops = 1, prob=0.007 \n
+af_fireball = 1, prob=0.005 \n
+af_ameba_slime = 1, prob=0.007 \n
+af_rusty_thorn = 1, prob=0.007 \n
+grenade_rgd5 = 1, prob=0.05 \n
+grenade_f1 = 1, prob=0.05 \n

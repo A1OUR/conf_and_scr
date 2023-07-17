@@ -1,0 +1,79 @@
+[logic]
+active = walker@mil_stuk
+on_death = death
+combat_ignore = combat_ignore
+
+[walker@mil_stuk]
+path_walk = mil_freedom_courier_sitbase_path
+path_look = mil_freedom_courier_sitbase_look
+on_info = {=is_courier_time} walker@mil_stuk_way %+mil_courier_go_to_meet%, {+mil_courier_go_to_meet} walker@mil_stuk_way
+danger = danger0
+
+[walker@mil_stuk_way]
+path_walk = mil_freedom_courier_waybase_path
+path_look = mil_freedom_courier_waybase_look
+on_signal = arrive | {-mil_courier_not_base} walker2 %=mil_courier_not_base_msg%, walker2
+meet = no_meet
+danger = danger0
+
+[walker2]
+path_walk = mil_freedom_courier_waymeet_path
+path_look = mil_freedom_courier_wait_look
+on_actor_dist_le = 20 | %=killactor%
+on_signal = arrive | walker3
+meet = no_meet
+danger = danger0
+
+[walker3]
+path_walk = mil_freedom_courier_wait_path
+path_look = mil_freedom_courier_wait_look
+on_actor_dist_le = 12 | %=killactor%
+on_info = {+mil_actor_in_khutor_zone} walker4
+
+[walker4]
+path_walk = mil_freedom_stukach_walk4
+path_look = mil_freedom_stukach_look4
+on_actor_dist_le_nvis = 12 | %=killactor%
+on_signal = arrive | remark1
+combat_ignore_cond = {=check_fighting(712:713:714:719)} false
+
+[remark1]
+no_rotate = true
+no_move = true
+anim = wait_rac
+snd = mil_pavlik_to_ara
+on_signal = sound_end | %+mil_courier_call% remark2
+on_actor_dist_le_nvis = 12 | %=killactor%
+target = mil_courier_look_point, 0
+combat_ignore_cond = {=check_fighting(712:713:714:719)} false
+
+[remark2]
+anim = guard
+on_info = {+mil_ara_end} kamp1
+on_actor_dist_le_nvis = 12 | %=killactor%
+target = mil_courier_look_point, 0
+combat_ignore_cond = {=check_fighting(712:713:714:719)} false
+
+[kamp1]
+center_point = mil_freedom_khutor_center
+meet_enable = true
+meet_dialog = mil_dolg_relax_dialog
+danger = danger1
+path_walk = mil_freedom_khutor_center_task
+radius = 3
+on_actor_dist_le_nvis = 12 | %=killactor%
+combat_ignore_cond = {=check_fighting(712:713:714:719)} false
+
+
+[death]
+on_info = %+mil_courier_dead =mil_paul_frost_dead +sar2_death_33%
+
+[danger0]
+ignore_distance_corpse = 0
+
+[danger1]
+ignore_distance = 0
+
+
+[smart_terrains]
+none = true

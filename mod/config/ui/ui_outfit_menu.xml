@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<cheat>	
+	<back_video x="10" y="10" width="650" height="340" stretch="1">
+		<texture></texture>
+	</back_video>
+
+	<background x="0" y="0" width="500" height="460" stretch="1">
+		<texture x="190" y="235" width="530" height="450">ui_menu_options_dlg</texture>
+	</background>
+
+	<Info x="30" y="5" width="650" height="15" complex_mode="1">	
+			<text align="l" font="letterica18" a="255" r="216" g="188" b="140">БРОНИКИ</text>	
+	</Info>
+
+
+------------------------Monsters------------------------------------------------------------------------------------------------------------------
+	<btn_novice_outfit x="0" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Новичек</text>
+	</btn_novice_outfit>
+
+              <btn_bandit_outfit x="0" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Бандит</text>
+	</btn_bandit_outfit>
+
+	<btn_killer_outfit x="0" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Наемник</text>
+	</btn_killer_outfit>
+
+	<btn_monolit_outfit x="0" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Монолит</text>
+	</btn_monolit_outfit>
+
+	<btn_stalker_outfit x="126" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Одиночка</text>
+	</btn_stalker_outfit>
+
+              <btn_scientific_outfit x="126" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Научный</text>
+	</btn_scientific_outfit>
+
+	<btn_exo_outfit x="126" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Экзоскелет</text>
+	</btn_exo_outfit>
+
+	<btn_svoboda_light_outfit x="126" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Свобода(л)</text>
+	</btn_svoboda_light_outfit>
+
+	<btn_svoboda_heavy_outfit x="126" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Свобода(т)</text>
+	</btn_svoboda_heavy_outfit>
+
+	<btn_dolg_outfit x="252" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Долг</text>
+	</btn_dolg_outfit>
+
+        <btn_dolg_scientific_outfit x="252" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Научный Долг</text>
+	</btn_dolg_scientific_outfit>
+
+	<btn_ecolog_outfit x="252" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Эколог</text>
+	</btn_ecolog_outfit>
+
+	<btn_protection_outfit x="252" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Научный(т)</text>
+	</btn_protection_outfit>
+
+-----------------------------------------------------------EXIT-------------------------------------------------------------------------------------
+	<btn_quit x="25" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ui_inv_exit</text>
+	</btn_quit>
+----------------------
+	<btn_back x="378" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Назад</text>
+	</btn_back>
+
+
+</cheat>

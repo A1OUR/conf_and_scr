@@ -1,0 +1,28 @@
+[logic]
+active = ph_car@start
+
+; выезжаем на позицию. актёр - враг
+[ph_car@start]
+path_walk       = rad_btr_00_walk
+target          = actor
+track_target    = true
+on_death_info   = rad_btr_death
+;on_timer        = 5000 | ph_car@fight_actor
+on_info 		= {=dist_to_actor_le(60)} ph_car@fight_actor
+
+; стреляем по актеру
+[ph_car@fight_actor]
+target          = actor
+track_target    = true
+on_death_info   = rad_btr_death
+on_timer        = 5000 | ph_car@fire
+on_info 		= {=dist_to_actor_ge(70)} ph_car@start
+
+; стреляем по точкам
+[ph_car@fire]
+path_fire       = rad_btr_look
+fire_repeat     = inf
+auto_fire       = true
+on_target_vis   = actor | ph_car@fight_actor
+on_death_info   = rad_btr_death
+on_timer        = 5000 | ph_car@fight_actor

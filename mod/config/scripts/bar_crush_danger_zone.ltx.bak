@@ -1,0 +1,22 @@
+[logic]
+active = sr_idle@idle
+
+[sr_idle@idle]
+on_actor_inside = {-bar_freedom_attack_ecolog =ros_sniper_cheat} %+bar_freedom_attack_ecolog%, {-bar_freedom_attack_ecolog} sr_idle@wait_attack 
+on_info = {+bar_freedom_attack_ecolog +bar_rescue_research_start} sr_idle@wait
+on_info2 = {+bar_kill_professor_done} nil
+
+[sr_idle@wait_attack]
+on_timer = 300000 | {-bar_freedom_attack_ecolog -bar_kill_professor_start -bar_kill_professor_done} %+bar_freedom_attack_ecolog%, {+bar_kill_professor_done} nil
+on_timer2 = 360000 | {-bar_freedom_attack_ecolog +bar_kill_professor_start -bar_kill_professor_done} %+bar_freedom_attack_ecolog%, {+bar_kill_professor_done} nil
+on_info = {+bar_freedom_attack_ecolog +bar_rescue_research_start} sr_idle@wait
+on_info2 = {=ros_sniper_cheat -bar_freedom_attack_ecolog} %+bar_freedom_attack_ecolog% 
+on_info3 = {+bar_kill_professor_done} nil
+
+[sr_idle@wait]
+on_info = {+bar_freedom_defence_ecolog} sr_idle@ecolog_defence
+on_info2 = {+bar_kill_professor_done} nil
+
+[sr_idle@ecolog_defence]
+on_info = {+bar_heli_scene_volkodav_die} nil
+on_timer = 4000 |{-bar_heli_scene_volkodav_die -rostok_objective_1} nil %=bar_freedom_defence_ecolog% , nil

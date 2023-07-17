@@ -1,0 +1,28 @@
+--'*******************************************************************************
+--'   **   **   **   **   **    **   **   **      QUEST_AF_STAR        **   **   **   **    **   **   **   ** 
+--'*******************************************************************************
+--к востоку от вагончика
+--к северу от атп
+--у элеватора
+local points={
+    {
+        position={x=-24.2727108001709,y=-12.1660995483398,z=-100.200202941895},
+        gv=0,
+        lv=73868
+        },
+    {
+        position={x=159.56,y=4.72,z=88.60},
+        gv=155,
+        lv=463808
+        },
+    {
+        position={x=-4.11,y=2.90,z=108.09},
+        gv=85,
+        lv=272619
+        }
+}
+
+function spawn_star(actor,npc,p1,p2)
+    local a = points[math.random(table.getn(points))]
+    local obj = alife():create("amk_af_night_star", vector():set(a.position.x,a.position.y,a.position.z), a.lv, a.gv)
+end

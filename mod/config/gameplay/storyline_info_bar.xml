@@ -1,0 +1,582 @@
+    <article id="bar_ecolog_research_normal" name="Kruglov_research" group="Found_PDA" article_type="journal">
+        <text>bar_ecolog_research_normal</text>
+    </article>
+    <article id="bar_ecolog_research_corrupted" name="Kruglov_research" group="Found_PDA" article_type="journal">
+        <text>bar_ecolog_research_corrupted</text>
+    </article>
+    <article id="rostok_tunel_gordon_diary" name="st_gordon_diary" group="Found_PDA" article_type="journal">
+        <text>rostok_tunel_gordon_diary</text>
+    </article>
+    <article id="descr_bar_resque_information_1" name="resque information" group="bar_resque_information/0" article_type="task">        
+        <text>descr_bar_resque_information</text>
+    </article>
+    <article id="descr_bar_resque_information_2" name="resque information_2" group="bar_resque_information_2/0" article_type="task">        
+        <text>descr_bar_resque_information_2</text>
+    </article>
+    <article id="descr_bar_kill_professor" name="kill professor" group="Diary" article_type="task">
+        <text>descr_bar_kill_professor</text>
+    </article>
+    <article id="descr_bar_hunter_rifle" name="hunter rifle" group="bar_hunter_rifle/0" article_type="task">
+        <text>descr_bar_hunter_rifle</text>
+    </article>
+    <article id="descr_bar_crazy_veterans_quest" name="crazy veterans quest" group="bar_crazy_veterans_quest/0" article_type="task">
+        <text>descr_bar_crazy_veterans_quest</text>
+    </article>
+    <article id="descr_bar_dolg_community_quest" name="dolg test quest" group="bar_dolg_community_quest/0" article_type="task">
+        <text>descr_bar_dolg_community_quest</text>
+    </article>
+    <article id="descr_bar_dolg_test_quest" name="dolg test quest" group="bar_dolg_test_quest/0" article_type="task">
+        <text>descr_bar_dolg_test_quest</text>
+    </article>
+    <article id="descr_bar_dolg_svoboda_ambush_quest" name="dolg svoboda ambush quest" group="bar_dolg_svoboda_ambush_quest/0" article_type="task">
+        <text>descr_bar_dolg_svoboda_ambush_quest</text>
+    </article>
+    <article id="descr_bar_dolg_svoboda_leader_kill_quest" name="dolg svoboda leader kill quest" group="bar_dolg_svoboda_leader_kill_quest/0" article_type="task">
+        <text>descr_bar_dolg_svoboda_leader_kill_quest</text>
+    </article>
+    <article id="descr_bar_x16_documents" name="x16 documents" group="bar_x16_documents/0" article_type="task">
+        <text>descr_bar_x16_documents</text>
+    </article>
+    <article id="descr_bar_radar_deactivate" name="radar deactivate" article_type="task" group="bar_radar_deactivate/0">
+        <text>descr_bar_radar_deactivate</text>
+    </article>
+	<article id="journal_bar_x16_documents" name="journal_bar_x16_documents_name" group="memuars" article_type="journal">
+           <text>journal_bar_x16_documents</text>
+    </article>
+    <article id="journal_bar_darklab_documents" name="journal_bar_darklab_documents_name" group="memuars" article_type="journal">
+           <text>journal_bar_darklab_documents</text>
+    </article>
+    <article id="journal_before_darklab_documents" name="journal_before_darklab_documents_name" group="memuars" article_type="journal">
+           <text>journal_before_darklab_documents</text>
+    </article>
+    <article id="journal_before_radar_task" name="journal_before_radar_task_name" group="memuars" article_type="journal">
+           <text>journal_before_radar_task</text>
+    </article>
+    <article id="journal_after_agroprom_documents" name="journal_after_agroprom_documents_name" group="memuars" article_type="journal">
+           <text>journal_after_agroprom_documents</text>
+    </article>
+    <article id="art_ros_help_svoboda" name="help svoboda" group="ros_help_svoboda_receive_info/0" article_type="task">
+        <text>txt_ros_help_svoboda</text>
+    </article>
+	<article id="art_bar_barman_kruglov_flash" name="barman_kruglov_flash" group="bar_barman_kruglov_flash/0" article_type="task">
+        <text>txt_art_barman_kruglov_flash</text>
+    </article>
+	<article id="art_bar_dolg_borov_quest" name="dolg_borov_quest" group="bar_dolg_borov_quest/0" article_type="task">
+        <text>txt_art_bar_dolg_borov_quest</text>
+    </article>
+	<article id="descr_bar_kill_deserter" name="kill deserter" group="bar_deserter_quest/0" article_type="task">
+        <text>descr_kill_deserter</text>
+    </article>
+	<article id="descr_bar_night_sniper_quest" name="night_sniper" group="bar_night_sniper_quest/0" article_type="task">
+        <text>descr_night_sniper</text>
+    </article>
+
+	
+  <!-- Биографии -->
+  
+   <!-- Сидорович -->
+	<article id="esc_bio_1" name="escape_trader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_trader</texture>
+		<text>escape_trader_bio</text>
+	</article>
+	
+   <!-- Волк -->
+	<article id="esc_bio_2" name="esc_wolf_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_balon_1</texture>
+		<text>esc_wolf_bio</text>
+	</article>
+	
+   <!-- Фанат -->
+	<article id="esc_bio_3" name="esc_fanat_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_rukzak_3</texture>
+		<text>esc_fanat_bio</text>
+	</article>
+	
+   <!-- Лис -->
+	<article id="esc_bio_4" name="esc_fox_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_balon_4</texture>
+		<text>esc_fox_bio</text>
+	</article>
+	
+   <!-- Толик -->
+	<article id="esc_bio_5" name="esc_tolik_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_green_stalker_2</texture>
+		<text>esc_tolik_bio</text>
+	</article>
+	
+   <!-- Шустрый -->
+	<article id="esc_bio_6" name="esc_shustryi_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_green_stalker_1</texture>
+		<text>esc_shustryi_bio</text>
+	</article>
+	
+   <!-- Петруха -->
+	<article id="esc_bio_7" name="esc_petruha_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_green_stalker_8</texture>
+		<text>esc_petruha_bio</text>
+	</article>
+	
+   <!-- Кузнецов -->
+	<article id="esc_bio_8" name="esc_soldier_commander_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_soldier_beret_1</texture>
+		<text>esc_soldier_commander_bio</text>
+	</article>
+	
+   <!-- Чугуйкин -->
+	<article id="esc_bio_9" name="esc_soldier_blockpost_commander_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_soldier_beret_1</texture>
+		<text>esc_lieutenant_bio</text>
+	</article>
+	
+   <!-- Проводник -->
+	<article id="esc_bio_10" name="esc_provodnik_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_rukzak_1</texture>
+		<text>esc_provodnik_bio</text>
+	</article>
+	
+   <!-- Серый -->
+	<article id="gar_bio_1" name="gar_seryi_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_hood_4</texture>
+		<text>gar_seryi_bio</text>
+	</article>
+	
+   <!-- Юрик -->
+	<article id="gar_bio_2" name="gar_dram_novice_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_green_stalker_11</texture>
+		<text>gar_dram_novice_bio</text>
+	</article>
+	
+   <!-- Бес -->
+	<article id="gar_bio_3" name="gar_hellcar_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_balon_5</texture>
+		<text>gar_hellcar_bio</text>
+	</article>
+	
+   <!-- Вася Кабан -->
+	<article id="gar_bio_4" name="gar_bandit_leader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_master</texture>
+		<text>gar_bandit_leader_bio</text>
+	</article>
+	
+   <!-- Прапор -->
+	<article id="gar_bio_5" name="gar_dolg_blokpost_leader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_balon_4</texture>
+		<text>gar_dolg_blokpost_leader_bio</text>
+	</article>
+	
+   <!-- Крот -->
+	<article id="agr_bio_1" name="agr_krot_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_rukzak_4</texture>
+		<text>agr_krot_bio</text>
+	</article>
+	
+   <!-- Крысолов -->
+	<article id="agr_bio_2" name="agr_ratcatcher_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_master</texture>
+		<text>agr_ratcatcher_bio</text>
+	</article>
+	
+   <!-- Максименко -->
+	<article id="agr_bio_3" name="agr_nii_commander_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_soldier_beret</texture>
+		<text>sim_soldier_commander_bio</text>
+	</article>
+	
+   <!-- Доктор -->
+	<article id="agr_u_bio_1" name="cit_doctor_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_izgoy</texture>
+		<text>cit_doctor_bio</text>
+	</article>
+	
+   <!-- Боров -->
+	<article id="val_bio_1" name="val_borov_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_borov</texture>
+		<text>val_borov_bio</text>
+	</article>
+	
+   <!-- Сергей Лохматый -->
+	<article id="val_bio_2" name="val_prisoner_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_mask_1</texture>
+		<text>val_prisoner_bio</text>
+	</article>
+	
+   <!-- Пуля -->
+	<article id="val_bio_3" name="val_pulia_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_mask_1</texture>
+		<text>val_pulia_bio</text>
+	</article>
+	
+   <!-- Жека Дуплет -->
+	<article id="x18_bio_1" name="dar_explorer_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_rukzak_2</texture>
+		<text>dar_explorer_bio</text>
+	</article>
+	
+   <!-- Калугин П.И. -->
+	<article id="x18_bio_2" name="dar_kalugin_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_rukzak_2</texture>
+		<text>dar_corpse_bio</text>
+	</article>
+	
+   <!-- Бармен -->
+	<article id="bar_bio_1" name="bar_barmen_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_barman</texture>
+		<text>bar_barmen_bio</text>
+	</article>
+	
+   <!-- Гарик -->
+	<article id="bar_bio_2" name="bar_bar_guard_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bar_security</texture>
+		<text>bar_bar_guard_bio</text>
+	</article>
+	
+   <!-- Жорик -->
+	<article id="bar_bio_3" name="bar_bar_guard2_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bar_security</texture>
+		<text>bar_bar_guard2_bio</text>
+	</article>
+	
+   <!-- Осведомитель -->
+	<article id="bar_bio_4" name="bar_informer_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_master</texture>
+		<text>bar_informer_bio</text>
+	</article>
+	
+   <!-- Охотник -->
+	<article id="bar_bio_5" name="bar_hunter_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_green_stalker_3</texture>
+		<text>bar_hunter_bio</text>
+	</article>
+	
+   <!-- Бром -->
+	<article id="bar_bio_6" name="bar_drunk_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_balon_4</texture>
+		<text>bar_drunk_bio</text>
+	</article>
+	
+   <!-- Лысый -->
+	<article id="bar_bio_7" name="bar_lisiy_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_balon_4</texture>
+		<text>sim_stalker_general_bio</text>
+	</article>
+	
+   <!-- Рябой -->
+	<article id="bar_bio_8" name="bar_ryaboy_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_zombie4</texture>
+		<text>bar_ryaboy_bio</text>
+	</article>
+	
+   <!-- Арни -->
+	<article id="bar_bio_9" name="bar_arny_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_balon_6</texture>
+		<text>bar_arny_bio</text>
+	</article>
+	
+   <!-- Лёлик -->
+	<article id="bar_bio_10" name="bar_lelik_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bar_security</texture>
+		<text>bar_lelik_bio</text>
+	</article>
+	
+   <!-- Зверь -->
+	<article id="bar_bio_11" name="bar_beast_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_veteran</texture>
+		<text>sim_zombied_master_bio</text>
+	</article>
+	
+   <!-- Воронин -->
+	<article id="bar_bio_12" name="bar_voronin_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_komandir</texture>
+		<text>bar_voronin_bio</text>
+	</article>
+	
+   <!-- Петренко -->
+	<article id="bar_bio_13" name="bar_petrenko_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_balon_3</texture>
+		<text>bar_petrenko_bio</text>
+	</article>
+	
+   <!-- Иванцов -->
+	<article id="bar_bio_14" name="bar_ivancov_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_balon_5</texture>
+		<text>bar_ivancov_bio</text>
+	</article>
+	
+   <!-- Пличко -->
+	<article id="bar_bio_15" name="bar_plichko_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_balon_1</texture>
+		<text>bar_plichko_bio</text>
+	</article>
+	
+   <!-- Киценко -->
+	<article id="bar_bio_16" name="bar_kicenko_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_balon_1</texture>
+		<text>sim_dolg_veteran_bio</text>
+	</article>
+	
+   <!-- Круглов -->
+	<article id="ros_bio_1" name="ros_kruglov_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_ecolog_military</texture>
+		<text>ros_kruglov_bio</text>
+	</article>
+	
+   <!-- Волкодав -->
+	<article id="ros_bio_2" name="ros_volkodav_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_ki_head_5</texture>
+		<text>ros_volkodav_bio</text>
+	</article>
+	
+   <!-- Тиран -->
+	<article id="ros_bio_3" name="ros_tiran_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_ki_exoskeleton</texture>
+		<text>ros_tiran_bio</text>
+	</article>
+	
+   <!-- Счастливчик -->
+	<article id="ros_bio_4" name="ros_happy_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_master</texture>
+		<text>ros_happy_bio</text>
+	</article>
+	
+   <!-- Фримен -->
+	<article id="ros_bio_5" name="ros_freeman_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_green_stalker_7</texture>
+		<text>ros_freeman_bio</text>
+	</article>
+	
+   <!-- Шуруп -->
+	<article id="mil_bio_1" name="mil_Svoboda_engineer_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_rukzak_3</texture>
+		<text>mil_Svoboda_engineer_bio</text>
+	</article>
+	
+   <!-- Павлик -->
+	<article id="mil_bio_2" name="mil_Svoboda_stukach_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_rukzak_1</texture>
+		<text>mil_Svoboda_stukach_bio</text>
+	</article>
+	
+   <!-- Лукаш -->
+	<article id="mil_bio_3" name="mil_Svoboda_leader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_leader</texture>
+		<text>mil_Svoboda_leader_bio</text>
+	</article>
+	
+   <!-- Скряга -->
+	<article id="mil_bio_4" name="mil_Svoboda_trader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_balon_1</texture>
+		<text>mil_Svoboda_trader_bio</text>
+	</article>
+	
+   <!-- Макс -->
+	<article id="mil_bio_5" name="mil_Svoboda_master_Max_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_max</texture>
+		<text>mil_Svoboda_master_Max_bio</text>
+	</article>
+	
+   <!-- Повар -->
+	<article id="mil_bio_6" name="mil_Svoboda_cook_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_cook</texture>
+		<text>mil_Svoboda_cook_bio</text>
+	</article>
+	
+   <!-- Кеп -->
+	<article id="mil_bio_7" name="mil_Svoboda_blockpost_leader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_balon_10</texture>
+		<text>mil_Svoboda_blockpost_leader_bio</text>
+	</article>
+	
+   <!-- Угрюмый -->
+	<article id="mil_bio_8" name="mil_Svoboda_master_Ugrumiy_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_nauchniy</texture>
+		<text>mil_Svoboda_master_Ugrumiy_bio</text>
+	</article>
+	
+   <!-- Колян -->
+	<article id="mil_bio_9" name="mil_Svoboda_Kolyan_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_rukzak_2</texture>
+		<text>mil_Svoboda_specnaz_bio</text>
+	</article>
+	
+   <!-- Толян -->
+	<article id="mil_bio_10" name="mil_Svoboda_Tolyan_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_rukzak_2</texture>
+		<text>mil_Svoboda_specnaz_bio</text>
+	</article>
+	
+   <!-- Череп -->
+	<article id="mil_bio_11" name="mil_Dolg_specnaz_cherep_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_exoskeleton</texture>
+		<text>mil_Dolg_specnaz_cherep_bio</text>
+	</article>
+	
+   <!-- Ара -->
+	<article id="mil_bio_12" name="mil_Killer_informator_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_ki_informator</texture>
+		<text>mil_Killer_informator_bio</text>
+	</article>
+	
+   <!-- Сумашедший -->
+	<article id="mil_bio_13" name="mil_Svoboda_zombi_stalker_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_zombie5</texture>
+		<!--text>mil_Svoboda_zombi_stalker_bio</text-->
+		<text>mil_crazy</text>
+	</article>
+	
+   <!-- Сахаров -->
+	<article id="yan_bio_1" name="yan_saharov_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_ucheniy_2</texture>
+		<text>yan_saharov_bio</text>
+	</article>
+	
+   <!-- Семёнов -->
+	<article id="yan_bio_2" name="yan_semenov_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_ecolog</texture>
+		<text>yan_semenov_bio</text>
+	</article>
+	
+   <!-- Васильев -->
+	<article id="yan_bio_3" name="yan_vasilyev_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_ecolog</texture>
+		<text>yan_semenov_bio</text>
+	</article>
+	
+   <!-- Призрак -->
+	<article id="x16_bio_1" name="yan_ghost_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_prizrak</texture>
+		<text>sim_stalker_veteran_bio</text>
+	</article>
+	
+   <!-- Олег Гусаров -->
+	<article id="sim_bio_1" name="sim_stalker_veteran_gusarov_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_hood_9</texture>
+		<text>sim_stalker_veteran_gusarov_bio</text>
+	</article>
+	
+   <!-- Леший -->
+	<article id="sim_bio_2" name="sim_Svoboda_specnaz_leshii_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_hood_9</texture>
+		<text>sim_Svoboda_specnaz_leshii_bio</text>
+	</article>
+	
+   <!-- Чучело -->
+	<article id="sim_bio_3" name="sim_stalker_master_chuchelo_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_exoskeleton</texture>
+		<text>sim_stalker_master_chuchelo_bio</text>
+	</article>
+	
+   <!-- Упырь -->
+	<article id="sim_bio_4" name="sim_stalker_general_upir_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_hood_uzor</texture>
+		<text>sim_stalker_general_upir_bio</text>
+	</article>
+	
+   <!-- Отец Диадор -->
+	<article id="sim_bio_5" name="sim_stalker_master_diador_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_exoskeleton</texture>
+		<text>sim_stalker_master_diador_bio</text>
+	</article>
+	
+   <!-- Зоб -->
+	<article id="sim_bio_6" name="sim_ecolog_zob_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_ecolog</texture>
+		<text>sim_ecolog_zob_bio</text>
+	</article>
+	
+   <!-- Неумеха -->
+	<article id="sim_bio_7" name="sim_stalker_novice_neumeha_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_green_stalker_2</texture>
+		<text>sim_stalker_novice_neumeha_bio</text>
+	</article>
+	
+   <!-- Кочерга -->
+	<article id="sim_bio_8" name="sim_bandit_master_kocherga_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_master</texture>
+		<text>sim_bandit_master_kocherga_bio</text>
+	</article>
+	
+   <!-- Барин -->
+	<article id="sim_bio_9" name="sim_dolg_veteran_barin_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_antigas</texture>
+		<text>sim_dolg_veteran_barin_bio</text>
+	</article>
+	
+   <!-- Воробей -->
+	<article id="sim_bio_10" name="sim_stalker_veteran_vorobey_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_hood_9</texture>
+		<text>sim_stalker_veteran_vorobey_bio</text>
+	</article>
+	
+   <!-- Мастер -->
+	<article id="sim_bio_11" name="sim_stalker_master_master_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_exoskeleton</texture>
+		<text>sim_stalker_master_master_bio</text>
+	</article>
+	
+   <!-- Прапор -->
+	<article id="sim_bio_12" name="sim_dolg_veteran_prapor_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_do_antigas</texture>
+		<text>sim_dolg_veteran_prapor_bio</text>
+	</article>
+	
+   <!-- Прут -->
+	<article id="sim_bio_13" name="sim_svoboda_specnaz_prut_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_sv_hood_9</texture>
+		<text>sim_svoboda_specnaz_prut_bio</text>
+	</article>
+	
+   <!-- Умник -->
+	<article id="sim_bio_14" name="sim_stalker_veteran_umnik_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_hood_9</texture>
+		<text>sim_stalker_veteran_umnik_bio</text>
+	</article>
+	
+   <!-- Фраер -->
+	<article id="sim_bio_15" name="sim_bandit_master_fraer_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_master</texture>
+		<text>sim_bandit_master_fraer_bio</text>
+	</article>
+	
+   <!-- Полкан -->
+	<article id="sim_bio_16" name="sim_stalker_master_polkan_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_exoskeleton</texture>
+		<text>sim_stalker_master_polkan_bio</text>
+	</article>
+	
+	<!-- Лёха Челюсть -->
+	<article id="rad_bio_1" name="stalker_rad_jaw_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_exoskeleton</texture>
+		<text>stalker_rad_jaw_bio</text>
+	</article>
+	
+	<!-- Харон -->
+	<article id="pri_bio_1" name="pri_monolith_leader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_mo_exo</texture>
+		<text>pri_monolith_leader_bio</text>
+	</article>
+	
+	<!-- Саша Белый -->
+	<article id="pri_bio_2" name="pri_followers_bomber_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_exoskeleton</texture>
+		<text>sim_stalker_master_bio</text>
+	</article>
+	
+	<!-- Василий Петрович -->
+	<article id="cit_bio_1" name="cit_vp_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_neytral_rukzak_2</texture>
+		<text>cit_vp_bio</text>
+	</article>
+	
+	<!-- Душман -->
+	<article id="cit_bio_2" name="cit_killers_leader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_ki_exoskeleton</texture>
+		<text>cit_killers_leader_bio</text>
+	</article>
+	
+	<!-- Борзый -->
+	<article id="cit_bio_3" name="cit_bandits_leader_name" article_type="journal" group="Bio">
+		<texture>ui_npc_u_stalker_bandit_master</texture>
+		<text>cit_bandits_leader_bio</text>
+	</article>
+	
+	

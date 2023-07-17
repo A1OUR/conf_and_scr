@@ -1,0 +1,25 @@
+[logic@val_x18_exit_base_kamp2]
+active = kamp@val_x18_exit_base_2
+combat_ignore = combat_ignore@val_monolith_base_kamp2
+on_hit = hit@monolith_kamp2
+on_death = death@monolith_kamp2
+
+[kamp@val_x18_exit_base_2]
+center_point  = camp_center
+path_walk = camp_center_task
+soundgroup = val_x18_exit_base
+meet = no_meet
+combat_ignore_cond = {-val_monolith_actor_detected -val_monolith_actor_learned =actor_wears_bandit_outfit =fighting_actor}
+danger = danger_condition@val_x18_exit_base_kamp2
+
+[combat_ignore@val_monolith_base_kamp2]
+combat_ignore_cond = {-val_monolith_actor_detected -val_monolith_actor_learned =actor_wears_bandit_outfit =fighting_actor}
+
+[danger_condition@val_x18_exit_base_kamp2]
+ignore_distance = 35
+
+[hit@monolith_kamp2]
+on_info = {=hit_by_actor} %+val_monolith_actor_learned%
+
+[death@monolith_kamp2]
+on_info = {=killed_by_actor} %+val_monolith_actor_learned%

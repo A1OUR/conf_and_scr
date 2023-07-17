@@ -1,0 +1,23 @@
+----------------------------------------------------------------------------------------------------
+-- Gaz zone
+----------------------------------------------------------------------------------------------------
+local gas_danger = 0
+
+function in_gas()
+	local gg = db.actor
+	if gg:item_in_slot(6) ~= nil then
+		if gg:item_in_slot(6):section() ~= "ecolog_outfit" then
+			gg:kill(gg)
+		end
+	else
+		gg:kill(gg)
+	end
+	gas_danger = 1
+end
+
+function out_gas()
+	gas_danger = 0
+end
+
+
+	

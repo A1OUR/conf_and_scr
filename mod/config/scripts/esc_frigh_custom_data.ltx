@@ -1,0 +1,44 @@
+;Испуганный сталкер (Р.М.А.):
+[logic]
+active = walker1
+combat_ignore = combat_ignore
+on_hit = hit
+on_death = death
+on_combat = combat
+
+;Стоим, ждём...
+[walker1]
+path_walk = esc_frigh_walk
+path_look = esc_frigh_look
+on_actor_dist_le_nvis = 25| walker2 %+esc_spawn_boar_strong =anim_clear%
+meet = no_meet
+on_info = {=see_actor} walker2 %+esc_spawn_boar_strong =anim_clear%
+on_hit = hit
+on_death = death
+on_combat = combat
+show_spot = false
+danger = danger_condition
+combat_ignore_cond = always
+
+;Бежим в панике, орём...
+[walker2]
+path_walk = esc_frigh_walk_run
+path_look = esc_frigh_look_run
+on_signal = run_end| nil %=hit_npc(esc_frigh_walk_run:bip01_spine1:1000:150)%
+meet = no_meet
+combat_ignore_cond = always
+
+[hit]
+on_info = walker2 %+esc_spawn_boar_strong =anim_clear%
+
+[death]
+on_info = nil
+
+[combat]
+on_info = walker2 %+esc_spawn_boar_strong =anim_clear%
+
+[danger_condition]
+ignore_distance = 0
+
+[combat_ignore] 
+combat_ignore_cond = always

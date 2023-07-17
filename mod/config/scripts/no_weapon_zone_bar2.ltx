@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {=actor_has_weapon =actor_in_zone(bar_no_weapon_zone_2) =actor_in_zone(l05_bar_no_weapon)} %=zone_aktiv% sr_no_weapon 
+[sr_no_weapon]
+on_info = {!actor_in_zone(l05_bar_no_weapon) !actor_in_zone(uberi_pushku_restr) !actor_in_zone(bar_hide_weapon_zone)} %=zone_disabl% sr_idle
+
+
+

@@ -1,0 +1,22 @@
+[logic]
+active = walker
+combat_ignore = combat_ignore
+
+[walker]
+path_walk = rad_stalker_sv_rpg_way1
+path_look = rad_stalker_sv_rpg_look1
+danger = danger_condition
+combat_ignore_cond = always
+on_actor_dist_le_nvis = 30 | camper
+
+[camper]
+path_walk = rad_stalker_sv_rpg_way1
+path_look = rad_stalker_sv_rpg_fire_look1
+danger = danger_condition
+combat_ignore_cond = always
+def_state_moving = assault
+on_info = {+rad_btr_death} nil
+radius = 10
+
+[danger_condition]
+ignore_distance = 5

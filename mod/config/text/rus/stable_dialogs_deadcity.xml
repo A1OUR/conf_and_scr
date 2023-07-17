@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="cit_doctor_escape_dialog_0">
+		<text>Мне нужны ответы на некоторые вопросы.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_1">
+		<text>Спрашивай, постараюсь ответить.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_11">
+		<text>Где мои вещи?</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_111">
+		<text>Всё отобранное барахло лидер обычно складывает у себя. Его комната на верхнем этаже. По крайней мере, туда мои вещи отнесли, когда поймали.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_1111">
+		<text>Спасибо!</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_12">
+		<text>Как отсюда можно выбраться?</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_121">
+		<text>Пока меня вели, я заметил канализационный люк под лестницей на первом этаже...\nЕсли б удалось открыть решётку камеры, то через этот ход можно было бы смотаться отсюда... \nА уходить лучше на восток, там по тоннелю можно к Свободе выбраться.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_1211">
+		<text>Неплохо... Стоит попробовать. Спасибо за информацию!</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_1212">
+		<text>Неплохо... Только вот со Свободой у меня нелады. Есть ли другой выход?</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_12121">
+		<text>Есть ещё выход на Янтарь в южной стороне. Но тогда придётся пройти через весь город.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_121211">
+		<text>Спасибо за информацию.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_14">
+		<text>Кто нас захватил в плен?</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_141">
+		<text>Мы попали к наёмникам. Кто они - достоверно неизвестно никому, но ходят слухи, что они сотрудничают с иностранными спецслужбами. Расположение этой базы - большой секрет, никто не знает, как пробраться в мёртвый город. Этим секретом очень многие интересуются, особенно Свобода и Долг.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_1411">
+		<text>Продолжай.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_14111">
+		<text>Если добудешь карту мёртвого города, то штурм этого гадюшника не за горами. Скорее всего, она есть, или у наёмников, или у бандитов. Ты мог бы попробовать её найти.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_141111">
+		<text>Хорошо, я попробую найти карту.</text>
+	</string>
+	<!--string id="cit_doctor_escape_dialog_1411111">
+		<text>Василий Петрович - молодой парнишка, бывший журналист. В зоне уже второй год, так что опыта у него хоть отбавляй. Он согласился проводить меня через Мёртвый город, когда я отправился на ваши поиски. В городе мы наткнулись на засаду наёмников. Меня-то они сразу схватили, а вот он похоже сумел отстреляться. В любом случае, его поиски нужно начинать с того места, где это произошло, я тебе отметил на карте.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_14111111">
+		<text>Хорошо, спасибо за информацию.</text>
+	</string-->
+	<string id="cit_doctor_escape_dialog_141112">
+        <text>Меня это не интересует.</text>
+    </string>
+	<string id="cit_doctor_escape_dialog_15">
+		<text>Что ты знаешь об этом месте?</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_151">
+		<text>Город поделён на две части. Там, где мы сидим - территория наёмников, южнее за площадью территория бандитов. Их база в здании школы в юго-восточной части города. Между базами - развалины пятиэтажки. Рядом - несколько пятиэтажек, относительно целых. В случае чего можно там отсидеться. Вокруг гаражи и пара мелких приусадебных домиков. На половине бандитов тоже пара пятиэтажек и с десяток гаражей. На другой стороне площади - здание бывшего горсовета.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_1511">
+		<text>Ясно, спасибо за информацию.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_16">
+		<text>Кто всем этим заправляет?</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_161">
+		<text>Пренеприятнейший тип. Душманом зовут. Заметил пару раз у него в руках какую-то папку с документами. Думаю в них должно быть кой чего интересного.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_1611">
+		<text>Спасибо. Буду иметь в виду.</text>
+	</string>
+	<string id="cit_doctor_escape_dialog_17">
+		<text>Нет, ничего.</text>
+	</string>
+	<string id="cit_doctor_hello_dialog_11">
+		<text>Стрелок! Расскажи, где пропадал, и что с тобой произошло в последней вылазке к центру?</text>
+	</string>
+	<string id="cit_doctor_hello_dialog_21">
+		<text>Ну что, очухался, голова в норме?</text>
+	</string>
+	<string id="cit_doctor_hello_dialog_31">
+		<text>Привет, Стрелок!</text>
+	</string>
+	<string id="cit_doctor_main_dialog_0">
+		<text>Я ничего не помню... ни что произошло, ни кто ты... ни вообще кто я. А причём тут Стрелок?!</text>
+	</string>
+	<string id="cit_doctor_main_dialog_1">
+		<text>Оо-гооо! Да брат... Сильно тебе по голове дали... Доктор я, а ты - Стрелок!!! Да мы с тобой 2 года в Зону ходили... Неужели не помнишь?</text>
+	</string>
+	<string id="cit_doctor_main_dialog_11">
+		<text>Нет, не помню... Помню себя только с того момента, как меня из "грузовика смерти" полуживого вытянули на Кордоне.</text>
+	</string>
+	<string id="cit_doctor_main_dialog_2">
+		<text>Ах, вот оно что... м-да... Ты же не шутишь, над старым другом, нет? А наших ребят помнишь? Клыка, Призрака?</text>
+	</string>
+	<string id="cit_doctor_main_dialog_21">
+		<text>Клык убит, Призрак мёртв, его труп я нашёл на Янтаре.</text>
+	</string>
+	<string id="cit_doctor_main_dialog_3">
+		<text>Клык убит?! Призрак?! Чёрт подери!!! Как это могло произойти... да они же... да они же одни из лучших... были... Ты уверен, что не ошибся?</text>
+	</string>
+	<string id="cit_doctor_main_dialog_31">
+		<text>Уверен... Чёрт... Столько всего сразу навалилось... Что думаешь обо всём этом?</text>
+	</string>
+	<string id="cit_doctor_main_dialog_4">
+		<text>Да так сразу и не скажу... Мысль одна - всё это как-то связано с последней вашей вылазкой к центру Зоны. Когда мы виделись последний раз, ты оставил мне ключ от тайника на Припяти и схему, как его найти... я сумел их сохранить... наёмники не нашли... Держи... Возможно там что-то найдёшь...\nА ещё ты бормотал постоянно, что с Монолитом какой-то подвох... Это точно... Но я так понимаю, ты и сам тогда не понимал о чём речь... Да вот, пожалуй, и всё чем могу тебе помочь...</text>
+	</string>
+	<string id="cit_doctor_main_dialog_41">
+		<text>Значит, мы знали дорогу к центру Зоны? Только я ни хрена не помню, а ты?</text>
+	</string>
+	<string id="cit_doctor_main_dialog_5">
+		<text>А я с вами последнее время уже не ходил. Старый стал уже...</text>
+	</string>
+	<string id="cit_doctor_main_dialog_51">
+		<text>Ладно - это потом... Ты не думал, как отсюда выбираться? И вообще - где мы?</text>
+	</string>
+	<string id="cit_doctor_main_dialog_6">
+		<text>Мы в мёртвом городе... В лагере наёмников...</text>
+	</string>
+	<string id="quest_cit_reward_0">
+		<text>Кстати, у меня есть информация о наемниках. Тебе это интересно?</text>
+	</string>
+	<string id="quest_cit_reward_1">
+		<text>Смотря, что это за информация.</text>
+	</string>
+	<string id="quest_cit_reward_11">
+		<text>Есть карта, на которой отмечено местоположение их базы. А также места застав, как туда скрытно пройти и много другой полезной информации.</text>
+	</string>
+	<string id="quest_cit_reward_111">
+		<text>Согласен, эта информация представляет ценность, в размере пяти тысяч.</text>
+	</string>
+	<string id="quest_cit_reward_1111">
+		<text>Подходит. Держи.</text>
+	</string>
+	<string id="quest_cit_reward_11111">
+		<text>Отлично. А вот и твоя награда.\nСкоро сталкеры будут долго спорить, была ли такая группировка как Наёмники или это очередная легенда Зоны.</text>
+	</string>
+	<string id="quest_cit_reward_1112">
+		<text>Нет, это слишком мало.</text>
+	</string>
+	<string id="quest_cit_reward_11121">
+		<text>Ну как хочешь, а больше я всё равно не дам.</text>
+	</string>
+	<string id="quest_cit_reward_12">
+		<text>Есть документы наёмников. Я взял их у Душмана.</text>
+	</string>
+	<string id="quest_cit_reward_121">
+		<text>Эта информация представляет ценность, в размере трёх тысяч.</text>
+	</string>
+	<string id="quest_cit_reward_1211">
+		<text>По рукам. Держи.</text>
+	</string>
+	<string id="quest_cit_reward_12111">
+		<text>Отлично. А вот и твоя награда.</text>
+	</string>
+	<string id="quest_cit_reward_1212">
+		<text>Нет, это слишком мало.</text>
+	</string>
+	<string id="quest_cit_reward_12121">
+		<text>Ну как хочешь, а больше я всё равно не дам.</text>
+	</string>
+	<string id="quest_cit_reward_13">
+		<text>Да нет, извини, ничего стоящего. Обычные сплетни.</text>
+	</string>
+	<string id="quest_cit_reward_131">
+		<text>Если что-то накопаешь конкретное, приходи, я заплачу.</text>
+	</string>
+	<string id="quest_cit_reward_14">
+		<text>Есть КПК лидера наёмников.</text>
+	</string>
+	<string id="quest_cit_reward_141">
+		<text>КПК представляет ценность, в размере двух тысяч.</text>
+	</string>
+	<string id="quest_cit_reward_1411">
+		<text>По рукам. Держи.</text>
+	</string>
+	<string id="quest_cit_reward_14111">
+		<text>Отлично. А вот и твоя награда.</text>
+	</string>
+	<string id="quest_cit_reward_1412">
+		<text>Нет, это слишком мало.</text>
+	</string>
+	<string id="quest_cit_reward_14121">
+		<text>Ну как хочешь, а больше я всё равно не дам.</text>
+	</string>
+	<string id="cit_hunter_killer_start_dialog_0">
+        <text>Привет, сталкер! Для тебя есть плохая новость. Это наша территория и ты пойдёшь с нами.</text>
+    </string>
+    <string id="cit_hunter_killer_start_dialog_1">
+        <text>Ну ладно. Ведите.</text>
+    </string>
+    <string id="cit_hunter_killer_start_dialog_2">
+        <text>Не дорос ты ещё, щенок, чтобы мне угрожать.</text>
+    </string>
+	<string id="cit_vp_start_dialog_11">
+        <text>А, это ты, Стрелок! Здорово. Давненько я тебя не видел.</text>
+    </string>
+	<string id="cit_vp_start_dialog_21">
+        <text>Привет.</text>
+    </string>
+	<string id="cit_vp_start_dialog_22">
+        <text>Что на этот раз?</text>
+    </string>
+	<string id="cit_vp_pda_dialog_0">
+        <text>Возьми. Кажется, это твой КПК.</text>
+    </string>
+	<string id="cit_vp_pda_dialog_1">
+        <text>Да, мой, спасибо. Держи, это тебе от меня.</text>
+    </string>
+</string_table>

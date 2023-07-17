@@ -1,0 +1,61 @@
+<ui_texture>
+
+     <file_name>ui\CP_rookies_2</file_name>
+
+    <texture id="icon_green_stalker_34" x="0" y="0" width="165" height="108" />
+    <texture id="icon_green_stalker_35" x="165" y="0" width="165" height="108" />
+    <texture id="icon_green_stalker_36" x="825" y="108" width="165" height="108" />
+    <texture id="icon_green_stalker_37" x="330" y="0" width="165" height="108" />
+    <texture id="icon_green_stalker_38" x="495" y="0" width="165" height="108" />
+    <texture id="icon_green_stalker_39" x="660" y="0" width="165" height="108" />
+    <texture id="icon_green_stalker_40" x="825" y="0" width="165" height="108" />
+    <texture id="icon_green_stalker_41" x="0" y="108" width="165" height="108" />
+    <texture id="icon_green_stalker_42" x="165" y="108" width="165" height="108" />
+    <texture id="icon_green_stalker_43" x="330" y="108" width="165" height="108" />
+    <texture id="icon_green_stalker_44" x="495" y="108" width="165" height="108" />
+    <texture id="icon_green_stalker_45" x="660" y="108" width="165" height="108" />
+    <texture id="icon_green_stalker_13" x="0" y="432" width="165" height="108" />
+
+    <texture id="icon_stalker_balon_13" x="0" y="216" width="165" height="108" />
+    <texture id="icon_stalker_balon_14" x="165" y="216" width="165" height="108" />
+    <texture id="icon_stalker_balon_15" x="330" y="216" width="165" height="108" />
+    <texture id="icon_stalker_balon_16" x="495" y="216" width="165" height="108" />
+    <texture id="icon_stalker_balon_17" x="660" y="216" width="165" height="108" />
+    <texture id="icon_stalker_ochki_3" x="825" y="216" width="165" height="108" />
+    <texture id="icon_stalker_ochki_4" x="0" y="324" width="165" height="108" />
+    <texture id="icon_stalker_rukzak_9" x="165" y="324" width="165" height="108" />
+    <texture id="icon_stalker_rukzak_10" x="330" y="324" width="165" height="108" />
+    <texture id="icon_stalker_usi_2" x="495" y="324" width="165" height="108" />
+
+    <texture id="icon_bandit_18" x="0" y="540" width="165" height="108" />
+    <texture id="icon_bandit_19" x="165" y="540" width="165" height="108" />
+    <texture id="icon_bandit_20" x="330" y="540" width="165" height="108" />
+    <texture id="icon_bandit_21" x="495" y="540" width="165" height="108" />
+    <texture id="icon_bandit_22" x="660" y="540" width="165" height="108" />
+    <texture id="icon_bandit_23" x="825" y="540" width="165" height="108" />
+    <texture id="icon_bandit_24" x="0" y="648" width="165" height="108" />
+    <texture id="icon_bandit_25" x="165" y="648" width="165" height="108" />
+    <texture id="icon_bandit_26" x="330" y="648" width="165" height="108" />
+    <texture id="icon_bandit_27" x="495" y="648" width="165" height="108" />
+    <texture id="icon_bandit_28" x="660" y="648" width="165" height="108" />
+    <texture id="icon_bandit_29" x="825" y="648" width="165" height="108" />
+    <texture id="icon_bandit_tolstyak_3" x="0" y="756" width="165" height="108" />
+    <texture id="icon_bandit_tolstyak_4" x="165" y="756" width="165" height="108" />
+
+    <texture id="icon_bandit_veteran_2" x="330" y="756" width="165" height="108" />
+    <texture id="icon_bandit_veteran_1" x="495" y="756" width="165" height="108" />
+    <texture id="icon_bandit_veteran_3" x="660" y="756" width="165" height="108" />
+    <texture id="icon_bandit_veteran_4" x="825" y="756" width="165" height="108" />
+    <texture id="icon_bandit_veteran_5" x="0" y="864" width="165" height="108" />
+    <texture id="icon_bandit_veteran_6" x="165" y="864" width="165" height="108" />
+    <texture id="icon_bandit_veteran_7" x="330" y="864" width="165" height="108" />
+    <texture id="icon_bandit_veteran_8" x="495" y="864" width="165" height="108" />
+
+    <texture id="icon_bandit_master_2" x="660" y="864" width="165" height="108" />
+    <texture id="icon_bandit_master_3" x="165" y="432" width="165" height="108" />
+    <texture id="icon_bandit_master_4" x="330" y="432" width="165" height="108" />
+    <texture id="icon_bandit_master_5" x="495" y="432" width="165" height="108" />
+    <texture id="icon_bandit_master_6" x="660" y="432" width="165" height="108" />
+    <texture id="icon_bandit_master_7" x="825" y="432" width="165" height="108" />
+
+</ui_texture>

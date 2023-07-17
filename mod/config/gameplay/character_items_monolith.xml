@@ -1,0 +1,8 @@
+harmonica_a = 1, prob=0.15 \n
+guitar_a = 1, prob=0.25 \n
+wpn_binoc = 1, prob=1 \n
+detector_simple = 1, prob=0.12 \n
+detector_advances = 1, prob=0.08 \n
+device_torch = 1, prob=1 \n
+grenade_rgd5 = 1, prob=0.07 \n
+grenade_f1 = 1, prob=0.05 \n

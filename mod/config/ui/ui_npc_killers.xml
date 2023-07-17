@@ -1,0 +1,36 @@
+<ui_texture>
+
+     <file_name>ui\CP_killers</file_name>
+
+    <texture id="icon_killer_antigas_1" x="0" y="0" width="165" height="108" />
+    <texture id="icon_killer_exo" x="165" y="0" width="165" height="108" />
+    <texture id="icon_killer_head_1" x="330" y="0" width="165" height="108" />
+    <texture id="icon_killer_head_5" x="495" y="0" width="165" height="108" />
+    <texture id="icon_killer_mask" x="660" y="0" width="165" height="108" />
+    <texture id="icon_killer_nauchniy" x="825" y="0" width="165" height="108" />
+    <texture id="icon_killer_antigas_2" x="0" y="108" width="165" height="108" />
+    <texture id="icon_killer_fullmask_1" x="165" y="108" width="165" height="108" />
+    <texture id="icon_killer_fullmask_2" x="330" y="108" width="165" height="108" />
+    <texture id="icon_killer_fullmask_3" x="495" y="108" width="165" height="108" />
+    <texture id="icon_killer_mask_1" x="660" y="108" width="165" height="108" />
+    <texture id="icon_killer_mask_2" x="825" y="108" width="165" height="108" />
+    <texture id="icon_killer_mask_3" x="0" y="216" width="165" height="108" />
+    <texture id="icon_neytral_butcher_sk2" x="165" y="216" width="165" height="108" />
+    <texture id="icon_neytral_butcher_sk3" x="330" y="216" width="165" height="108" />
+    <texture id="icon_killer_head_6" x="495" y="216" width="165" height="108" />
+    <texture id="icon_killer_1" x="660" y="216" width="165" height="108" />
+    <texture id="icon_killer_2" x="825" y="216" width="165" height="108" />
+    <texture id="icon_killer_3" x="0" y="324" width="165" height="108" />
+    <texture id="icon_killer_4" x="165" y="324" width="165" height="108" />
+    <texture id="icon_killer_5" x="330" y="324" width="165" height="108" />
+    <texture id="icon_killer_6" x="495" y="324" width="165" height="108" />
+    <texture id="icon_killer_7" x="660" y="324" width="165" height="108" />
+    <texture id="icon_killer_head_7" x="825" y="324" width="165" height="108" />
+    <texture id="icon_killer_8" x="0" y="432" width="165" height="108" />
+    <texture id="icon_killer_9" x="165" y="432" width="165" height="108" />
+    <texture id="icon_killer_10" x="330" y="432" width="165" height="108" />
+    <texture id="icon_killer_fullmask_4" x="495" y="432" width="165" height="108" />
+    <texture id="icon_killer_mask_4" x="660" y="432" width="165" height="108" />
+    <texture id="icon_killer_mask_5" x="825" y="432" width="165" height="108" />
+
+</ui_texture>

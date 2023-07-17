@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding="windows-1251"?>
+<game_information_portions>
+
+	<info_portion id="war_final_task_start">
+		<task>warlab_final_task</task>
+	</info_portion>
+	<info_portion id="war_final_task_key1_have"></info_portion>
+	<info_portion id="war_final_task_key2_have"></info_portion>
+	<info_portion id="war_final_task_key3_have"></info_portion>
+	<info_portion id="war_final_task_notebook_have"></info_portion>
+	<info_portion id="war_final_task_all_keys_have"></info_portion>
+	<info_portion id="war_final_task_done"></info_portion>
+	
+	<info_portion id="war_zombies_spawn"></info_portion>
+
+</game_information_portions>

@@ -1,0 +1,268 @@
+function proceed()
+    local actor = db.actor
+	
+	if has_alife_info("tutorial_artefact_start") and
+		not has_alife_info("tutorial_artefact_gain") and 
+		actor:object("af_blood_tutorial") ~= nil 
+	then		
+		actor:give_info_portion("tutorial_artefact_gain")
+	end 
+	
+	if not has_alife_info("esc_path_to_lager") and
+		  (has_alife_info("agroprom_military_case_have") or has_alife_info("esc_kill_bandits_quest_done")) 
+	then		
+		actor:give_info_portion("esc_path_to_lager")
+	end 
+	
+	if has_alife_info("tutorial_artefact_start") and not has_alife_info("esc_heli_go")then
+		if has_alife_info("tutorial_flesh_die") or
+		   has_alife_info("tips_esc_trader_about_anomalies") or has_alife_info("tutorial_artefact_gain")
+		then
+			actor:give_info_portion("esc_heli_go")
+		end	
+	end
+
+--Сообщения торговца (Р.М.А.):
+	if has_alife_info("tutorial_wounded_help") and not has_alife_info("esc_trader_sent_msg") then
+		if not has_alife_info("tutorial_wounded_die") or 
+		   not has_alife_info("tutorial_wounded_death") then
+		   news_manager.send_tip(db.actor, "escape_stalker_helped", 1, "trader", 8000, nil)
+		   actor:give_info_portion("esc_trader_sent_msg")
+		   news_manager.send_tip(actor, "tutorial_trader_search_corpses", 12, "trader", 4000)
+		end
+	end
+
+	if has_alife_info("tutorial_wounded_death") and not has_alife_info("esc_trader_sent_msg") then
+		if not (has_alife_info("tutorial_wounded_help") or 
+				has_alife_info("tutorial_wounded_die")) and
+		   not (has_alife_info("esc_wounded_arrive") or 
+				has_alife_info("escape_stalker_meet")) then
+				news_manager.send_tip(db.actor, "escape_stalker_death", 1, "trader", 10000, nil)
+				actor:give_info_portion("esc_trader_sent_msg")
+				news_manager.send_tip(actor, "tutorial_trader_search_corpses", 14, "trader", 4000)
+		end
+	end
+
+	if has_alife_info("tutorial_wounded_die") and not has_alife_info("esc_trader_sent_msg_kld") then
+		if not (has_alife_info("esc_wounded_arrive") or 
+				has_alife_info("escape_stalker_meet")) then
+				news_manager.send_tip(db.actor, "escape_stalker_killed", 1, "trader", 11000, nil)
+				actor:give_info_portion("esc_trader_sent_msg_kld")
+		end
+	end
+--Конец (Сообщения торговца).
+
+--Пропуск в лагерь новичков(Р.М.А.):
+	if not has_alife_info("esc_act_has_novice_access") and 
+		  (has_alife_info("tutorial_wounded_help") and has_alife_info("esc_wounded_arrive")) or 
+	  (not has_alife_info("tutorial_wounded_die") and 
+		   has_alife_info("tutorial_wounded_end") and has_alife_info("esc_trader_actor_normal_man"))
+	then
+		actor:give_info_portion("esc_act_has_novice_access")
+	end
+
+--Миссия с раненым провалена:
+	if not has_alife_info("tutorial_wounded_fail") and not has_alife_info("tutorial_wounded_help")then
+		if has_alife_info("tutorial_wounded_die") or
+		   has_alife_info("tutorial_wounded_death")
+		then
+			actor:give_info_portion("tutorial_wounded_fail")
+		end	
+	end
+
+--Завершение миссии с раненым(Р.М.А.):
+	if has_alife_info("tutorial_wounded_start") and not has_alife_info("tutorial_wounded_end") then
+		if has_alife_info("tutorial_wounded_fail") or
+		   has_alife_info("tutorial_wounded_help")
+		then
+			actor:give_info_portion("tutorial_wounded_end")
+		end	
+	end
+
+	if (has_alife_info("escape_dynamite_start") or has_alife_info("esc_trader_dynamite_start")) and
+		not has_alife_info("escape_dynamite_gain") and not has_alife_info("esc_trader_dynamite_gain") and 
+		actor:object("dynamite") ~= nil 
+	then
+		if has_alife_info("escape_dynamite_start") then
+			actor:give_info_portion("escape_dynamite_gain")
+		elseif has_alife_info("esc_trader_dynamite_start") then
+			actor:give_info_portion("esc_trader_dynamite_gain")
+		end
+	end
+
+	if has_alife_info("escape_stalker_meet") and not has_alife_info("escape_stalker_first_section")then
+		if has_alife_info("escape_fox_heal") or
+		   has_alife_info("esc_dogs_return")
+		then
+			actor:give_info_portion("escape_stalker_first_section")
+		end	
+	end
+
+--Выдача сообщения про Крота от Серого:
+	if has_alife_info("garbage_meetstalker_die") and
+		has_alife_info("escape_stalker_give") and has_alife_info("agr_can_ask_krot_about_gunslinger") and
+		not has_alife_info("agr_krot_band_start")
+	then
+		actor:give_info_portion("agr_krot_band_start")
+		news_manager.send_tip(db.actor, "gar_seryi_info", 0, "seryi", 10000)
+	end
+
+	if has_alife_info("escape_stalker_meet") and not has_alife_info("escape_stalker_flash_has") and
+	   actor:object("esc_wounded_flash") ~= nil
+	then
+		actor:give_info_portion("escape_stalker_flash_has")
+	end
+
+
+--' Туториальный труп
+	if has_alife_info("escape_blockpost_case") and
+	   not has_alife_info("escape_blockpost_case_have") and 
+	   actor:object("quest_case_01") ~= nil
+	then
+		actor:give_info_portion("escape_blockpost_case_have")
+	end       	
+	
+	if has_alife_info("escape_stalker_meet") and
+		not has_alife_info("escape_stalker_done") and
+		actor:object("fox_flash") ~= nil
+	then
+		actor:give_info_portion("escape_stalker_done")
+		actor:give_info_portion("garbage_meetstalker_start")
+	end
+
+	if has_alife_info("escape_blockpost_case") and
+		not has_alife_info("escape_blockpost_case_have") and
+		actor:object("quest_case_01") ~= nil
+	then
+		actor:give_info_portion("escape_blockpost_case_have")
+	end
+	
+	if has_alife_info("esc_kill_bandits_quest_done") and
+	   not has_alife_info("esc_petruha_great")
+	then
+		actor:give_info_portion("esc_petruha_great")
+	end
+end
+
+function task_lager_complete()
+	if has_alife_info("escape_lager_help") and
+		has_alife_info("escape_lager_killers_die") and
+	   (has_alife_info("esc_fanat_die") or
+	   has_alife_info("escape_lager_complete"))
+	then
+		return true
+	else
+		return false
+	end
+end	
+
+function kill_tutorial_bandits()
+	if has_alife_info("esc_first_novice_dead") and
+		has_alife_info("esc_second_novice_dead")
+	then
+		return true
+	else
+		return false
+	end
+end
+
+function task_volk_fail()
+	if has_alife_info("esc_wolf_dead")
+	then
+		return true
+	else
+		return false
+	end
+end	
+
+function petruha_talk()
+	if has_alife_info("escape_factory_assault_say_hello") or
+		has_alife_info("esc_petruha_great")
+	then
+		return true
+	else
+		return false
+	end
+end
+
+function is_actor_enemy_lager ()
+    local gulag = xr_gulag.get_gulag_by_name ("esc_lager")
+    if has_alife_info("esc_fanat_die") then return true end
+	if gulag == nil or gulag:npc_is_enemy_to_anybody (db.actor) == false then
+       return false
+    end    
+    return true
+end
+
+function wolf_message()
+	if not has_alife_info("esc_wolf_send_msd") and not has_alife_info("esc_actor_killed_smn_lager") and 
+	   not has_alife_info("esc_wolf_dead") and 
+		 ((has_alife_info("tutorial_wounded_help") and has_alife_info("esc_wounded_arrive")) or 
+	  (not has_alife_info("tutorial_wounded_die") and has_alife_info("tutorial_wounded_end") and 
+		   has_alife_info("esc_trader_actor_normal_man")))
+	then
+		local wolf = level_object_by_sid(6)
+		local d = 100
+		if wolf and wolf:position():distance_to_sqr(db.actor:position()) <= d * d then
+			db.actor:give_info_portion("esc_wolf_send_msd")
+			news_manager.send_tip(db.actor, "esc_wolf_thanks", 1, "wolf", 5000)
+			if wolf and wolf:relation(db.actor) == game_object.enemy then
+				xr_effects.esc_lager_forgive_actor(actor, npc)
+			end
+		end
+	end
+end
+
+function esc_lager_forgive()
+	if not has_alife_info("escape_lager_forgive_actor") and not has_alife_info("tutorial_wounded_die") and 
+	   not has_alife_info("esc_actor_killed_smn_lager") and 
+		  (has_alife_info("tutorial_wounded_help") or has_alife_info("esc_trader_actor_normal_man"))
+	then
+		local wolf = level_object_by_sid(6)
+		if wolf and wolf:relation(db.actor) == game_object.enemy then
+			xr_effects.esc_lager_forgive_actor(actor, npc)
+		end
+		db.actor:give_info_portion("escape_lager_forgive_actor")
+	end
+end
+
+function process_info_portion(info_id)
+
+	--' пометки на карте
+	
+	if info_id == "esc_tutorial_secret_place" then
+		level_tasks.add_location(025, "green_location", "tutorial_secret_place1")
+		
+	elseif info_id == "esc_tutorial_secret_place_found" then
+		level_tasks.remove_location(025, "green_location")
+		
+	elseif info_id == "esc_kolyan_lost" then
+		level_tasks.add_location(028, "crlc_big", "esc_mill")
+		
+	elseif info_id == "esc_kolyan_found" then
+		level_tasks.remove_location(028, "crlc_big")
+		
+	elseif info_id == "esc_bridge_soldiers" then
+		level_tasks.add_location(031, "crlc_big", "soldiers_bridge")
+		
+	elseif info_id == "esc_tutorial_secret" then
+		level_tasks.add_location(026, "crlc_small", "tutorial_secret")
+
+	elseif info_id == "esc_tutorial_secret_find" then
+		level_tasks.remove_location(026, "crlc_small")
+		
+	elseif info_id == "esc_shustryi_secret" then
+		level_tasks.add_location(027, "crlc_small", "tutorial_secret_shustryi")
+
+	elseif info_id == "esc_shustryi_secret_find" then
+		level_tasks.remove_location(027, "crlc_small")
+		
+	elseif info_id == "esc_trader_deathtruck_msg" then
+		level_tasks.add_location(5018, "crlc_small", "deathtruck_metka")
+		
+	elseif info_id == "escape_blockpost_case_done" then
+		level_tasks.remove_location(5018, "crlc_small")
+		
+	return false
+	end
+end

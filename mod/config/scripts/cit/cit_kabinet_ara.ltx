@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_actor_inside = sr_idle2
+
+[sr_idle2]
+on_timer = 5000 | sr_sound
+
+[sr_sound]
+snd = characters_voice\scenario\cit\actor_escape1
+position = cit_actor_weapon_sound_path
+slide_velocity = 4
+slide_sound_once = true
+on_signal = sound_end | nil

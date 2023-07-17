@@ -1,0 +1,173 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(0,0,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_eat_menu.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- кнопки
+	self:Register(xml:Init3tButton("btn_bread_a", self),"btn_bread_a") 
+        self:Register(xml:Init3tButton("btn_kolbasa", self),"btn_kolbasa") 
+	self:Register(xml:Init3tButton("btn_kolbasa_a", self),"btn_kolbasa_a")
+	self:Register(xml:Init3tButton("btn_bread", self),"btn_bread") 
+	self:Register(xml:Init3tButton("btn_conserva", self),"btn_conserva") 
+	self:Register(xml:Init3tButton("btn_vodka_a", self),"btn_vodka_a")
+	self:Register(xml:Init3tButton("btn_vodka", self),"btn_vodka")
+        self:Register(xml:Init3tButton("btn_energy_drink", self),"btn_energy_drink")
+
+------------------------------------------------------------------------------------
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+-----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------- 
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+-------------------------
+	xml:InitStatic("Info", self)
+
+
+end
+
+function spawner:InitCallBacks()
+	self:AddCallback("btn_bread_a", ui_events.BUTTON_CLICKED, self.spawn_bread_a, self)
+	self:AddCallback("btn_kolbasa", ui_events.BUTTON_CLICKED, self.spawn_kolbasa, self)
+	self:AddCallback("btn_kolbasa_a", ui_events.BUTTON_CLICKED, self.spawn_kolbasa_a, self)
+	self:AddCallback("btn_bread", ui_events.BUTTON_CLICKED, self.spawn_bread, self)
+	self:AddCallback("btn_conserva", ui_events.BUTTON_CLICKED, self.spawn_conserva, self)
+	self:AddCallback("btn_vodka_a", ui_events.BUTTON_CLICKED, self.spawn_vodka_a, self)
+	self:AddCallback("btn_vodka", ui_events.BUTTON_CLICKED, self.spawn_vodka, self)
+	self:AddCallback("btn_energy_drink", ui_events.BUTTON_CLICKED, self.spawn_energy_drink, self)
+
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+-----------------------------------
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+------------------
+
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+
+function spawner:spawn_bread_a()
+	
+	self:spawn_item("bread_a", 3)
+end
+
+
+function spawner:spawn_bread()
+	
+	self:spawn_item("bread", 3)
+end
+
+
+function spawner:spawn_kolbasa_a()
+	
+	self:spawn_item("kolbasa_a", 3)
+end
+
+
+function spawner:spawn_kolbasa()
+	
+	self:spawn_item("kolbasa", 3)
+end
+
+
+function spawner:spawn_conserva()
+	
+	self:spawn_item("conserva", 3)
+end
+
+
+function spawner:spawn_vodka_a()
+	
+	self:spawn_item("vodka_a", 3)
+end
+
+
+function spawner:spawn_vodka()
+	
+	self:spawn_item("vodka", 3)
+end
+
+
+function spawner:spawn_energy_drink()
+	
+	self:spawn_item("energy_drink", 3)
+end
+
+---------------------Back------------------
+function spawner:on_back()
+-- если еще ни разу не вызывали, то обозначим наш новый скрипт
+                           if self.ui_spawnerdlg == nil then
+		self.ui_spawner_dlg = ui_spawner.spawner()
+		self.ui_spawner_dlg.owner = self
+
+
+	end
+-- останавливаем родительский элемент, запускаем свой, но родителя показываем.
+	self:GetHolder():start_stop_menu(self.ui_spawner_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end

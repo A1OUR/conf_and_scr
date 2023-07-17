@@ -1,0 +1,43 @@
+<game_task id="warlab_final_task" prio="500">
+	<title>warlab_final_task</title>
+	<objective>
+		<text>warlab_final_task_0</text>
+		<icon>ui_iconsTotal_esc_help_wounded_from_raid</icon>
+		<infoportion_complete>war_final_task_done</infoportion_complete>
+		<article>warlab_final_task_desc</article>
+	</objective>
+	<objective>
+		<text>warlab_final_task_1</text>
+		<map_location_type hint="war_take_key1_hint">green_location</map_location_type>
+		<object_story_id>war_final_task_key1</object_story_id>
+		<function_complete>warlab_tasks.has_final_door_key1</function_complete>
+		<infoportion_set_complete>war_final_task_key1_have</infoportion_set_complete>
+	</objective>
+	<objective>
+		<text>warlab_final_task_2</text>
+		<map_location_type hint="war_take_key2_hint">green_location</map_location_type>
+		<object_story_id>war_final_task_key2</object_story_id>
+		<function_complete>warlab_tasks.has_final_door_key2</function_complete>
+		<infoportion_set_complete>war_final_task_key2_have</infoportion_set_complete>
+	</objective>
+	<objective>
+		<text>warlab_final_task_3</text>
+		<map_location_type hint="war_take_key3_hint">green_location</map_location_type>
+		<object_story_id>war_final_task_key3</object_story_id>
+		<function_complete>warlab_tasks.has_final_door_key3</function_complete>
+		<infoportion_set_complete>war_final_task_key3_have</infoportion_set_complete>
+	</objective>
+	<objective>
+		<text>warlab_final_task_4</text>
+		<map_location_type hint="war_take_notebook_hint">green_location</map_location_type>
+		<object_story_id>war_final_task_notebook</object_story_id>
+		<function_complete>warlab_tasks.has_final_door_notebook</function_complete>
+		<infoportion_set_complete>war_final_task_notebook_have</infoportion_set_complete>
+	</objective>
+	<objective>
+		<text>warlab_final_task_5</text>
+		<map_location_type hint="war_open_door_hint">blue_location</map_location_type>
+		<object_story_id>war_final_door</object_story_id>
+		<infoportion_complete>war_final_task_done</infoportion_complete>
+	</objective>
+</game_task>

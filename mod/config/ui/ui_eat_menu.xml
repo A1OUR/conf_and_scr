@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<cheat>	
+	<back_video x="10" y="10" width="650" height="340" stretch="1">
+		<texture></texture>
+	</back_video>
+
+	<background x="0" y="0" width="500" height="460" stretch="1">
+		<texture x="190" y="235" width="530" height="450">ui_menu_options_dlg</texture>
+	</background>
+
+	<Info x="30" y="5" width="650" height="15" complex_mode="1">	
+			<text align="l" font="letterica18" a="255" r="216" g="188" b="140">ПИЩА</text>	
+	</Info>
+
+
+------------------------Monsters------------------------------------------------------------------------------------------------------------------
+	<btn_bread_a x="25" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Хлеб(сухой)</text>
+	</btn_bread_a>
+
+              <btn_bread x="151" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Хлеб</text>
+	</btn_bread>
+
+	<btn_kolbasa x="277" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Колбаса</text>
+	</btn_kolbasa>
+
+	<btn_kolbasa_a x="151" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Колбаса(н/с)</text>
+	</btn_kolbasa_a>
+
+	<btn_conserva x="25" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Консерва</text>
+	</btn_conserva>
+
+	<btn_vodka_a x="151" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Водка(н/с)</text>
+	</btn_vodka_a>
+
+	<btn_vodka x="277" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Водка</text>
+	</btn_vodka>
+
+	<btn_energy_drink x="25" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Напито"NON STOP"</text>
+	</btn_energy_drink>
+
+----------------------------------EXIT-------------------------------------------------------------------------------------
+	<btn_quit x="25" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ui_inv_exit</text>
+	</btn_quit>
+----------------------
+	<btn_back x="378" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Назад</text>
+	</btn_back>
+
+
+</cheat>

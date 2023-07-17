@@ -1,0 +1,309 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(0,0,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_art_menu.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- кнопки
+        self:Register(xml:Init3tButton("btn_af_vyvert", self),"btn_af_vyvert") 
+	self:Register(xml:Init3tButton("btn_af_medusa", self),"btn_af_medusa") 
+        self:Register(xml:Init3tButton("btn_af_cristall_flower", self),"btn_af_cristall_flower") 
+	self:Register(xml:Init3tButton("btn_af_night_star", self),"btn_af_night_star")
+	self:Register(xml:Init3tButton("btn_af_gravi", self),"btn_af_gravi") 
+	self:Register(xml:Init3tButton("btn_af_gold_fish", self),"btn_af_gold_fish") 
+	self:Register(xml:Init3tButton("btn_af_drops", self),"btn_af_drops")
+	self:Register(xml:Init3tButton("btn_af_fireball", self),"btn_af_fireball")
+        self:Register(xml:Init3tButton("btn_af_cristall", self),"btn_af_cristall")
+	self:Register(xml:Init3tButton("btn_af_blood", self),"btn_af_blood")
+	self:Register(xml:Init3tButton("btn_af_mincer_meat", self),"btn_af_mincer_meat")
+	self:Register(xml:Init3tButton("btn_af_soul", self),"btn_af_soul")
+	self:Register(xml:Init3tButton("btn_af_electra_sparkler", self),"btn_af_electra_sparkler")
+	self:Register(xml:Init3tButton("btn_af_electra_flash", self),"btn_af_electra_flash")
+	self:Register(xml:Init3tButton("btn_af_electra_moonlight", self),"btn_af_electra_moonlight")
+	self:Register(xml:Init3tButton("btn_af_ameba_slime", self),"btn_af_ameba_slime")
+	self:Register(xml:Init3tButton("btn_af_ameba_slug", self),"btn_af_ameba_slug")
+	self:Register(xml:Init3tButton("btn_af_ameba_mica", self),"btn_af_ameba_mica")
+	self:Register(xml:Init3tButton("btn_af_dummy_spring", self),"btn_af_dummy_spring")
+	self:Register(xml:Init3tButton("btn_af_dummy_battery", self),"btn_af_dummy_battery")
+	self:Register(xml:Init3tButton("btn_af_dummy_pellicle", self),"btn_af_dummy_pellicle")
+	self:Register(xml:Init3tButton("btn_af_dummy_glassbeads", self),"btn_af_dummy_glassbeads")
+	self:Register(xml:Init3tButton("btn_af_rusty_thorn", self),"btn_af_rusty_thorn")
+	self:Register(xml:Init3tButton("btn_af_rusty_kristall", self),"btn_af_rusty_kristall")
+	self:Register(xml:Init3tButton("btn_af_rusty_seaurchin", self),"btn_af_rusty_seaurchin")
+	self:Register(xml:Init3tButton("btn_af_fuzz_kolobok", self),"btn_af_fuzz_kolobok")
+------------------------------------------------------------------------------------
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+-------------------------
+        xml:InitStatic("Info", self)
+	
+
+end
+
+function spawner:InitCallBacks()
+	self:AddCallback("btn_af_vyvert", ui_events.BUTTON_CLICKED, self.spawn_af_vyvert, self)
+	self:AddCallback("btn_af_medusa", ui_events.BUTTON_CLICKED, self.spawn_af_medusa, self)	
+	self:AddCallback("btn_af_cristall_flower", ui_events.BUTTON_CLICKED, self.spawn_af_cristall_flower, self)
+	self:AddCallback("btn_af_night_star", ui_events.BUTTON_CLICKED, self.spawn_af_night_star, self)
+	self:AddCallback("btn_af_gravi", ui_events.BUTTON_CLICKED, self.spawn_af_gravi, self)
+	self:AddCallback("btn_af_gold_fish", ui_events.BUTTON_CLICKED, self.spawn_af_gold_fish, self)
+	self:AddCallback("btn_af_drops", ui_events.BUTTON_CLICKED, self.spawn_af_drops, self)
+	self:AddCallback("btn_af_fireball", ui_events.BUTTON_CLICKED, self.spawn_af_fireball, self)
+	self:AddCallback("btn_af_cristall", ui_events.BUTTON_CLICKED, self.spawn_af_cristall, self)
+	self:AddCallback("btn_af_blood", ui_events.BUTTON_CLICKED, self.spawn_af_blood, self)
+	self:AddCallback("btn_af_mincer_meat", ui_events.BUTTON_CLICKED, self.spawn_af_mincer_meat, self)
+	self:AddCallback("btn_af_soul", ui_events.BUTTON_CLICKED, self.spawn_af_soul, self)
+	self:AddCallback("btn_af_electra_sparkler", ui_events.BUTTON_CLICKED, self.spawn_af_electra_sparkler, self)
+	self:AddCallback("btn_af_electra_flash", ui_events.BUTTON_CLICKED, self.spawn_af_electra_flash, self)
+	self:AddCallback("btn_af_electra_moonlight", ui_events.BUTTON_CLICKED, self.spawn_af_electra_moonlight, self)
+	self:AddCallback("btn_af_ameba_slime", ui_events.BUTTON_CLICKED, self.spawn_af_ameba_slime, self)
+	self:AddCallback("btn_af_ameba_slug", ui_events.BUTTON_CLICKED, self.spawn_af_ameba_slug, self)
+	self:AddCallback("btn_af_ameba_mica", ui_events.BUTTON_CLICKED, self.spawn_af_ameba_mica, self)
+	self:AddCallback("btn_af_dummy_spring", ui_events.BUTTON_CLICKED, self.spawn_af_dummy_spring, self)
+	self:AddCallback("btn_af_dummy_battery", ui_events.BUTTON_CLICKED, self.spawn_af_dummy_battery, self)
+	self:AddCallback("btn_af_dummy_pellicle", ui_events.BUTTON_CLICKED, self.spawn_af_dummy_pellicle, self)
+	self:AddCallback("btn_af_dummy_glassbeads", ui_events.BUTTON_CLICKED, self.spawn_af_dummy_glassbeads, self)
+	self:AddCallback("btn_af_rusty_thorn", ui_events.BUTTON_CLICKED, self.spawn_af_rusty_thorn, self)
+	self:AddCallback("btn_af_rusty_kristall", ui_events.BUTTON_CLICKED, self.spawn_af_rusty_kristall, self)
+	self:AddCallback("btn_af_rusty_seaurchin", ui_events.BUTTON_CLICKED, self.spawn_af_rusty_seaurchin, self)
+        self:AddCallback("btn_af_fuzz_kolobok", ui_events.BUTTON_CLICKED, self.spawn_af_fuzz_kolobok, self)
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+-----------------------------------
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+------------------
+
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+
+function spawner:spawn_af_base()
+	
+	self:spawn_item("af_base", 3)
+end
+
+function spawner:spawn_af_cristall_flower()
+	
+	self:spawn_item("af_cristall_flower", 10)
+end
+
+function spawner:spawn_af_night_star()
+	
+	self:spawn_item("af_night_star", 10)
+end
+
+function spawner:spawn_af_gravi()
+	
+	self:spawn_item("af_gravi", 3)
+end
+
+function spawner:spawn_af_gold_fish()
+	
+	self:spawn_item("af_gold_fish", 3)
+end
+
+function spawner:spawn_af_drops()
+	
+	self:spawn_item("af_drops", 3)
+end
+
+
+function spawner:spawn_af_fireball()
+	
+	self:spawn_item("af_fireball", 7)
+end
+
+function spawner:spawn_af_cristall()
+	
+	self:spawn_item("af_cristall", 7)
+end
+
+function spawner:spawn_af_blood()
+	
+	self:spawn_item("af_blood", 7)
+end
+
+function spawner:spawn_af_mincer_meat()
+	
+	self:spawn_item("af_mincer_meat", 7)
+end
+
+function spawner:spawn_af_soul()
+	
+	self:spawn_item("af_soul", 7)
+end
+
+function spawner:spawn_af_electra_sparkler()
+	
+	self:spawn_item("af_electra_sparkler", 3)
+end
+
+function spawner:spawn_af_electra_flash()
+	
+	self:spawn_item("af_electra_flash", 3)
+end
+
+
+function spawner:spawn_af_electra_moonlight()
+	
+	self:spawn_item("af_electra_moonlight", 3)
+end
+
+function spawner:spawn_af_ameba_slime()
+	
+	self:spawn_item("af_ameba_slime", 3)
+end
+
+function spawner:spawn_af_ameba_slug()
+	
+	self:spawn_item("af_ameba_slug", 3)
+end
+
+function spawner:spawn_af_ameba_mica()
+	
+	self:spawn_item("af_ameba_mica", 3)
+end
+
+function spawner:spawn_af_dummy_spring()
+	
+	self:spawn_item("af_dummy_spring", 3)
+end
+
+function spawner:spawn_af_dummy_battery()
+	
+	self:spawn_item("af_dummy_battery", 3)
+end
+
+
+function spawner:spawn_af_dummy_pellicle()
+	
+	self:spawn_item("af_dummy_pellicle", 3)
+end
+
+
+function spawner:spawn_af_dummy_glassbeads()
+	
+	self:spawn_item("af_dummy_glassbeads", 3)
+end
+
+
+function spawner:spawn_af_rusty_thorn()
+	
+	self:spawn_item("af_rusty_thorn", 3)
+end
+
+
+function spawner:spawn_af_rusty_kristall()
+	
+	self:spawn_item("af_rusty_kristall", 3)
+end
+
+
+function spawner:spawn_af_rusty_seaurchin()
+	
+	self:spawn_item("af_rusty_sea-urchin", 3)
+end
+
+
+function spawner:spawn_af_fuzz_kolobok()
+	
+	self:spawn_item("af_fuzz_kolobok", 3)
+end
+
+
+function spawner:spawn_af_medusa()
+	
+	self:spawn_item("af_medusa", 3)
+end
+
+
+
+
+function spawner:spawn_af_vyvert()
+	
+	self:spawn_item("af_vyvert", 3)
+end
+
+---------------------Back------------------
+function spawner:on_back()
+-- если еще ни разу не вызывали, то обозначим наш новый скрипт
+                           if self.ui_spawnerdlg == nil then
+		self.ui_spawner_dlg = ui_spawner.spawner()
+		self.ui_spawner_dlg.owner = self
+
+
+	end
+-- останавливаем родительский элемент, запускаем свой, но родителя показываем.
+	self:GetHolder():start_stop_menu(self.ui_spawner_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end
+
+

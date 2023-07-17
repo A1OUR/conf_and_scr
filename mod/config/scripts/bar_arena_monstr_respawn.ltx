@@ -1,0 +1,12 @@
+[logic]
+active = mob_walker
+on_death = mob_death
+
+[mob_walker]
+actor_friendly = true
+path_walk = bar_arena_monstr_walk
+path_look = bar_arena_monstr_look
+on_signal = arrived |  %+bar_arena_monstr_ready =bar_arena_hit%
+
+[mob_death]
+on_info = %+bar_arena_monstr_dead%

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<cheat>	
+	<back_video x="10" y="10" width="650" height="340" stretch="1">
+		<texture></texture>
+	</back_video>
+
+	<background x="0" y="0" width="500" height="460" stretch="1">
+		<texture x="190" y="235" width="530" height="450">ui_menu_options_dlg</texture>
+	</background>
+
+	<Info x="30" y="5" width="650" height="15" complex_mode="1">	
+			<text align="l" font="letterica18" a="255" r="216" g="188" b="140">ПАТРОНЫ</text>	
+	</Info>
+
+	<btn_ammo_9x18_fmj x="0" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>9x18(fmj)</text>
+	</btn_ammo_9x18_fmj>
+
+              <btn_ammo_9x18_pbp x="0" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>9x18(pbp)</text>
+	</btn_ammo_9x18_pbp>
+
+	<btn_ammo_9x18_pmm x="0" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>9x18(pmm)</text>
+	</btn_ammo_9x18_pmm>
+
+	<btn_ammo_9x19_fmj x="0" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>9x19(fmj)</text>
+	</btn_ammo_9x19_fmj>
+
+	<btn_ammo_9x19_pbp x="0" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>9x19(pbp)</text>
+	</btn_ammo_9x19_pbp>
+
+	<btn_ammo_545x39_fmj x="0" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>5.45x39(fmj)</text>
+	</btn_ammo_545x39_fmj>
+
+<btn_ammo_545x39_ap x="126" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>5.45x39(ap)</text>
+	</btn_ammo_545x39_ap>
+
+<btn_ammo_556x45_ss190 x="126" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>5.56x45(ss190)</text>
+	</btn_ammo_556x45_ss190>
+
+<btn_ammo_556x45_ap x="126" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>5.56x45(ap)</text>
+	</btn_ammo_556x45_ap>
+
+<btn_ammo_57x28_fmj x="126" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>5.7x28(fmj)</text>
+	</btn_ammo_57x28_fmj>
+
+<btn_ammo_57x28_ap x="126" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>5.7x28(ap)</text>
+	</btn_ammo_57x28_ap>
+
+<btn_ammo_762x54_7h1 x="126" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>7.62x54(7h1)</text>
+	</btn_ammo_762x54_7h1>
+
+<btn_ammo_762x54_ap x="252" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>7.62x54(ap)</text>
+	</btn_ammo_762x54_ap>
+
+<btn_ammo_762x54_7h14 x="252" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>7.62x54(7h14)</text>
+	</btn_ammo_762x54_7h14>
+
+<btn_ammo_9x39_pab9 x="252" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>9x39(pab9)</text>
+	</btn_ammo_9x39_pab9>
+
+<btn_ammo_gauss x="252" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>gauss</text>
+	</btn_ammo_gauss>
+
+<btn_ammo_9x39_ap x="252" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>9x39(ap)</text>
+	</btn_ammo_9x39_ap>
+
+<btn_ammo_9x39_sp5 x="252" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>9x39(sp5)</text>
+	</btn_ammo_9x39_sp5>
+
+<btn_ammo_1143x23_fmj x="378" y="65" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>11.43x23(fmj)</text>
+	</btn_ammo_1143x23_fmj>
+
+<btn_ammo_1143x23_hydro x="378" y="95" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>11.43x23(hydro)</text>
+	</btn_ammo_1143x23_hydro>
+
+<btn_ammo_12x70_buck x="378" y="125" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>12x70(buck)</text>
+	</btn_ammo_12x70_buck>
+
+<btn_ammo_12x76_dart x="378" y="155" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>12x76(dart)</text>
+	</btn_ammo_12x76_dart>
+
+<btn_ammo_12x76_zhekan x="378" y="185" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>12x76(zhekan)</text>
+	</btn_ammo_12x76_zhekan>
+
+<btn_grenade_f1 x="0" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Граната Ф1</text>
+	</btn_grenade_f1>
+
+<btn_grenade_rgd5 x="126" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Граната ГД5</text>
+	</btn_grenade_rgd5>
+
+<btn_ammo_vog25 x="252" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Снаряд ВОГ25</text>
+	</btn_ammo_vog25>
+
+<btn_ammo_og7b x="378" y="215" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Для гранатомета</text>
+	</btn_ammo_og7b>
+
+<btn_ammo_vog25p x="0" y="275" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Снаряд ВОГ25р</text>
+	</btn_ammo_vog25p>
+
+<btn_ammo_m209 x="378" y="245" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Снаряд М209</text>
+	</btn_ammo_m209>
+
+-----------------------------------------------------------EXIT-------------------------------------------------------------------------------------
+	<btn_quit x="25" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>ui_inv_exit</text>
+	</btn_quit>
+----------------------
+	<btn_back x="378" y="420" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>Назад</text>
+	</btn_back>
+
+
+</cheat>

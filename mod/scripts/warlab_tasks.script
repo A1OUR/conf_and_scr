@@ -1,0 +1,26 @@
+function proceed()
+	local actor = db.actor
+	
+	if not has_alife_info("war_final_task_all_keys_have") and actor:object("war_final_door_key1") and 
+		actor:object("war_final_door_key2") and actor:object("war_final_door_key3") and actor:object("war_final_door_notebook")
+	then
+		actor:give_info_portion("war_final_task_all_keys_have")
+	end 
+
+end
+
+function process_info_portion(info_id)
+end
+
+function has_final_door_key1()
+	return db.actor:object ("war_final_door_key1") ~= nil
+end
+function has_final_door_key2()
+	return db.actor:object ("war_final_door_key2") ~= nil
+end
+function has_final_door_key3()
+	return db.actor:object ("war_final_door_key3") ~= nil
+end
+function has_final_door_notebook()
+	return db.actor:object ("war_final_door_notebook") ~= nil
+end

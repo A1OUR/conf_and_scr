@@ -1,0 +1,61 @@
+<ui_texture>
+
+     <file_name>ui\CP_zombied_stalkers</file_name>
+
+    <texture id="icon_zombied_merc_mask_1" x="0" y="0" width="165" height="108" />
+    <texture id="icon_zombied_merc_face_1" x="165" y="0" width="165" height="108" />
+    <texture id="icon_zombied_merc_mask_2" x="330" y="0" width="165" height="108" />
+    <texture id="icon_zombied_merc_mask_3" x="495" y="0" width="165" height="108" />
+    <texture id="icon_zombied_merc_face_3" x="660" y="0" width="165" height="108" />
+    <texture id="icon_zombied_merc_face_2" x="825" y="0" width="165" height="108" />
+    <texture id="icon_zombied_merc_sci" x="0" y="108" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_sci" x="165" y="108" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_exo" x="330" y="108" width="165" height="108" />
+    <texture id="icon_zombied_novice_1" x="495" y="108" width="165" height="108" />
+    <texture id="icon_zombied_novice_2" x="660" y="108" width="165" height="108" />
+    <texture id="icon_zombied_novice_3" x="825" y="108" width="165" height="108" />
+    <texture id="icon_zombied_novice_4" x="0" y="216" width="165" height="108" />
+    <texture id="icon_zombied_bandit_1" x="165" y="216" width="165" height="108" />
+    <texture id="icon_zombied_dolg_2" x="330" y="216" width="165" height="108" />
+    <texture id="icon_zombied_dolg_1" x="495" y="216" width="165" height="108" />
+    <texture id="icon_zombied_bandit_2" x="660" y="216" width="165" height="108" />
+    <texture id="icon_zombied_neutral_1" x="825" y="216" width="165" height="108" />
+    <texture id="icon_zombied_neutral_2" x="0" y="324" width="165" height="108" />
+    <texture id="icon_zombied_merc_mask_4" x="165" y="324" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_ochki_1" x="330" y="324" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_ochki_2" x="495" y="324" width="165" height="108" />
+    <texture id="icon_zombied_specnaz" x="660" y="324" width="165" height="108" />
+    <texture id="icon_zombied_dolg_antigas" x="825" y="324" width="165" height="108" />
+    <texture id="icon_zombied_dolg_exo" x="0" y="432" width="165" height="108" />
+    <texture id="icon_zombied_dolg_3" x="165" y="432" width="165" height="108" />
+    <texture id="icon_zombied_dolg_5" x="330" y="432" width="165" height="108" />
+    <texture id="icon_zombied_dolg_4" x="495" y="432" width="165" height="108" />
+    <texture id="icon_zombied_dolg_sci" x="660" y="432" width="165" height="108" />
+    <texture id="icon_zombied_ecolog_red" x="825" y="432" width="165" height="108" />
+    <texture id="icon_zombied_ecolog_green" x="0" y="540" width="165" height="108" />
+    <texture id="icon_zombied_neutral_ochki" x="165" y="540" width="165" height="108" />
+    <texture id="icon_zombied_neutral_3" x="330" y="540" width="165" height="108" />
+    <texture id="icon_zombied_neutral_4" x="495" y="540" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_2" x="660" y="540" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_3" x="825" y="540" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_4" x="0" y="648" width="165" height="108" />
+    <texture id="icon_zombied_neutral_sci" x="165" y="648" width="165" height="108" />
+    <texture id="icon_zombied_merc_exo_no_helm" x="330" y="648" width="165" height="108" />
+    <texture id="icon_zombied_dolg_exo_no_helm" x="495" y="648" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_exo_no_helm" x="660" y="648" width="165" height="108" />
+    <texture id="icon_zombied_neutral_exo_no_helm" x="825" y="648" width="165" height="108" />
+    <texture id="icon_zombied_specnaz_no_helm" x="0" y="756" width="165" height="108" />
+    <texture id="icon_zombied_specnaz_mask" x="165" y="756" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_heavy_no_helm_2" x="330" y="756" width="165" height="108" />
+    <texture id="icon_zombied_svoboda_heavy_no_helm_1" x="495" y="756" width="165" height="108" />
+    <texture id="icon_zombied_specnaz_antigas" x="660" y="756" width="165" height="108" />
+    <texture id="icon_zombied_military" x="825" y="756" width="165" height="108" />
+    <texture id="icon_zombied_dolg_heavy" x="0" y="864" width="165" height="108" />
+    <texture id="icon_zombied_bandit_cloak_brown" x="165" y="864" width="165" height="108" />
+    <texture id="icon_zombied_bandit_cloak_black" x="330" y="864" width="165" height="108" />
+    <texture id="icon_zombie2" x="495" y="864" width="165" height="108" />
+    <texture id="icon_zombie6" x="660" y="864" width="165" height="108" />
+
+
+
+</ui_texture>

@@ -1,0 +1,9 @@
+	<string id="cit_hunter_start_scene_tip">
+		<text>Опаньки! Пожаловал лошок... Так, стой и не рыпайся!</text>
+	</string>
+	<string id="cit_doctor_actor_free_tip">
+		<text>Стрелок, за меня не беспокойся...</text>
+	</string>
+	<string id="cit_doctor_actor_not_free_tip">
+		<text>Стрелок, за меня не беспокойся. Беги при первой же возможности!</text>
+	</string>

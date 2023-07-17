@@ -1,0 +1,360 @@
+-- Atom mod: micromod (Сборка 1)
+
+-- инициализация
+class "spawner" (CUIScriptWnd)
+
+-- инициализируем элементы интерфейса и каллбаки
+function spawner:__init(owner) super()
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function spawner:__finalize()
+
+end
+
+function spawner:InitControls()
+	self:SetWndRect					(Frect():set(0,0,1000,1000))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_weapon_menu.xml")
+
+	-- видео на заднем плане
+	xml:InitStatic("back_video", self)
+
+	-- рамка
+	xml:InitStatic("background", self)
+
+	-- кнопки
+	self:Register(xml:Init3tButton("btn_w_ak74", self),"btn_w_ak74") 
+        self:Register(xml:Init3tButton("btn_w_ak74u", self),"btn_w_ak74u") 
+	self:Register(xml:Init3tButton("btn_w_fn2000", self),"btn_w_fn2000")
+	self:Register(xml:Init3tButton("btn_w_rpg7", self),"btn_w_rpg7") 
+	self:Register(xml:Init3tButton("btn_w_knife", self),"btn_w_knife") 
+	self:Register(xml:Init3tButton("btn_w_bolt", self),"btn_w_bolt")
+	self:Register(xml:Init3tButton("btn_w_rg6", self),"btn_w_rg6")
+	self:Register(xml:Init3tButton("btn_w_vintorez", self),"btn_w_vintorez")
+	self:Register(xml:Init3tButton("btn_w_lr300", self),"btn_w_lr300")
+	self:Register(xml:Init3tButton("btn_w_mp5", self),"btn_w_mp5")
+	self:Register(xml:Init3tButton("btn_w_val", self),"btn_w_val")
+        self:Register(xml:Init3tButton("btn_w_gauss", self),"btn_w_gauss")
+        self:Register(xml:Init3tButton("btn_w_groza", self),"btn_w_groza")
+	self:Register(xml:Init3tButton("btn_w_hpsa", self),"btn_w_hpsa")
+	self:Register(xml:Init3tButton("btn_w_pm", self),"btn_w_pm")
+	self:Register(xml:Init3tButton("btn_w_pb", self),"btn_w_pb")
+	self:Register(xml:Init3tButton("btn_w_walther", self),"btn_w_walther")
+	self:Register(xml:Init3tButton("btn_w_ups", self),"btn_w_ups")
+	self:Register(xml:Init3tButton("btn_w_fort", self),"btn_w_fort")
+	self:Register(xml:Init3tButton("btn_w_toz34", self),"btn_w_toz34")
+	self:Register(xml:Init3tButton("btn_w_svd", self),"btn_w_svd")
+	self:Register(xml:Init3tButton("btn_w_svu", self),"btn_w_svu")
+	self:Register(xml:Init3tButton("btn_w_binoc", self),"btn_w_binoc")
+	self:Register(xml:Init3tButton("btn_w_l85", self),"btn_w_l85")
+	self:Register(xml:Init3tButton("btn_w_bm16", self),"btn_w_bm16")
+	self:Register(xml:Init3tButton("btn_w_spas12", self),"btn_w_spas12")
+	self:Register(xml:Init3tButton("btn_w_wincheaster1300", self),"btn_w_wincheaster1300")
+	self:Register(xml:Init3tButton("btn_w_colt1911", self),"btn_w_colt1911")
+	self:Register(xml:Init3tButton("btn_w_beretta", self),"btn_w_beretta")
+	self:Register(xml:Init3tButton("btn_w_desert_eagle", self),"btn_w_desert_eagle")
+	self:Register(xml:Init3tButton("btn_w_sig220", self),"btn_w_sig220")
+	self:Register(xml:Init3tButton("btn_w_sig550", self),"btn_w_sig550")
+	self:Register(xml:Init3tButton("btn_w_abakan", self),"btn_w_abakan")
+	self:Register(xml:Init3tButton("btn_w_g36", self),"btn_w_g36")
+
+------------------------------------------------------------------------------------
+	-- кнопка выхода
+	self:Register(xml:Init3tButton("btn_quit", self),"btn_quit")
+----------------------------------------------------------------------------------------------------- 
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+-------------------------
+----------------------------------------------------------------------------------------------------- 
+
+
+	xml:InitStatic("Info", self)
+
+
+end
+
+function spawner:InitCallBacks()
+	self:AddCallback("btn_w_ak74", ui_events.BUTTON_CLICKED, self.spawn_w_ak74, self)
+	self:AddCallback("btn_w_ak74u", ui_events.BUTTON_CLICKED, self.spawn_w_ak74u, self)
+	self:AddCallback("btn_w_fn2000", ui_events.BUTTON_CLICKED, self.spawn_w_fn2000, self)
+	self:AddCallback("btn_w_rpg7", ui_events.BUTTON_CLICKED, self.spawn_w_rpg7, self)
+	self:AddCallback("btn_w_knife", ui_events.BUTTON_CLICKED, self.spawn_w_knife, self)
+	self:AddCallback("btn_w_bolt", ui_events.BUTTON_CLICKED, self.spawn_w_bolt, self)
+	self:AddCallback("btn_w_rg6", ui_events.BUTTON_CLICKED, self.spawn_w_rg6, self)
+	self:AddCallback("btn_w_vintorez", ui_events.BUTTON_CLICKED, self.spawn_w_vintorez, self)
+	self:AddCallback("btn_w_lr300", ui_events.BUTTON_CLICKED, self.spawn_w_lr300, self)
+	self:AddCallback("btn_w_mp5", ui_events.BUTTON_CLICKED, self.spawn_w_mp5, self)
+	self:AddCallback("btn_w_val", ui_events.BUTTON_CLICKED, self.spawn_w_val, self)
+	self:AddCallback("btn_w_gauss", ui_events.BUTTON_CLICKED, self.spawn_w_gauss, self)
+	self:AddCallback("btn_w_groza", ui_events.BUTTON_CLICKED, self.spawn_w_groza, self)
+	self:AddCallback("btn_w_hpsa", ui_events.BUTTON_CLICKED, self.spawn_w_hpsa, self)
+	self:AddCallback("btn_w_pm", ui_events.BUTTON_CLICKED, self.spawn_w_pm, self)
+	self:AddCallback("btn_w_pb", ui_events.BUTTON_CLICKED, self.spawn_w_pb, self)
+	self:AddCallback("btn_w_walther", ui_events.BUTTON_CLICKED, self.spawn_w_walther, self)
+	self:AddCallback("btn_w_ups", ui_events.BUTTON_CLICKED, self.spawn_w_ups, self)
+	self:AddCallback("btn_w_fort", ui_events.BUTTON_CLICKED, self.spawn_w_fort, self)
+	self:AddCallback("btn_w_toz34", ui_events.BUTTON_CLICKED, self.spawn_w_toz34, self)
+	self:AddCallback("btn_w_svd", ui_events.BUTTON_CLICKED, self.spawn_w_svd, self)
+	self:AddCallback("btn_w_svu", ui_events.BUTTON_CLICKED, self.spawn_w_svu, self)
+	self:AddCallback("btn_w_binoc", ui_events.BUTTON_CLICKED, self.spawn_w_binoc, self)
+	self:AddCallback("btn_w_l85", ui_events.BUTTON_CLICKED, self.spawn_w_l85, self)
+	self:AddCallback("btn_w_bm16", ui_events.BUTTON_CLICKED, self.spawn_w_bm16, self)
+	self:AddCallback("btn_w_spas12", ui_events.BUTTON_CLICKED, self.spawn_w_spas12, self)
+	self:AddCallback("btn_w_wincheaster1300", ui_events.BUTTON_CLICKED, self.spawn_w_wincheaster1300, self)
+	self:AddCallback("btn_w_colt1911", ui_events.BUTTON_CLICKED, self.spawn_w_colt1911, self)
+	self:AddCallback("btn_w_beretta", ui_events.BUTTON_CLICKED, self.spawn_w_beretta, self)
+	self:AddCallback("btn_w_desert_eagle", ui_events.BUTTON_CLICKED, self.spawn_w_desert_eagle, self)
+	self:AddCallback("btn_w_sig220", ui_events.BUTTON_CLICKED, self.spawn_w_sig220, self)
+	self:AddCallback("btn_w_sig550", ui_events.BUTTON_CLICKED, self.spawn_w_sig550, self)
+	self:AddCallback("btn_w_abakan", ui_events.BUTTON_CLICKED, self.spawn_w_abakan, self)
+	self:AddCallback("btn_w_g36", ui_events.BUTTON_CLICKED, self.spawn_w_g36, self)
+---quit---
+	self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+-----------------------------------
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+------------------
+
+end
+
+-- сразу создадим ф-ию для выхода
+function spawner:on_quit()
+	-- убираем наше окно, показываем предыдущее (или возвращаемся в игру)
+	local console = get_console()
+	self:GetHolder():start_stop_menu (self.owner, true)
+	self:GetHolder():start_stop_menu (self,true)
+	self.owner:Show	(true)
+	-- скрытие главного меню только если запущена игра
+	if self:check_game() then
+		console:execute("main_menu off")
+	end
+end
+
+-- spawn_item - необходимый предмет
+-- dist - радиус появления (случайно)
+function spawner:spawn_item(spawn_item, dist)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:spawn_item_inv(spawn_item)
+	-- спавним только в игре
+	if self:check_game() then
+--		self:on_quit()
+	 	alife():create	(spawn_item, db.actor:position(),  db.actor:level_vertex_id(),
+ 			db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+function spawner:check_game()
+	-- возвращает true если запущена игра
+	local check = false
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		check = true
+	end
+	return check
+end
+
+function spawner:spawn_w_ak74()
+	
+	self:spawn_item("wpn_ak74", 3)
+end
+
+function spawner:spawn_w_ak74u()
+	
+	self:spawn_item("wpn_ak74u", 10)
+end
+
+function spawner:spawn_w_fn2000()
+	
+	self:spawn_item("wpn_fn2000", 10)
+end
+
+function spawner:spawn_w_rpg7()
+	
+	self:spawn_item("wpn_rpg7", 3)
+end
+
+function spawner:spawn_w_knife()
+	
+	self:spawn_item("wpn_knife", 3)
+end
+
+function spawner:spawn_w_bolt()
+	
+	self:spawn_item("bolt", 3)
+end
+
+
+function spawner:spawn_w_rg6()
+	
+	self:spawn_item("wpn_rg-6", 7)
+end
+
+function spawner:spawn_w_vintorez()
+	
+	self:spawn_item("wpn_vintorez", 7)
+end
+
+function spawner:spawn_w_lr300()
+	
+	self:spawn_item("wpn_lr300", 7)
+end
+
+function spawner:spawn_w_mp5()
+	
+	self:spawn_item("wpn_mp5", 7)
+end
+
+function spawner:spawn_w_val()
+	
+	self:spawn_item("wpn_val", 7)
+end
+
+function spawner:spawn_w_gauss()
+	
+	self:spawn_item("wpn_gauss", 3)
+end
+
+function spawner:spawn_w_hpsa()
+	
+	self:spawn_item("wpn_hpsa", 3)
+end
+
+
+function spawner:spawn_w_pm()
+	
+	self:spawn_item("wpn_pm", 3)
+end
+
+function spawner:spawn_w_pb()
+	
+	self:spawn_item("wpn_pb", 3)
+end
+
+function spawner:spawn_w_walther()
+	
+	self:spawn_item("wpn_walther", 3)
+end
+
+function spawner:spawn_w_ups()
+	
+	self:spawn_item("wpn_usp", 3)
+end
+
+function spawner:spawn_w_fort()
+	
+	self:spawn_item("wpn_fort", 3)
+end
+
+function spawner:spawn_w_toz34()
+	
+	self:spawn_item("wpn_toz34", 3)
+end
+
+
+function spawner:spawn_w_svd()
+	
+	self:spawn_item("wpn_svd", 3)
+end
+
+
+function spawner:spawn_w_svu()
+	
+	self:spawn_item("wpn_svu", 3)
+end
+
+
+function spawner:spawn_w_binoc()
+	
+	self:spawn_item("wpn_binoc", 3)
+end
+
+
+function spawner:spawn_w_l85()
+	
+	self:spawn_item("wpn_l85", 3)
+end
+
+
+function spawner:spawn_w_bm16()
+	
+	self:spawn_item("wpn_bm16", 3)
+end
+
+
+function spawner:spawn_w_spas12()
+	
+	self:spawn_item("wpn_spas12", 3)
+end
+
+
+function spawner:spawn_w_wincheaster1300()
+	
+	self:spawn_item("wpn_wincheaster1300", 3)
+end
+
+
+function spawner:spawn_w_colt1911()
+	
+	self:spawn_item("wpn_colt1911", 3)
+end
+
+
+function spawner:spawn_w_beretta()
+	
+	self:spawn_item("wpn_beretta", 3)
+end
+
+
+function spawner:spawn_w_desert_eagle()
+	
+	self:spawn_item("wpn_desert_eagle", 3)
+end
+
+
+function spawner:spawn_w_sig220()
+	
+	self:spawn_item("wpn_sig220", 3)
+end
+
+
+function spawner:spawn_w_sig550()
+	
+	self:spawn_item("wpn_sig550", 3)
+end
+
+
+function spawner:spawn_w_abakan()
+	
+	self:spawn_item("wpn_abakan", 3)
+end
+
+
+function spawner:spawn_w_g36()
+	
+	self:spawn_item("wpn_g36", 3)
+end
+
+---------------------Back------------------
+function spawner:on_back()
+-- если еще ни разу не вызывали, то обозначим наш новый скрипт
+                           if self.ui_spawnerdlg == nil then
+		self.ui_spawner_dlg = ui_spawner.spawner()
+		self.ui_spawner_dlg.owner = self
+
+
+	end
+-- останавливаем родительский элемент, запускаем свой, но родителя показываем.
+	self:GetHolder():start_stop_menu(self.ui_spawner_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+
+end

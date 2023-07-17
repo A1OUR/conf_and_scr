@@ -1,0 +1,61 @@
+<ui_texture>
+
+     <file_name>ui\CP_soldiers</file_name>
+
+    <texture id="icon_specnaz" x="0" y="0" width="165" height="108" />
+    <texture id="icon_soldier_bandana_7" x="165" y="0" width="165" height="108" />
+    <texture id="icon_soldier_bandana_5" x="330" y="0" width="165" height="108" />
+    <texture id="icon_soldier_bandana_2" x="495" y="0" width="165" height="108" />
+    <texture id="icon_soldier_bandana_3" x="660" y="0" width="165" height="108" />
+    <texture id="icon_soldier_bandana_4" x="825" y="0" width="165" height="108" />
+    <texture id="icon_soldier_bandana" x="0" y="108" width="165" height="108" />
+    <texture id="icon_soldier_bandana_6" x="165" y="108" width="165" height="108" />
+    <texture id="icon_soldier_bandana_1" x="330" y="108" width="165" height="108" />
+    <texture id="icon_soldier_bandana_12" x="495" y="108" width="165" height="108" />
+    <texture id="icon_soldier_bandana_8" x="660" y="108" width="165" height="108" />
+    <texture id="icon_soldier_bandana_13" x="825" y="108" width="165" height="108" />
+    <texture id="icon_soldier_bandana_9" x="0" y="432" width="165" height="108" />
+    <texture id="icon_soldier_bandana_16" x="165" y="432" width="165" height="108" />
+    <texture id="icon_soldier_bandana_17" x="825" y="324" width="165" height="108" />
+    <texture id="icon_soldier_bandana_18" x="825" y="432" width="165" height="108" />
+
+    <texture id="icon_soldier_beret_3" x="0" y="216" width="165" height="108" />
+    <texture id="icon_soldier_beret" x="165" y="216" width="165" height="108" />
+    <texture id="icon_soldier_beret_1" x="330" y="216" width="165" height="108" />
+    <texture id="icon_soldier_beret_2" x="495" y="216" width="165" height="108" />
+    <texture id="icon_soldier_beret_4" x="660" y="216" width="165" height="108" />
+    <texture id="icon_soldier_beret_5" x="825" y="216" width="165" height="108" />
+    <texture id="icon_soldier_beret_6" x="0" y="324" width="165" height="108" />
+    <texture id="icon_soldier_beret_7" x="165" y="324" width="165" height="108" />
+    <texture id="icon_soldier_beret_8" x="330" y="324" width="165" height="108" />
+    <texture id="icon_soldier_beret_9" x="495" y="324" width="165" height="108" />
+    <texture id="icon_soldier_beret_10" x="660" y="324" width="165" height="108" />
+
+    <texture id="icon_soldier_antigas" x="0" y="540" width="165" height="108" />
+    <texture id="icon_soldier_mask" x="165" y="540" width="165" height="108" />
+    <texture id="icon_esc_blokpost_commander" x="330" y="540" width="165" height="108" />
+
+    <texture id="icon_specnaz_black_antigas" x="0" y="648" width="165" height="108" />
+    <texture id="icon_specnaz_green_antigas" x="165" y="648" width="165" height="108" />
+    <texture id="icon_specnaz_black" x="330" y="648" width="165" height="108" />
+    <texture id="icon_specnaz_green" x="495" y="648" width="165" height="108" />
+    <texture id="icon_specnaz_black_1" x="825" y="648" width="165" height="108" />
+    <texture id="icon_specnaz_black_2" x="495" y="540" width="165" height="108" />
+    <texture id="icon_specnaz_black_3" x="660" y="540" width="165" height="108" />
+    <texture id="icon_specnaz_black_4" x="825" y="540" width="165" height="108" />
+    <texture id="icon_specnaz_green_1" x="660" y="648" width="165" height="108" />
+    <texture id="icon_specnaz_green_2" x="330" y="432" width="165" height="108" />
+    <texture id="icon_specnaz_green_3" x="495" y="432" width="165" height="108" />
+    <texture id="icon_specnaz_green_4" x="660" y="432" width="165" height="108" />
+
+    <texture id="icon_beret_specnaz_1" x="0" y="756" width="165" height="108" />
+    <texture id="icon_beret_specnaz_3" x="165" y="756" width="165" height="108" />
+    <texture id="icon_beret_specnaz_2" x="330" y="756" width="165" height="108" />
+    <texture id="icon_beret_specnaz_4" x="495" y="756" width="165" height="108" />
+    <texture id="icon_beret_specnaz_5" x="660" y="756" width="165" height="108" />
+    <texture id="icon_beret_specnaz_6" x="825" y="756" width="165" height="108" />
+    <texture id="icon_beret_specnaz_7" x="0" y="864" width="165" height="108" />
+    <texture id="icon_beret_specnaz_8" x="165" y="864" width="165" height="108" />
+    <texture id="icon_beret_specnaz_9" x="330" y="864" width="165" height="108" />
+
+</ui_texture>

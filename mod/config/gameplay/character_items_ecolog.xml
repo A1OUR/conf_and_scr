@@ -1,0 +1,4 @@
+wpn_binoc = 1, prob=1 \n
+detector_simple = 1, prob=0.15 \n
+detector_advances = 1, prob=0.08 \n
+device_torch = 1, prob=1 \n

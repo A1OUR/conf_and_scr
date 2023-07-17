@@ -1,0 +1,14 @@
+[logic]
+active = walker1
+on_death = death
+
+[walker1]
+path_walk = rad_stalker_jaw_way1
+path_look = rad_stalker_jaw_look1
+danger = danger_condition
+
+[danger_condition]
+ignore_distance = 5
+
+[death]
+on_info = %+rad_jaw_stalker_death%

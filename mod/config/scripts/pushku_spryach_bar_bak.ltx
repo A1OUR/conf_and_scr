@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {=actor_has_weapon =actor_in_zone(uberi_pushku_restr)} %=uberi_pushku_bar% sr_idle2
+on_info2 = {!actor_has_weapon =actor_in_zone(uberi_pushku_restr)} %=privet_stalker_pravila_bar% sr_idle2
+
+[sr_idle2]
+on_info = {!actor_in_zone(l05_bar_no_weapon) !actor_in_zone(uberi_pushku_restr) !actor_in_zone(bar_hide_weapon_zone)} sr_idle
+
+

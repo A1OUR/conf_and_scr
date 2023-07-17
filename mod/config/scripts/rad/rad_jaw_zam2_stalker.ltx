@@ -1,0 +1,11 @@
+[logic]
+active = camper
+
+[camper]
+path_walk = rad_jaw_zam2_walk
+path_look = rad_jaw_zam2_look
+danger = danger_condition
+on_actor_dist_le_nvis = 30 | %=actor_enemy%
+
+[danger_condition]
+ignore_distance = 5

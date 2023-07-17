@@ -1,0 +1,17 @@
+Три вызова функций аддона (начинаются с "arc_main.").
+
+--колбэк на взятие предмета в инвентарь ГГ
+function on_item_take(obj)
+arc_main.get_item(obj)
+end
+
+
+--колбэк на потерю предмета из инвентаря ГГ
+function on_item_drop(obj)
+	amk_mod.check_sleep_item(obj)
+	arc_main.lose_item(obj)
+end
+
+--user area	
+	amk_mod.check_radar_off()
+	arc_main.actor_update()

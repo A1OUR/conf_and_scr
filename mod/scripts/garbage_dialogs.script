@@ -1,0 +1,83 @@
+
+function has_dolg_bribe(actor, npc)
+	return actor:money() >= 5000
+end
+
+function give_dolg_bribe(actor, npc)
+	dialogs.relocate_money(actor, 5000, "out")	
+end
+
+function hellcar_payment (stalker, player)
+	dialogs.relocate_money(stalker, 2000, "in")
+	db.actor:give_info_portion("gar_hellcar_thanks")
+end
+
+function seryi_payment (stalker, player)
+	dialogs.relocate_money(stalker, 2500, "in")
+end
+
+function blokpost_pass (actor, npc)
+	if has_alife_info("gar_free_pass") then
+        return true
+    end
+	return false
+end
+
+function not_blokpost_pass(actor,npc)
+	return not this.blokpost_pass (actor, npc)
+end
+
+function give_money_from_newbie(first_speaker, second_speaker)	
+	dialogs.relocate_money(first_speaker, 500, "in")
+end
+
+--Проверка ранга актёра (Р.М.А.):
+function gar_actor_rank_newbie(actor,npc)
+	local actor = db.actor
+	if actor:character_rank() < 300 then
+		return true
+	end
+end
+
+function gar_actor_rank_not_newbie(actor,npc)
+	return not this.gar_actor_rank_newbie(actor,npc)
+end
+
+-- ограбленный новичок:
+function act_have_bm16_for_rob(npc, actor)
+	return db.actor:object("wpn_bm16") ~= nil
+end
+
+function act_have_aksu_for_rob(npc, actor)
+	return db.actor:object("wpn_ak74u") ~= nil
+end
+
+function give_bm16_for_rob(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_bm16", "out")
+end
+
+function give_aksu_for_rob(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_ak74u", "out")
+end
+
+function has_kurtka_money(actor, npc)
+	return actor:money() >= 100
+end
+
+function give_kurtka_money(actor, npc)
+	dialogs.relocate_money(actor, 100, "out")	
+end
+
+function kurtec()
+treasure_manager.get_treasure_manager():give_treasure("gar_secret_car_hiding")
+ogsm_funcs.g_start_timer("toynik",0,0,1)
+end
+function kurtec_old()
+local obj = alife():story_object(5042)
+alife():create("outfit_bandit_m1",obj.position, obj.m_level_vertex_id, obj.m_game_vertex_id, obj.id)
+level_tasks.add_location (5042, "gar_kurtka_loc")
+local snd_obj = xr_sound.get_safe_sound_object([[device\pda\pda_news]])
+snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+local news_text = game.translate_string("\\n%c[255,160,160,160]Получена информация о тайнике на свалке")
+db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(0,94,83,47), 1000, 5000)
+end

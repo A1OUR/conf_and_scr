@@ -1,0 +1,82 @@
+[amk_zapiska]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\amk zapiska"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual                  = amk\item_zapiska.ogf
+description       = amk_zapiska_descr
+$prefetch     = 64
+
+radius=1
+quest_item			= true
+cost           = 0
+
+inv_name    = amk_zapiska
+inv_name_short    = amk_zapiska
+inv_weight    = 0
+
+inv_grid_width    = 2
+inv_grid_height   = 1
+inv_grid_x      = 6
+inv_grid_y      = 19
+[maslaev_head]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\maslaev_head"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual                  = equipments\head_sidor.ogf
+description       = boshka_descr
+$prefetch     = 64
+
+radius=1
+quest_item			= false
+cost           = 0
+
+inv_name    = boshka
+inv_name_short    = boshka
+inv_weight    = 0
+
+inv_grid_width    = 2
+inv_grid_height   = 1
+inv_grid_x      = 6
+inv_grid_y      = 19
+immunities_sect			= maslaev_head_immunities_sect
+
+[maslaev_head_immunities_sect]
+;коэффициенты для попаданий различными типами хитов
+burn_immunity			= 1.0
+strike_immunity			= 1.0
+shock_immunity			= 1.0
+wound_immunity			= 1.0
+radiation_immunity		= 1.0
+telepatic_immunity		= 1.0
+chemical_burn_immunity	= 1.0
+explosion_immunity		= 1.0
+fire_wound_immunity		= 0.7
+[amk_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\amk pda"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+
+description			= enc_equipment_devic_device-pda1
+
+inv_name			= device-PDA
+inv_name_short		= device-PDA
+inv_weight			= 0
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
